@@ -29,28 +29,24 @@ a {
     font-size:xx-large;
   }
 
-#login-label {
+.label {
     font-size: 22px;
     font-weight: 700;
     color: var(--primary);
 }
 
-#login-sublabel {
+.sublabel {
     font-size: 14px;
     font-weight: 600;
 }
 
-#login-button {
+.submit-button {
     background-color: var(--primary);
     border: none;
 }
 
-#login-button:hover {
+.submit-button:hover {
     background-color: #f83737;
-}
-
-.login-input {
-    width: 300px;
 }
 
 #signup-textarea {
@@ -61,5 +57,3 @@ a {
 input[type='file'] {
     color: rgba(0, 0, 0, 0)
   }
-
-
