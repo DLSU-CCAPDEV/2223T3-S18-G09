@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root {
+    --main-font: 'Lato', sans-serif;
+    --logo-font: 'Righteous', cursive;
+    --primary: #E41A1A;
+    --accent1: #FF3F3F;
+    --accent2: #990000;
+  }
+
+body {
+    font-family: var(--main-font);
+}
+
+.navbar {
+    border-bottom: solid #EBEBEB 0.5px;
+    margin-bottom: 10%;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: var(--logo-font);
+    color: var(--primary);
+    font-size:xx-large;
+  }
+
+#login-label {
+    font-size: 22px;
+    color: var(--primary);
+}
+
+#login-sublabel {
+    font-size: 12px;
+    font-weight: 900;
+}
+
+#login-button {
+    background-color: var(--primary);
+    border: none;
+}
+
+#login-button:hover {
+    background-color: #f83737;
+}
+
+.login-input {
+    width: 300px;
+}
+
+
