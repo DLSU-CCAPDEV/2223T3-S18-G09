@@ -31,12 +31,13 @@ a {
 
 #login-label {
     font-size: 22px;
+    font-weight: 700;
     color: var(--primary);
 }
 
 #login-sublabel {
-    font-size: 12px;
-    font-weight: 900;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 #login-button {
@@ -51,5 +52,14 @@ a {
 .login-input {
     width: 300px;
 }
+
+#signup-textarea {
+    width: 300px;
+    border: #EBEBEB solid 0.5px;
+}
+
+input[type='file'] {
+    color: rgba(0, 0, 0, 0)
+  }
 
 
