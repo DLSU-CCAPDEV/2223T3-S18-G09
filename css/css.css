@@ -7,9 +7,11 @@ Members:
     - TUMALAD, Shawne
   */
 
+/* import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
+/* declare global variables */
 :root {
   --main-font: "Lato", sans-serif;
   --logo-font: "Righteous", cursive;
