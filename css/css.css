@@ -64,3 +64,19 @@ a {
   width: 300px;
   border: #ebebeb solid 0.5px;
 }
+
+.profile-overview-button {
+  color: white;
+}
+
+.user-pfp {
+  top: 12%;
+  left: 20%;
+  min-width: auto;
+}
+
+.user-header {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+}
