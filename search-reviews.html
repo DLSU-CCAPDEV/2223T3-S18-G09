@@ -1,0 +1,110 @@
+<!--
+    S18 Group 9 
+    Members: 
+        - DOLON, John Michael
+        - FETALVERO, Kenshin
+        - GABINI, Brian 
+        - TUMALAD, Shawne
+ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Main</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/css.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+        <a class="logo" href="#" style="padding-right: 10%;">Palatable</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex w-auto" role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" value="delicious">
+            <button class="btn btn-outline-danger" type="submit">Search</button>
+          </form>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="login.html">Log in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="signup.html">Sign up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <h4>FILTERS</h4>
+                <h5><a style="color: black;" href="search-establishments.html"> Establishments </a></h5>
+                <h5><a style="color: black; font-weight: bold;" href="search-reviews.html"> Reviews </a></h5>
+
+            </div>
+            <div class="col-md-9">
+                <h3 class="mb-3"> 2 results found under “delicious” </h3>
+
+                <!-- Establishment #1 -->
+                <div class="row mb-5">
+                    <div class="col-md-2 mb-3 pt-3">
+                        <div class="container">
+                          <div class="row mb-3 justify-content-center">
+                            <img src="./images/shrek-image.jpg" alt="" style="width: 100px; height: 75px;" class="rounded-circle">
+                          </div>
+                          <div class="row justify-content-center text-center"><h6> Ken Adams </h6></div>
+                          
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h6>⭐⭐⭐⭐⭐ • Reviewed on January 1, 2019</h6>
+                        <h4 style="font-weight: 600;"> Jollibee </h4>
+                        <h4> Good food and accommodating staff </h4>
+                        <p>Many people wants to eat in the Jollibee because the food is very <b>delicious</b> and the amount of the food is not expensive. As I observe their employees is well-groomed,the place is clean and the food is delicious. And I think Jollibee is one of the best fast food restaurant in the Philippines. </p>
+                        <p>👍 91 people found this review helpful • 👍👎</p>
+                    </div>
+                </div>
+
+                <!-- Establishment #2 -->
+                <div class="row mb-5">
+                  <div class="col-md-2 mb-3 pt-3">
+                      <div class="container">
+                        <div class="row mb-3 justify-content-center">
+                          <img src="./images/allisonburgers-image.jpg" alt="" style="width: 100px; height: 75px;" class="rounded-circle">
+                        </div>
+                        <div class="row justify-content-center text-center"><h6> Allison Burgers </h6></div>
+                        
+                      </div>
+                  </div>
+                  <div class="col-md-10">
+                      <h6>⭐⭐⭐⭐⭐ • Reviewed on January 1, 2019</h6>
+                      <h4 style="font-weight: 600;"> Sisig Express </h4>
+                      <h4> <b>Delicious</b> food and drinks </h4>
+                      <p>Making my way to this vegan restaurant was a treat. This was technically my second time trying this place, but ordering takeaway did not do it justice. This time, seated at the restaurant, I had the Caldereta, the spicy chicken and the bangus relleno.</p>
+                      <p>👍 109 people found this review helpful • 👍👎</p>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+
+  </body>
+</html>
