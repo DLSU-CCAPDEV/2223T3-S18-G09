@@ -1,55 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* 
+S18 Group 9 
+Members: 
+    - DOLON, John Michael
+    - FETALVERO, Kenshin
+    - GABINI, Brian 
+    - TUMALAD, Shawne
+  */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 :root {
-    --main-font: 'Lato', sans-serif;
-    --logo-font: 'Righteous', cursive;
-    --primary: #E41A1A;
-    --accent1: #FF3F3F;
-    --accent2: #990000;
-  }
+  --main-font: "Lato", sans-serif;
+  --logo-font: "Righteous", cursive;
+  --primary: #e41a1a;
+  --accent1: #ff3f3f;
+  --accent2: #990000;
+}
 
 body {
-    font-family: var(--main-font);
+  font-family: var(--main-font);
 }
 
 .navbar {
-    border-bottom: solid #EBEBEB 0.5px;
-    margin-bottom: 10%;
-    background-color: white;
+  border-bottom: solid #ebebeb 0.5px;
+  margin-bottom: 10%;
+  background-color: white;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .logo {
-    font-family: var(--logo-font);
-    color: var(--primary);
-    font-size:xx-large;
-  }
+  font-family: var(--logo-font);
+  color: var(--primary);
+  font-size: xx-large;
+}
 
 .label {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 .sublabel {
-    font-size: 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .submit-button {
-    background-color: var(--primary);
-    border: none;
+  background-color: var(--primary);
+  border: none;
 }
 
 .submit-button:hover {
-    background-color: #f83737;
+  background-color: #f83737;
 }
 
 #signup-textarea {
-    width: 300px;
-    border: #EBEBEB solid 0.5px;
+  width: 300px;
+  border: #ebebeb solid 0.5px;
 }
