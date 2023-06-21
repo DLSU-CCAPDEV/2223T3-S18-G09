@@ -43,12 +43,12 @@
         <div class="container-fluid">
             <a class="logo" href="#"> Palatable </a>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg></button>
-            </form>
+            <a class="profile-ico" href="user-profile-overview.html" style="color: var(--accent1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+            </a>
         </div>
     </nav>
 
@@ -60,8 +60,27 @@
                 <input class="form-control w-100" type="text" placeholder="Title">
             </div>
 
-            <div class="border p-3 my-3">
-                <h6>⭐⭐⭐⭐⭐ Select your rating</h6>
+            <div class="border p-3 my-3 rounded">
+                <div class="container d-flex">
+                    <span class="star-cb-group me-2">
+                            <input type="radio" id="rating-5" name="rating" value="5" />
+                            <label for="rating-5">5</label>
+                            <input type="radio" id="rating-4" name="rating" value="4" />
+                            <label for="rating-4">4</label>
+                            <input type="radio" id="rating-3" name="rating" value="3" />
+                            <label for="rating-3">3</label>
+                            <input type="radio" id="rating-2" name="rating" value="2" />
+                            <label for="rating-2">2</label>
+                            <input type="radio" id="rating-1" name="rating" value="1" />
+                            <label for="rating-1">1</label>
+                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
+                            <label for="rating-0">0</label>
+                          </span>
+
+                        <h6>Select your rating</h6>
+                </div>
+                
+                
                 <div class="form-floating">
                     <textarea class="form-control border-0" placeholder="Leave a comment here" id="floatingTextarea2"
                         style="height: 100px"></textarea>
