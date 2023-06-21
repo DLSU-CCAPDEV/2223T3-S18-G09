@@ -97,9 +97,60 @@
         <div class="row ">
             <!-- Review Button -->
             <div class="col">
-                <a href="#">
-                    <button class="btn btn-warning fs-5">✩ Write a Review</button>
-                </a>
+                <button class="btn btn-warning fs-5" data-bs-toggle="modal" data-bs-target="#write-review-modal">✩ Write a Review</button>
+                
+                 <!-- Modal -->
+                <div class="modal fade" id="write-review-modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Write a Review for Burger King</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" style="max-width: 600px;">
+                            <div class="my-3">
+                                <input class="form-control w-100" type="text" placeholder="Title">
+                            </div>
+                
+                            <div class="border p-3 my-3 rounded">
+                                <div class="container d-flex">
+                                    <span class="star-cb-group me-2">
+                                            <input type="radio" id="rating-5" name="rating" value="5" />
+                                            <label for="rating-5">5</label>
+                                            <input type="radio" id="rating-4" name="rating" value="4" />
+                                            <label for="rating-4">4</label>
+                                            <input type="radio" id="rating-3" name="rating" value="3" />
+                                            <label for="rating-3">3</label>
+                                            <input type="radio" id="rating-2" name="rating" value="2" />
+                                            <label for="rating-2">2</label>
+                                            <input type="radio" id="rating-1" name="rating" value="1" />
+                                            <label for="rating-1">1</label>
+                                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
+                                            <label for="rating-0">0</label>
+                                            </span>
+                                        <h6>Select your rating</h6>
+                                </div>
+                                
+                                
+                                <div class="form-floating">
+                                    <textarea class="form-control border-0" id="floatingTextarea2"
+                                        style="height: 200px"></textarea>
+                                    <label for="floatingTextarea2">Tell us about your experience!</label>
+                                </div>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Attach Photos</label>
+                                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                            </div>
+                
+                            <input class="submit-button btn btn-primary" type="submit" style="width: 200px;" value="Post Review" data-bs-dismiss="modal">
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
             <!-- Establishment Details -->
             <div class="col position-relative d-flex justify-content-end">
