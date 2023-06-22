@@ -119,25 +119,28 @@ a {
   content: "☆";
   color: #888;
 }
-.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+.star-cb-group > input:checked ~ label:before,
+.star-cb-group > input + label:hover ~ label:before,
+.star-cb-group > input + label:hover:before {
   content: "★";
   color: var(--primary);
   text-shadow: 0 0 1px #333;
 }
 .star-cb-group > .star-cb-clear + label {
   text-indent: -9999px;
-  width: .5em;
-  margin-left: -.5em;
+  width: 0.5em;
+  margin-left: -0.5em;
 }
 .star-cb-group > .star-cb-clear + label:before {
-  width: .5em;
+  width: 0.5em;
 }
 .star-cb-group:hover > input + label:before {
   content: "☆";
   color: #888;
   text-shadow: none;
 }
-.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+.star-cb-group:hover > input + label:hover ~ label:before,
+.star-cb-group:hover > input + label:hover:before {
   content: "★";
   color: var(--primary);
   text-shadow: 0 0 1px #333;
@@ -146,4 +149,8 @@ a {
 .upvote-downvote {
   color: var(--accent1);
   font-size: larger;
+}
+
+.checked {
+  color: orange;
 }
