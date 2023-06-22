@@ -20,7 +20,8 @@
   </head>
 
   <body>
-
+    <script type="text/javascript" src="./js/response.js"></script>
+	
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
@@ -192,7 +193,7 @@
                       }
                       </script>
                       
-                      <div class="review-group">
+                    <div class="review-group">
                         <div class="container d-flex px-2">
                           <span style="color: var(--primary);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
@@ -211,7 +212,39 @@
                             </svg>
                           </span>
                         </div>
-                      </div>
+                    </div>
+					  <!-- Response Button -->
+					<div class="col">
+						<button class="btn btn-danger fs-6 mx-5 btn-sm" data-bs-toggle="modal" data-bs-target="#write-response-modal">✎ Write
+							a Response</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="write-response-modal" tabindex="-1" aria-labelledby="modalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="modalLabel">Respond to Allison Burgers</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form action="" style="max-width: 600px;">
+											<div class="border p-3 my-3 rounded">
+												<div class="form-floating">
+													<textarea class="form-control border-0" id="floatingTextarea2"
+														style="height: 200px" required></textarea>
+													<label for="floatingTextarea2">Response from the owner</label>
+												</div>
+											</div>
+											<input id="submit-response" class="submit-button btn btn-primary position-relative" type="button"
+												style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal">
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                   </div>
               </div>
 
