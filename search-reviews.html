@@ -127,6 +127,27 @@
                             </span>
                           </div>
                         </div>
+						
+                        <p class="mx-5" style="color: black;"><span id="show"><b>Response from the Owner</b></span><span id="hide" style="display: none;"><b>Response from the Owner</b><span style="color: #B4B4B4"> Replied on January 2, 2019</span><br>We really appreciate you taking the time to share your rating with us. We look forward to seeing you again soon.</span> <a onclick="hideResponseFunction()" id="myRep"> • Show Response</a>
+						
+						<script>
+                      function hideResponseFunction() {
+                        var show = document.getElementById("show");
+                        var showRep = document.getElementById("hide");
+                        var btnRep = document.getElementById("myRep");
+
+                        if (show.style.display === "none") {
+                          show.style.display = "inline";
+                          btnRep.innerHTML = " • Show Response"; 
+                          showRep.style.display = "none";
+                        } else {
+                          show.style.display = "none";
+                          btnRep.innerHTML = " • Hide Response"; 
+                          showRep.style.display = "inline";
+                        }
+                      }
+                      </script>
+						
                     </div>
                 </div>
 
