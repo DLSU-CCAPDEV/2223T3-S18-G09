@@ -62,40 +62,21 @@
 	<form class="form-floating"> <!-- sends data to nowhere for now-->
 		<div class="container-fluid m-0">
 			<div class="row">
-				<div class="col position-relative col-md-2" style="margin-top: 13px;">
-					<!-- Picture here -->
-					<img class="img-thumbnail position-absolute user-pfp" style="width:175px; height:175px; position:relative;"
-						src="./images/user-pfp.jpg" alt="User PFP">
-					<!-- change photo image here -->
-					<img class="img-thumbnail position-absolute user-pfp" style="width:175px; height:175px; position:absolute; opacity:0.7;"
-						src="./images/profile-update.png" alt="Update Photo">
-				</div>
-				
-				<div class="col mt-5 col-md-3">
+				<div class="col col-md-3" style="padding-top:110px;">
 					<!-- Upload banner photo-->
-					<input type="file" class="form-control" id="update-banner" accept="image/*">
+					<input type="file" class="form-control form-control-sm" id="updateform-banner" accept="image/*" >
 				</div>
-				<!-- left this so the about would still be aligned -->
-				<div class="col position-relative col-md-4"></div>
 			</div>
 		</div>
-
-		<!-- inserted a very large margin -->
-		<div class="container-fluid" style="margin-top: 144px;">
+		<!-- inserted a very large padding -->
+		<div class="container-fluid" style="padding-top:50px;">
 
 			<div class="row">
-				<div class="col col-md-2 px-5 mt-3 align-items-start">
-
-					<span class="lead fw-bold">Brian's Profile</span>
-					<br>
-
-					<button class="btn btn-danger profile-overview-button w-100 text-start">㋛ Profile Overview</button>
-
-					<br>
-
-					<a href="./user-profile-reviews.html">
-					<button class="btn btn-outline-secondary w-100 text-start">🗒 Reviews</button>
-					</a>
+				<div class="col col-md-3">
+				<!-- Picture here -->
+					<img class="img-thumbnail position-relative update-user-pfp mb-5" src="./images/user-pfp.jpg" alt="User PFP">
+					<p>Change Profile Picture:</p>
+					<input type="file" class="form-control form-control-sm" id="updateform-pfp" accept="image/*" >
 				</div>
 				
 				<!-- Update profile text inputs-->
@@ -142,25 +123,6 @@
 						<input type="submit" class="btn btn-danger position-absolute end-0" id="submit" name="submit">
 						</div>
 					</div>
-				</div>
-				<div class="col col-md-4">
-					<span class="label">About</span>
-
-					<br>
-
-					<span class="fw-bold">Location</span>
-
-					<br>
-
-					<span>Malabon City, Metro Manila, Philippines</span>
-
-					<br>
-
-					<span class="fw-bold">Joined Since</span>
-
-					<br>
-
-					<span>June 2023</span>
 				</div>
 			</div>
 		</div>
