@@ -23,7 +23,7 @@ $(document).ready(function () {
         var remainingRating = 5 - rating;
 
         // elements for the picture part
-        var outerMostDiv = $('<div></div>').addClass('row mb-5');
+        var review = $('<div></div>').addClass('row mb-5 user-review');
         var outerDiv1 = $('<div></div>').addClass('col-md-2 mb-3 pt-3');
         var innerDiv1 = $('<div></div>').addClass('container');
         var innerDiv1Child1 = $('<div></div>').addClass('row mb-3 justify-content-center');
@@ -67,15 +67,27 @@ $(document).ready(function () {
         $(outerDiv2).append(outerDiv2Child3);
         $(outerDiv2).append(outerDiv2Child4);
 
-        $(outerMostDiv).append(outerDiv1);
-        $(outerMostDiv).append(outerDiv2);
+        $(review).append(outerDiv1);
+        $(review).append(outerDiv2);
 
-        $(review_container).append(outerMostDiv);
+        $(review_container).append(review);
 
         // reset input fields after submission
         $('#floatingTextarea2').val('');
         $('#review-title').val('');
         $('input[name="rating"]:checked').prop('checked', false);
 
+        alert('Review submitted!');
+
     });
+
+    // delete review
+    // change later when there's a button for deleting
+    $(document).on('click', '.user-review', function () {
+        $(this).remove();
+        alert('Review removed!');
+    });
+
+    // create an edit review function
+    // change later when there's a button for editing
 });

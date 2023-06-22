@@ -139,6 +139,7 @@ a {
   width: 0.5em;
   margin-left: -0.5em;
 }
+
 .star-cb-group > .star-cb-clear + label:before {
   width: 0.5em;
 }
