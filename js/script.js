@@ -154,18 +154,11 @@ $(document).ready(function () {
 
     // delete review
     // change later when there's a button for deleting
-    /* $(document).on('click', '.delete-review', function () {
+    $(document).on('click', '.delete-review', function () {
         $(this).parent().parent().parent().remove();
         alert('Review removed!');
     });
- 
+
     // create an edit review function
     // change later when there's a button for editing
-    $('#edit-review').click(function () {
-        // get the parent of the button
-        var parent = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent();
- 
-        $(parent).remove();
- 
-    }); */
 });

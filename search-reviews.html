@@ -9,250 +9,288 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Main</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/css.css">
-  </head>
 
-  <body>
-    <script type="text/javascript" src="./js/response.js"></script>
-	
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a class="logo" href="#" style="padding-right: 10%;">Palatable</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex w-auto" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+<head>
+  <title>Main</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/css.css">
+</head>
+
+<body>
+  <script type="text/javascript" src="./js/response.js"></script>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <a class="logo" href="#" style="padding-right: 10%;">Palatable</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex w-auto" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg></button>
-          </form>
+        </form>
 
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="login.html">Log in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="signup.html">Sign up</a>
-            </li>
-          </ul>
-        </div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="login.html">Log in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup.html">Sign up</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
 
-    <div class="container" style="margin-top: 10%">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <h4>FILTERS</h4>
-                <h5><a style="color: black;" href="search-establishments.html"> Establishments </a></h5>
-                <h5><a style="color: black; font-weight: bold;" href="search-reviews.html"> Reviews </a></h5>
+  <div class="container" style="margin-top: 10%">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3">
+        <h4>FILTERS</h4>
+        <h5><a style="color: black;" href="search-establishments.html"> Establishments </a></h5>
+        <h5><a style="color: black; font-weight: bold;" href="search-reviews.html"> Reviews </a></h5>
 
-            </div>
-            <div class="col-md-9">
-                <h3 class="mb-3"> 2 results found under “delicious” </h3>
+      </div>
+      <div class="col-md-9">
+        <h3 class="mb-3"> 2 results found under “delicious” </h3>
 
-                <!-- Establishment #1 -->
-                <div class="row mb-5">
-                    <div class="col-md-2 mb-3 pt-3">
-                        <div class="container">
-                          <div class="row mb-3 justify-content-center">
-                            <img src="./images/shrek-image.jpg" alt="" style="width: 100px; height: 75px;" class="rounded-circle">
-                          </div>
-                          <div class="row justify-content-center text-center"><h6> Ken Adams </h6></div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                      <h6><span style="color: var(--primary); font-size: 22px;">★★★★★</span> • Reviewed on January 1, 2019</h6>
-                        <a href="establishment-page.html"><h4 style="font-weight: 600; color: black;"> Jollibee </h4></a>
-                        <h4> Good food and accommodating staff </h4>
-                        <p>Many people wants to eat in the Jollibee because the food is very <b>delicious</b> and the amount of the food is not expensive. As I observe their employees is well-groomed,the place is clean and the food is delicious. And I think Jollibee is one of the best fast food restaurant in the Philippines. </p>
-                        
-
-                        <!-- Image Carousel -->
-                        <div id="carouselExampleIndicators" class="carousel slide mb-3">
-                          <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          </div>
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
-                            </div>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
-                        </div>
-
-                        <div class="review-group">
-                          <div class="container d-flex px-2">
-                            <span style="color: var(--primary);">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                              </svg>
-                            </span>
-                            <p class="mx-2">91 people found this review helpful. Was this review helpful to you?</p>
-                            <span style="color: var(--accent1);">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-                                <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
-                              </svg>
-                            </span>
-                            <span style="color: var(--accent1);">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
-                                <path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"/>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-						
-                        <p class="mx-5" style="color: black;"><span id="show"><b>Response from the Owner</b></span><span id="hide" style="display: none;"><b>Response from the Owner</b><span style="color: #B4B4B4"> Replied on January 2, 2019</span><br>We really appreciate you taking the time to share your rating with us. We look forward to seeing you again soon.</span> <a onclick="hideResponseFunction()" id="myRep"> • Show Response</a>
-						
-						<script>
-                      function hideResponseFunction() {
-                        var show = document.getElementById("show");
-                        var showRep = document.getElementById("hide");
-                        var btnRep = document.getElementById("myRep");
-
-                        if (show.style.display === "none") {
-                          show.style.display = "inline";
-                          btnRep.innerHTML = " • Show Response"; 
-                          showRep.style.display = "none";
-                        } else {
-                          show.style.display = "none";
-                          btnRep.innerHTML = " • Hide Response"; 
-                          showRep.style.display = "inline";
-                        }
-                      }
-                      </script>
-						
-                    </div>
-                </div>
-
-                <!-- Establishment #2 -->
-                <div class="row mb-5">
-                  <div class="col-md-2 mb-3 pt-3">
-                      <div class="container">
-                        <div class="row mb-3 justify-content-center">
-                          <img src="./images/allisonburgers-image.jpg" alt="" style="width: 100px; height: 75px;" class="rounded-circle">
-                        </div>
-                        <div class="row justify-content-center text-center"><h6> Allison Burgers </h6></div>
-                        
-                      </div>
-                  </div>
-                  <div class="col-md-10">
-                    
-                      <h6><span style="color: var(--primary); font-size: 22px;">★★★★★</span> • Reviewed on January 1, 2019</h6>
-                      <h4 style="font-weight: 600;"> Sisig Express </h4>
-                      <h4> <b>Delicious</b> food and drinks </h4>
-                    
-                      <!-- Read more / Read less https://www.w3schools.com/howto/howto_js_read_more.asp -->
-                      <p class="mb-2">Making my way to this vegan restaurant was a treat. This was technically my second time trying this place, but ordering takeaway did not do it justice. This time, seated at the restaurant, I had the Caldereta, the spicy chicken and the
-                        <span id="dots">...</span><span id="more" style="display: none;">bangus relleno. As I observe their employees is well-groomed,the place is clean and the food is delicious. And I think Jollibee is one of the best fast food restaurant in the Philippines. </span> <a onclick="readMoreFunction()" id="myBtn">Read more</a>
-                      </p>
-                      
-
-                      <script>
-                      function readMoreFunction() {
-                        var dots = document.getElementById("dots");
-                        var moreText = document.getElementById("more");
-                        var btnText = document.getElementById("myBtn");
-
-                        if (dots.style.display === "none") {
-                          dots.style.display = "inline";
-                          btnText.innerHTML = "Read more"; 
-                          moreText.style.display = "none";
-                        } else {
-                          dots.style.display = "none";
-                          btnText.innerHTML = "Read less"; 
-                          moreText.style.display = "inline";
-                        }
-                      }
-                      </script>
-                      
-                    <div class="review-group">
-                        <div class="container d-flex px-2">
-                          <span style="color: var(--primary);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                              <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                            </svg>
-                          </span>
-                          <p class="mx-2">91 people found this review helpful. Was this review helpful to you?</p>
-                          <span style="color: var(--accent1);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-                              <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
-                            </svg>
-                          </span>
-                          <span style="color: var(--accent1);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
-                              <path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"/>
-                            </svg>
-                          </span>
-                        </div>
-                    </div>
-					  <!-- Response Button -->
-					<div class="col">
-						<button class="btn btn-danger fs-6 mx-5 btn-sm" data-bs-toggle="modal" data-bs-target="#write-response-modal">✎ Write
-							a Response</button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="write-response-modal" tabindex="-1" aria-labelledby="modalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h1 class="modal-title fs-5" id="modalLabel">Respond to Allison Burgers</h1>
-										<button type="button" class="btn-close" data-bs-dismiss="modal"
-											aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form action="" style="max-width: 600px;">
-											<div class="border p-3 my-3 rounded">
-												<div class="form-floating">
-													<textarea class="form-control border-0" id="floatingTextarea2"
-														style="height: 200px" required></textarea>
-													<label for="floatingTextarea2">Response from the owner</label>
-												</div>
-											</div>
-											<input id="submit-response" class="submit-button btn btn-primary position-relative" type="button"
-												style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal">
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-                  </div>
+        <!-- Establishment #1 -->
+        <div class="row mb-5">
+          <div class="col-md-2 mb-3 pt-3">
+            <div class="container">
+              <div class="row mb-3 justify-content-center">
+                <img src="./images/shrek-image.jpg" alt="" style="width: 100px; height: 75px;" class="rounded-circle">
+              </div>
+              <div class="row justify-content-center text-center">
+                <h6> Ken Adams </h6>
               </div>
 
             </div>
-        </div>
-    </div>
-    
-    
+          </div>
+          <div class="col-md-10">
+            <h6><span style="color: var(--primary); font-size: 22px;">★★★★★</span> • Reviewed on January 1, 2019</h6>
+            <a href="establishment-page.html">
+              <h4 style="font-weight: 600; color: black;"> Jollibee </h4>
+            </a>
+            <h4> Good food and accommodating staff </h4>
+            <p>Many people wants to eat in the Jollibee because the food is very <b>delicious</b> and the amount of the
+              food is not expensive. As I observe their employees is well-groomed,the place is clean and the food is
+              delicious. And I think Jollibee is one of the best fast food restaurant in the Philippines. </p>
 
-  </body>
+
+            <!-- Image Carousel -->
+            <div id="carouselExampleIndicators" class="carousel slide mb-3">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://picsum.photos/1280/720" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <div class="review-group">
+              <div class="container d-flex px-2">
+                <span style="color: var(--primary);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                  </svg>
+                </span>
+                <p class="mx-2">91 people found this review helpful. Was this review helpful to you?</p>
+                <span style="color: var(--accent1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                    <path
+                      d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+                  </svg>
+                </span>
+                <span style="color: var(--accent1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+                    <path
+                      d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <p class="mx-5" style="color: black;"><span id="show"><b>Response from the Owner</b></span><span id="hide"
+                style="display: none;"><b>Response from the Owner</b><span style="color: #B4B4B4"> Replied on January 2,
+                  2019</span><br>We really appreciate you taking the time to share your rating with us. We look forward
+                to seeing you again soon.</span> <a onclick="hideResponseFunction()" id="myRep"> • Show Response</a>
+
+              <script>
+                function hideResponseFunction() {
+                  var show = document.getElementById("show");
+                  var showRep = document.getElementById("hide");
+                  var btnRep = document.getElementById("myRep");
+
+                  if (show.style.display === "none") {
+                    show.style.display = "inline";
+                    btnRep.innerHTML = " • Show Response";
+                    showRep.style.display = "none";
+                  } else {
+                    show.style.display = "none";
+                    btnRep.innerHTML = " • Hide Response";
+                    showRep.style.display = "inline";
+                  }
+                }
+              </script>
+
+          </div>
+        </div>
+
+        <!-- Establishment #2 -->
+        <div class="row mb-5">
+          <div class="col-md-2 mb-3 pt-3">
+            <div class="container">
+              <div class="row mb-3 justify-content-center">
+                <img src="./images/allisonburgers-image.jpg" alt="" style="width: 100px; height: 75px;"
+                  class="rounded-circle">
+              </div>
+              <div class="row justify-content-center text-center">
+                <h6> Allison Burgers </h6>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-10" id="response-container">
+
+            <h6><span style="color: var(--primary); font-size: 22px;">★★★★★</span> • Reviewed on January 1, 2019</h6>
+            <h4 style="font-weight: 600;"> Sisig Express </h4>
+            <h4> <b>Delicious</b> food and drinks </h4>
+
+            <!-- Read more / Read less https://www.w3schools.com/howto/howto_js_read_more.asp -->
+            <p class="mb-2">Making my way to this vegan restaurant was a treat. This was technically my second time
+              trying this place, but ordering takeaway did not do it justice. This time, seated at the restaurant, I had
+              the Caldereta, the spicy chicken and the
+              <span id="dots">...</span><span id="more" style="display: none;">bangus relleno. As I observe their
+                employees is well-groomed,the place is clean and the food is delicious. And I think Jollibee is one of
+                the best fast food restaurant in the Philippines. </span> <a onclick="readMoreFunction()"
+                id="myBtn">Read more</a>
+            </p>
+
+
+            <script>
+              function readMoreFunction() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+
+                if (dots.style.display === "none") {
+                  dots.style.display = "inline";
+                  btnText.innerHTML = "Read more";
+                  moreText.style.display = "none";
+                } else {
+                  dots.style.display = "none";
+                  btnText.innerHTML = "Read less";
+                  moreText.style.display = "inline";
+                }
+              }
+            </script>
+
+            <div class="review-group">
+              <div class="container d-flex px-2">
+                <span style="color: var(--primary);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                  </svg>
+                </span>
+                <p class="mx-2">91 people found this review helpful. Was this review helpful to you?</p>
+                <span style="color: var(--accent1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                    <path
+                      d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+                  </svg>
+                </span>
+                <span style="color: var(--accent1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+                    <path
+                      d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <!-- Response Button -->
+            <div class="col" id="response-btn">
+              <button class="btn btn-danger fs-6 mx-5 btn-sm" data-bs-toggle="modal"
+                data-bs-target="#write-response-modal">✎ Write
+                a Response</button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="write-response-modal" tabindex="-1" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="modalLabel">Respond to Allison Burgers</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="" style="max-width: 600px;">
+                        <div class="border p-3 my-3 rounded">
+                          <div class="form-floating">
+                            <textarea class="form-control border-0" id="floatingTextarea2" style="height: 200px"
+                              required></textarea>
+                            <label for="floatingTextarea2">Response from the owner</label>
+                          </div>
+                        </div>
+                        <input id="submit-response" class="submit-button btn btn-primary position-relative"
+                          type="button" style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
 </html>
