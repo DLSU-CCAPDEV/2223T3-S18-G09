@@ -35,11 +35,72 @@ $(document).ready(function () {
 
         var outerDiv2 = $('<div><div>').addClass('col-md-10 position-relative');
 
-        var outerDiv2Child1 = $('<div></div>').addClass('d-flex justify-content-end position-absolute start-100');
+        var outerDiv2Child1 = $('<div></div>').addClass('d-flex justify-content-end position-absolute start-100 top-0');
 
-        var deleteButton = $('<button></button>').addClass('btn btn-primary ml-auto btn-close delete-review');
+        var deleteButton = $('<button></button>').addClass('btn btn-danger ml-auto btn-close delete-review t');
 
-        var outerDiv2Child2 = $('<h6></h6>')
+        var button = $('<button></button>').addClass('btn btn-danger edit-review text-nowrap')
+            .attr('data-bs-toggle', 'modal')
+            .attr('data-bs-target', '#edit-review-modal');
+
+
+        $(button).text('✎');
+        $(button).css('font-size', '10px');
+        $(button).click(function () {
+            // Handle edit button click event
+            var reviewContainer = $(this).closest('.user-review');
+            var reviewTitle = reviewContainer.find('h4').text();
+            var reviewText = reviewContainer.find('p').eq(0).text();
+            var outerDiv2Child2 = $(this).closest('.user-review').find('.position-relative > h6');
+
+            // Populate the edit modal/form fields with the existing review data
+            $('#edit-review-title').val(reviewTitle);
+            $('#edit-floatingTextarea2').val(reviewText);
+
+            // Update the review on submit
+            $('#edit-review-submit').off('click').on('click', function () {
+                var editedTitle = $('#edit-review-title').val();
+                var editedText = $('#edit-floatingTextarea2').val();
+                var editedRating = $('input[name="edit-rating"]:checked').val();
+
+                // Update the review content
+                reviewContainer.find('h4').text(editedTitle);
+                reviewContainer.find('p').eq(0).text(editedText);
+
+
+                // Remove the existing rating
+                outerDiv2Child2.empty();
+
+                // create rating again based on edited rating
+                for (var i = 0; i < editedRating; i++) {
+                    var checkedStar = $('<span><span>').addClass('fa fa-star checked');
+                    var space = $('<span><span>').text(' ');
+                    outerDiv2Child2.append(checkedStar).append(space);
+                }
+
+                for (var i = 0; i < 5 - editedRating; i++) {
+                    var unCheckedStar = $('<span><span>').addClass('fa fa-star');
+                    var space = $('<span><span>').text(' ');
+                    outerDiv2Child2.append(unCheckedStar).append(space);
+                }
+
+                var text = $('<span></span>').text(' • Reviewed on ' + currDateString + ' • Edited');
+
+
+                outerDiv2Child2.append(text);
+
+                // Close the modal or form
+                $('#edit-review-modal').modal('hide');
+            }); text
+        });
+
+        var outerDivChild0 = $('<div></div>').addClass('d-flex justify-content-end position-absolute top-0 p-0');
+        outerDivChild0.append(button);
+        $(outerDivChild0).css('max-width', '100%');
+        $(outerDivChild0).css('left', '95%');
+
+
+        var outerDiv2Child2 = $('<h6></h6>').addClass('star-group');
         var text = $('<span></span>').text(' • Reviewed on ' + currDateString);
 
         var outerDiv2Child3 = $('<h4></h4>').text(userReviewTitle);
@@ -70,6 +131,7 @@ $(document).ready(function () {
 
         outerDiv2Child2.append(text);
 
+        $(outerDiv2).append(outerDivChild0);
         $(outerDiv2).append(outerDiv2Child1);
         $(outerDiv2).append(outerDiv2Child2);
         $(outerDiv2).append(outerDiv2Child3);
@@ -92,11 +154,18 @@ $(document).ready(function () {
 
     // delete review
     // change later when there's a button for deleting
-    $(document).on('click', '.delete-review', function () {
+    /* $(document).on('click', '.delete-review', function () {
         $(this).parent().parent().parent().remove();
         alert('Review removed!');
     });
-
+ 
     // create an edit review function
     // change later when there's a button for editing
+    $('#edit-review').click(function () {
+        // get the parent of the button
+        var parent = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent();
+ 
+        $(parent).remove();
+ 
+    }); */
 });

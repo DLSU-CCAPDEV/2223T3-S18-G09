@@ -169,6 +169,64 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal for editing review -->
+            <div class="modal fade" id="edit-review-modal" tabindex="-1" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="edit-modalLabel">Edit Review</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" style="max-width: 600px;">
+                                <div class="my-3">
+                                    <input id="edit-review-title" class="form-control w-100" type="text"
+                                        placeholder="Title" required>
+                                </div>
+
+                                <div class="border p-3 my-3 rounded">
+                                    <div class="container d-flex">
+                                        <span class="star-cb-group me-2">
+                                            <input type="radio" id="edit-rating-5" name="edit-rating" value="5" />
+                                            <label for="edit-rating-5">5</label>
+                                            <input type="radio" id="edit-rating-4" name="edit-rating" value="4" />
+                                            <label for="edit-rating-4">4</label>
+                                            <input type="radio" id="edit-rating-3" name="edit-rating" value="3" />
+                                            <label for="edit-rating-3">3</label>
+                                            <input type="radio" id="edit-rating-2" name="edit-rating" value="2" />
+                                            <label for="edit-rating-2">2</label>
+                                            <input type="radio" id="edit-rating-1" name="edit-rating" value="1" />
+                                            <label for="edit-rating-1">1</label>
+                                            <input type="radio" id="edit-rating-0" name="edit-rating" value="0"
+                                                class="star-cb-clear" checked />
+                                            <label for="edit-rating-0">0</label>
+                                        </span>
+                                        <h6>Select your rating</h6>
+                                    </div>
+
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0" id="edit-floatingTextarea2"
+                                            style="height: 200px" required></textarea>
+                                        <label for="edit-floatingTextarea2">Tell us about your experience!</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-formFileMultiple" class="form-label">Attach Photos</label>
+                                    <input class="form-control" type="file" id="edit-formFileMultiple" multiple>
+                                </div>
+
+                                <input id="edit-review-submit" class="submit-button btn btn-primary" type="button"
+                                    style="width: 200px;" value="Post Review" data-bs-dismiss="modal">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Establishment Details -->
             <div class="col position-relative d-flex justify-content-end">
                 <div style="border: 2px solid rgb(214, 214, 214); padding: 5px 50px 5px 5px;">

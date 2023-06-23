@@ -45,61 +45,36 @@
 
     <script>
         $(document).ready(function () {
-            // Your jQuery code goes here
-            // For example:
-            const USERNAME = "Brian Gabini";
-            const USERPFP = "./images/user-pfp.jpg";
 
-            // form submission for the review
-            $('#submit-review1').click(function () {
-                // testing
-                var review_container = $('#review-container');
+            $('#submit-review').click(function () {
+                var button = $('<button></button>').addClass('btn btn-warning fs-5')
+                    .attr('data-bs-toggle', 'modal')
+                    .attr('data-bs-target', '#edit-review-modal');
 
-                var userReviewText = $('#floatingTextarea2').val();
+                var svg = $('<svg></svg>').attr({
+                    xmlns: 'http://www.w3.org/2000/svg',
+                    width: '16',
+                    height: '16',
+                    fill: 'currentColor',
+                    viewBox: '0 0 16 16'
+                }).addClass('bi bi-pen');
 
-                // elements for the picture part
-                var outerMostDiv = $('<div></div>').addClass('row mb-5');
-                var outerDiv1 = $('<div></div>').addClass('col-md-2 mb-3 pt-3');
-                var innerDiv1 = $('<div></div>').addClass('container');
-                var innerDiv1Child1 = $('<div></div>').addClass('row mb-3 justify-content-center');
-                var userPFP = $('<img>').addClass('rounded-circle').attr('src', USERPFP);
-                $(userPFP).css('width', '100px');
-                $(userPFP).css('height', '75px');
-                var innerDiv1Child2 = $('<div></div>').addClass('row justify-content-center text-center');
-                var userName = $('<h6></h6>').text(USERNAME);
+                var path = $('<path></path>').attr('d', 'm13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z');
 
-                var outerDiv2 = $('<div><div>').addClass('col-md-10');
-                var outerDiv2Child1 = $('<h6></h6>').text('⭐⭐⭐⭐⭐ • Reviewed on January 1, 2019');
-                var outerDiv2Child2 = $('<h4></h4>').text('Whopper!!');
-                $(outerDiv2Child2).css('font-weight', '600');
-                var outerDiv2Child3 = $('<h4></h4>').text('Good food and accommodating staff');
-                var outerDiv2Child4 = $('<p></p>').text('Review here');
-                var outerDiv2Child5 = $('<p></p>').text('👍 91 people found this review helpful • 👍👎');
+                $(svg).html(path); // Set the path as the content of the SVG element
+                $(button).append(svg);
 
-                $(innerDiv1Child1).append(userPFP);
-                $(innerDiv1Child2).append(userName);
-                $(innerDiv1).append(innerDiv1Child1);
-                $(innerDiv1).append(innerDiv1Child2);
-                $(outerDiv1).append(innerDiv1);
+                $('#placeholder').append(button);
+            })
 
-                $(outerDiv2).append(outerDiv2Child1);
-                $(outerDiv2).append(outerDiv2Child2);
-                $(outerDiv2).append(outerDiv2Child3);
-                $(outerDiv2).append(outerDiv2Child4);
-                $(outerDiv2).append(outerDiv2Child5);
 
-                $(outerMostDiv).append(outerDiv1);
-                $(outerMostDiv).append(outerDiv2);
-
-                $(review_container).append(outerMostDiv);
-            });
         });
     </script>
 
     <button type="submit" id="submit-review" class="btn btn-primary">Submit</button>
     <br>
 
-    <div id="review-container"></div>
+    <div id="placeholder"></div>
 
 </body>
 
