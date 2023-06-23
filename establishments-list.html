@@ -17,37 +17,47 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg ">
+  <nav class="navbar navbar-expand-sm navbar-light px-2">
     <div class="container-fluid">
-      <a class="logo" href="#" style="padding-right: 10%;">Palatable</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div style="padding-right: 10%">
+        <a class="logo" href="establishments-list.html">Palatable</a>
+      </div>
+
       <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex w-auto" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-              height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg></button>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+          <a href="search-establishments.html">
+            <button class="btn btn-outline-danger" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></button>
+          </a>
         </form>
+
+
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="./login.html">Log in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./signup.html">Sign up</a>
+            <a class="nav-link" aria-current="page" href="login.html">Sign out</a>
           </li>
         </ul>
+
+        <a class="profile-ico ms-1" href="user-profile-overview.html" style="color: var(--accent1);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+        </a>
       </div>
-    </div>
   </nav>
 
+  <!-- absolute positioned background header -->
+  <img class="establishment-header position-absolute" src="./images/header.jpg" alt="Establishment Header">
 
-  <div class="container" style="margin-top: 10%">
+  <div class="container" style="margin-top: 20%">
     <div class="row">
 
       <!-- Sidebar -->

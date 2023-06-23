@@ -9,89 +9,104 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Main</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/css.css">
-  </head>
 
-  <body>
+<head>
+  <title>Search Establishments</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/css.css">
+</head>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a class="logo" href="#" style="padding-right: 10%;">Palatable</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex w-auto" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg></button>
-          </form>
-  
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="./login.html">Log in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./signup.html">Sign up</a>
-            </li>
-          </ul>
-        </div>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-light px-2">
+    <div class="container-fluid">
+      <div style="padding-right: 10%">
+        <a class="logo" href="establishments-list.html">Palatable</a>
       </div>
-    </nav>
+
+      <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex w-auto" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+          <a href="search-establishments.html">
+            <button class="btn btn-outline-danger" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></button>
+          </a>
+        </form>
 
 
-    <div class="container" style="margin-top: 10%">
-        <div class="row">
 
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <h4>FILTERS</h4>
-                <h5><a style="color: black; font-weight: bold;" href="search-establishments.html"> Establishments </a></h5>
-                <h5><a style="color: black;" href="search-reviews.html"> Reviews </a></h5>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="login.html">Sign out</a>
+          </li>
+        </ul>
 
-            </div>
-            <div class="col-md-9">
-                <h3 class="mb-3"> 2 results found under “chicken” </h3>
+        <a class="profile-ico ms-1" href="user-profile-overview.html" style="color: var(--accent1);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+        </a>
+      </div>
+  </nav>
 
-                <!-- Establishment #1 -->
-                <div class="row mb-5">
-                    <div class="col-md-3 mb-3">
-                        <img class="img-fluid" src="./images/24chicken-image.jpg" alt="">
-                    </div>
-                    <div class="col-md-9">
-                        <h3 class="mb-3">1. &emsp; 24 <b>Chicken</b></h3>
-                        <h5 style="font-weight:300; color: var(--primary)"> ⭐⭐⭐⭐⭐ 50 reviews </h5>
-                        <p>At 24 <b>Chicken</b>, we are obsessed with serving the best possible fried <b>chicken</b>. Serving happiness at a budget friendly price since 2017.</p>
-                    </div>
-                </div>
 
-                <!-- Establishment #2 -->
-                <div class="row mb-5">
-                    <div class="col-md-3 mb-3">
-                        <img class="img-fluid" src="./images/bonchon-image.jpg" alt="">
-                    </div>
-                    <div class="col-md-9">
-                        <h3 class="mb-3"> 2. &emsp; BonChon </h3>
-                        <h5 style="font-weight:300; color: var(--primary)"> ⭐⭐⭐⭐⭐ 40 reviews </h5>
-                        <p> Crunch out loud! We set out to share the joy of hand-battered, double-fried, crazy crispy Korean Fried <b>Chicken</b> around the world.</p>
-                    </div>
-                </div>
+  <div class="container" style="margin-top: 10%">
+    <div class="row">
 
-            </div>
+      <!-- Sidebar -->
+      <div class="col-md-3">
+        <h4>FILTERS</h4>
+        <h5><a style="color: black; font-weight: bold;" href="search-establishments.html"> Establishments </a></h5>
+        <h5><a style="color: black;" href="search-reviews.html"> Reviews </a></h5>
+
+      </div>
+      <div class="col-md-9">
+        <h3 class="mb-3"> 2 results found under “chicken” </h3>
+
+        <!-- Establishment #1 -->
+        <div class="row mb-5">
+          <div class="col-md-3 mb-3">
+            <img class="img-fluid" src="./images/24chicken-image.jpg" alt="">
+          </div>
+          <div class="col-md-9">
+            <h3 class="mb-3">1. &emsp; 24 <b>Chicken</b></h3>
+            <h5 style="font-weight:300; color: var(--primary)"> ⭐⭐⭐⭐⭐ 50 reviews </h5>
+            <p>At 24 <b>Chicken</b>, we are obsessed with serving the best possible fried <b>chicken</b>. Serving
+              happiness at a budget friendly price since 2017.</p>
+          </div>
         </div>
-    </div>
-    
-    
 
-  </body>
+        <!-- Establishment #2 -->
+        <div class="row mb-5">
+          <div class="col-md-3 mb-3">
+            <img class="img-fluid" src="./images/bonchon-image.jpg" alt="">
+          </div>
+          <div class="col-md-9">
+            <h3 class="mb-3"> 2. &emsp; BonChon </h3>
+            <h5 style="font-weight:300; color: var(--primary)"> ⭐⭐⭐⭐⭐ 40 reviews </h5>
+            <p> Crunch out loud! We set out to share the joy of hand-battered, double-fried, crazy crispy Korean Fried
+              <b>Chicken</b> around the world.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
 </html>

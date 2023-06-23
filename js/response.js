@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+	
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var currDate = new Date();
     var currDateString = monthNames[currDate.getMonth()] + " " + currDate.getDate() + ", " + currDate.getFullYear();
@@ -16,11 +16,11 @@ $(document).ready(function () {
         var date = $('<span></span>').text('Response from the Owner • Replied on ' + currDateString);
 
         var responseContentText = $('<p></p>').text(userResponseText);
-
-        var responseContentDate = $('<h6></h6>').addClass('star-group');
-        responseContentDate.append(date);
+		
+		var responseContentDate = $('<h6></h6>').addClass('star-group');
+		responseContentDate.append(date);
         $(responseContent).append(responseContentBox);
-        $(responseContent).append(responseContentDate);
+		$(responseContent).append(responseContentDate);
         $(responseContent).append(responseContentText);
 
         $(response).append(responseContent);
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         // reset input fields after submission
         $('#floatingTextarea2').val('');
-        $('#response-btn').hide();
+		$('#response-btn').hide();
         alert('Response submitted!');
     });
 });
