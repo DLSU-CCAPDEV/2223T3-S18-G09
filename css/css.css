@@ -26,7 +26,6 @@ body {
 
 .navbar {
   border-bottom: solid #ebebeb 0.5px;
-  /*margin-bottom: 10%;*/
   background-color: white;
 }
 
@@ -97,7 +96,7 @@ a {
   z-index: -1;
 }
 
-/* Star Ratings https://codeconvey.com/css-star-rating-radio-buttons/*/
+/* Star Ratings https://codeconvey.com/css-star-rating-radio-buttons/ */
 .star-cb-group {
   /* remove inline-block whitespace */
   font-size: 0;
@@ -153,11 +152,6 @@ a {
   content: "★";
   color: var(--primary);
   text-shadow: 0 0 1px #333;
-}
-
-.upvote-downvote {
-  color: var(--accent1);
-  font-size: larger;
 }
 
 .checked {
