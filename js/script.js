@@ -177,7 +177,7 @@ $(document).ready(function () {
 
     // SCRIPT FOR VOTING
     // Upvote
-    $('.upvote').on("click", function() {
+    $(document).on('click', '.upvote', function() {
 
         // Remove active vote
         if($(this).hasClass('active-vote')){
@@ -206,7 +206,7 @@ $(document).ready(function () {
     });
 
     // Downvote
-    $('.downvote').on("click", function() {
+    $(document).on('click', '.downvote', function() {
         // Remove active vote
         if($(this).hasClass('active-vote')){
             $(this).removeClass('active-vote');
