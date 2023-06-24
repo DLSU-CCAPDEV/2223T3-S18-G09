@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	
+
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var currDate = new Date();
     var currDateString = monthNames[currDate.getMonth()] + " " + currDate.getDate() + ", " + currDate.getFullYear();
@@ -13,14 +13,20 @@ $(document).ready(function () {
 
         var responseContent = $('<div><div>').addClass('col-md-10 mx-5 position-relative');
         var responseContentBox = $('<div></div>').addClass('d-flex justify-content-end position-absolute start-100 top-0');
-        var date = $('<span></span>').text('Response from the Owner • Replied on ' + currDateString);
+
+        // create span for the date
+        var text1 = $('<span></span>').text('Response from the Owner ').addClass('fw-bold');
+
+        var text2 = $('<span></span>').text('Replied on ' + currDateString).css('color', '#B4B4B4');
+
+        var date = $('<span></span>').append(text1).append(text2);
 
         var responseContentText = $('<p></p>').text(userResponseText);
-		
-		var responseContentDate = $('<h6></h6>').addClass('star-group');
-		responseContentDate.append(date);
+
+        var responseContentDate = $('<h6></h6>').addClass('star-group');
+        responseContentDate.append(date);
         $(responseContent).append(responseContentBox);
-		$(responseContent).append(responseContentDate);
+        $(responseContent).append(responseContentDate);
         $(responseContent).append(responseContentText);
 
         $(response).append(responseContent);
@@ -29,7 +35,7 @@ $(document).ready(function () {
 
         // reset input fields after submission
         $('#floatingTextarea2').val('');
-		$('#response-btn').hide();
+        $('#response-btn').hide();
         alert('Response submitted!');
     });
 });
