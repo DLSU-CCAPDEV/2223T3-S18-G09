@@ -153,6 +153,7 @@ $(document).ready(function () {
 
                 // Close the modal or form
                 $('#edit-review-modal').modal('hide');
+                $('#edit-formFileMultiple').val('');
             }); text
         });
 
