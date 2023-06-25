@@ -184,21 +184,21 @@
                 to seeing you again soon.
               </span>
 
-              <a onclick="hideResponseFunction()" id="myRep"> • Show Response</a>
+              <a onclick="hideResponseFunction(myRep, show, hide)" id="myRep"> • Show Response</a>
 
               <script>
-                function hideResponseFunction() {
-                  var show = document.getElementById("show");
-                  var showRep = document.getElementById("hide");
-                  var btnRep = document.getElementById("myRep");
+                function hideResponseFunction(ID, show_id, hide_id) {
+                  var show = show_id;
+                  var showRep = hide_id;
+                  var btnRep = ID;
 
                   if (show.style.display === "none") {
                     show.style.display = "inline";
-                    btnRep.innerHTML = " • Show Response";
+                    btnRep.text = " • Show Response";
                     showRep.style.display = "none";
                   } else {
                     show.style.display = "none";
-                    btnRep.innerHTML = " • Hide Response";
+                    btnRep.text = " • Hide Response";
                     showRep.style.display = "inline";
                   }
                 }

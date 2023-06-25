@@ -6,13 +6,13 @@ $(document).ready(function () {
 
     // form submission for the response
     $('#submit-response').click(function () {
-        var response_container = $('#response-container');
-
+		var response_container = $('#response-container');
+		var forIndent = $('<div></div>').addClass('mx-5');
         var userResponseText = $('#floatingTextarea2').val();
-        var response = $('<div></div>').addClass('row mb-5 user-review');
+		var showbtn = $('<a></a>').attr({onclick:'hideResponseFunction(myRep1, show1, hide1)', id:'myRep1'}).text(' • Show Response');
 
-        var responseContent = $('<div><div>').addClass('col-md-10 mx-5 position-relative');
-        var responseContentBox = $('<div></div>').addClass('d-flex justify-content-end position-absolute start-100 top-0');
+        var responseContent = $('<span></span>').addClass('col-md-10 position-relative');
+        var responseContent_hidden = $('<span></span>').addClass('col-md-10 position-relative');
 
         // create span for the date
         var text1 = $('<span></span>').text('Response from the Owner ').addClass('fw-bold');
@@ -21,18 +21,22 @@ $(document).ready(function () {
 
         var date = $('<span></span>').append(text1).append(text2);
 
-        var responseContentText = $('<p></p>').text(userResponseText);
-
-        var responseContentDate = $('<h6></h6>').addClass('star-group');
+        var responseContentText = $('<span></span>').text(userResponseText);
+		var responseContentText_hidden = $('<span></span>').text('Response from the Owner').addClass('fw-bold').attr('id', 'show1');
+		
+        var responseContentDate = $('<span></span>').addClass('star-group');
         responseContentDate.append(date);
-        $(responseContent).append(responseContentBox);
         $(responseContent).append(responseContentDate);
-        $(responseContent).append(responseContentText);
-
-        $(response).append(responseContent);
-
-        $(response_container).append(response);
-
+		$(responseContent).append("<br />");
+        $(responseContent).append(responseContentText).css('display', 'none').attr('id', 'hide1');;
+		$(responseContent_hidden).append(responseContentText_hidden);
+		
+		$(forIndent).append(responseContent_hidden);
+		$(forIndent).append(responseContent);
+		$(forIndent).append(showbtn);
+		
+		$(response_container).append(forIndent);
+		
         // reset input fields after submission
         $('#floatingTextarea2').val('');
         $('#response-btn').hide();
