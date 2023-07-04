@@ -1,0 +1,174 @@
+/* 
+S18 Group 9 
+Members: 
+    - DOLON, John Michael
+    - FETALVERO, Kenshin
+    - GABINI, Brian 
+    - TUMALAD, Shawne
+  */
+
+/* import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+/* declare global variables */
+:root {
+  --main-font: "Lato", sans-serif;
+  --logo-font: "Righteous", cursive;
+  --primary: #e41a1a;
+  --accent1: #ff3f3f;
+  --accent2: #990000;
+}
+
+body {
+  font-family: var(--main-font);
+}
+
+.navbar {
+  border-bottom: solid #ebebeb 0.5px;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  font-family: var(--logo-font);
+  color: var(--primary);
+  font-size: xx-large;
+}
+
+.label {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.sublabel {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.submit-button {
+  background-color: var(--primary);
+  border: none;
+}
+
+.submit-button:hover {
+  background-color: #f83737;
+}
+
+#signup-textarea {
+  width: 300px;
+  border: #ebebeb solid 0.5px;
+}
+
+.profile-overview-button {
+  color: white;
+}
+
+.user-pfp {
+  top: 12%;
+  left: 45px;
+  min-width: auto;
+}
+
+.update-user-pfp {
+  top: 5%;
+  left: 30px;
+  width: 250px;
+  height: 250px;
+  min-width: auto;
+}
+
+.user-header {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.establishment-header {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Star Ratings https://codeconvey.com/css-star-rating-radio-buttons/ */
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  /* the hidden clearer */
+}
+.star-cb-group * {
+  font-size: 1rem;
+}
+.star-cb-group > input {
+  display: none;
+}
+.star-cb-group > input + label {
+  /* only enough room for the star */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 9999px;
+  width: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.star-cb-group > input + label:before {
+  display: inline-block;
+  text-indent: -9999px;
+  content: "☆";
+  color: #888;
+}
+.star-cb-group > input:checked ~ label:before,
+.star-cb-group > input + label:hover ~ label:before,
+.star-cb-group > input + label:hover:before {
+  content: "★";
+  color: var(--primary);
+  text-shadow: 0 0 1px #333;
+}
+.star-cb-group > .star-cb-clear + label {
+  text-indent: -9999px;
+  width: 0.5em;
+  margin-left: -0.5em;
+}
+
+.star-cb-group > .star-cb-clear + label:before {
+  width: 0.5em;
+}
+.star-cb-group:hover > input + label:before {
+  content: "☆";
+  color: #888;
+  text-shadow: none;
+}
+.star-cb-group:hover > input + label:hover ~ label:before,
+.star-cb-group:hover > input + label:hover:before {
+  content: "★";
+  color: var(--primary);
+  text-shadow: 0 0 1px #333;
+}
+
+.fa-star-o,
+.fa-star {
+  color: orange;
+}
+
+.btn,
+.bi-hand-thumbs-up-fill,
+.bi-hand-thumbs-down-fill,
+.bi-hand-thumbs-up,
+.bi-hand-thumbs-down,
+a:hover {
+  cursor: pointer;
+}
+
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}

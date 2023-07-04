@@ -1,0 +1,14 @@
+{
+  "name": "2223t3-s18-g09",
+  "version": "1.0.0",
+  "description": "Project Group 9 Repository (Dolon, Fetalvero, Gabini, Tumalad)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
