@@ -5,10 +5,14 @@ const bodyParser = require('body-parser'); // import body-parser module
 const routes = require('./routes/routes.js'); // import routes.js module
 
 
+// const mongodb = require('mongodb'); // import mongodb module
+
+
 const app = express(); // create an instance of express
 
 app.set('view engine', 'hbs'); // set the view engine to handlebars
 app.use(express.static('public')); // configure express to use public folder
+app.use(express.static('files'));
 app.use(bodyParser.urlencoded({ extended: false })); // configure express to use body-parser
 app.use('/', routes); // configure express to use routes.js
 
