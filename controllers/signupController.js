@@ -49,12 +49,29 @@ const signupController = {
             description: description
         }
 
-        /*
+        const userQuery = await db.findOne(User, query);
+
+        if (userQuery.username != username) {
+            /*
             calls the function insertOne()
             defined in the `database` object in `../models/db.js`
             this function adds a document to collection `users`
-        */
-        var response = await db.insertOne(User, user);
+            */
+            var response = await db.insertOne(User, user);
+
+            if(response != null){
+                // res.redirect('/establishments-list?first_name=' + first_name +'&lName=' + lName + '&idNum=' + idNum);
+                res.redirect('/login');
+            }
+            else {
+                res.render('error'); // Error, invalid data
+            }
+        } else {
+            res.render('error'); // Error, username already taken
+        }
+
+        // if user is found in the database, username is already taken
+        
 
         /*
             upon adding a user to the database,
@@ -65,13 +82,8 @@ const signupController = {
             defined in `./successController.js`
         */
 
-        if(response != null){
-            // res.redirect('/establishments-list?first_name=' + first_name +'&lName=' + lName + '&idNum=' + idNum);
-            res.redirect('/login');
-        }
-        else {
-            res.render('error');
-        }
+        // check if username is already in the database
+        // username needs to be unique
     }
 }
 
