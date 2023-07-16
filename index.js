@@ -3,10 +3,12 @@ const dotenv = require('dotenv'); // import dotenv module
 const express = require('express'); // import express module
 const bodyParser = require('body-parser'); // import body-parser module
 const routes = require('./routes/routes.js'); // import routes.js module
-
+const mongoose = require('mongoose'); // import module `mongoose`
 
 // const mongodb = require('mongodb'); // import mongodb module
 
+// import module `database` from `./model/db.js`
+const db = require('./models/db.js');
 
 const app = express(); // create an instance of express
 
@@ -24,3 +26,6 @@ app.listen(port, hostname, function () {
     console.log('Server running at: ');
     console.log('http://' + hostname + ':' + port);
 });
+
+// connects to the database
+db.connect();
