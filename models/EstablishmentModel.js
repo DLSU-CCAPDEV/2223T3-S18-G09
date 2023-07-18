@@ -27,6 +27,10 @@ var EstablishmentSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    total_reviews: {
+        type: Number,
+        required: true
+    },
     menu: [String], //Array of file path
     photos: [String] //Array of file path
 });

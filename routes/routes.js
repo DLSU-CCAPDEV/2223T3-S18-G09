@@ -3,13 +3,14 @@ const app = express();
 const controller = require('../controllers/controller.js');
 const signupController = require('../controllers/signupController.js');
 const loginController = require('../controllers/loginController.js');
+const establishmentController = require('../controllers/establishmentController.js');
 
 /* app.get('/profile/:username', controller.getProfile);  */ // use this later on 
 
 app.get('/', controller.getRoot);
 /* app.get('/*', controller.redirectRoot); */ // if not yet signed in always redirect to login page
 
-app.get('/establishments-list', controller.getHome);
+app.get('/establishments-list', establishmentController.getEstablishments);
 app.get('/home*', controller.getHome);
 
 app.get('/establishment-page', controller.getEstablishmentPage);

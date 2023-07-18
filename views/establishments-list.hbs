@@ -119,119 +119,12 @@
         <h5><a style="color: black;" href="#"> Most Upvotes ▽</a></h5>
         <h5><a style="color: black;" href="#"> Most Reviews ☆</a></h5> --}}
 
-        <!-- TODO: Filter and Sort-->
       </div>
       <div class="col-md-9">
         <h3 style="margin-bottom: 20px;"> Establishments </h3>
-
-        <!-- Establishment #1 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/jj-image.JPG" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3">Jus and Jerry's</h3>
-            <h5 style="font-weight:300; color: var(--primary)">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-
-              50 reviews
-            </h5>
-            <p>Jus & Jerry’s Food Corp. was founded by identical twin brothers Justin and Jeremy as a small
-              cafeteria-style back in 2010. Their first store was located along Tolentino St., Manila near UST. A year
-              later, they moved to a bigger location in Taft Ave., Manila to cater to more patrons.
-            </p>
-          </div>
-        </div>
-
-        <!-- Establishment #2 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/jollibee-image.jpg" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3"> Jollibee </h3>
-            <h5 style="font-weight:300; color: var(--primary)">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-
-              40 reviews
-            </h5>
-            <p> Jollibee's fried chicken - Chickenjoy, spaghetti & burgers made it one of the fastest growing
-              restaurants in the world with 1400+ branches globally. People also ask </p>
-          </div>
-        </div>
-
-        <!-- Establishment #3 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <a href="/establishment-page"><img class="img-fluid" src="../images/burger-king.png" alt=""></a>
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3"><a href="/establishment-page" style="color: black;">Burger King</a></h3>
-            <h5 style="font-weight:300; color: var(--primary)">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star-o "></span>
-              <span class="fa fa-star-o "></span>
-              10 reviews
-            </h5>
-            <p>Founded in 1954, Burger King is the second largest fast food hamburger chain in the world. The original
-              Home of the
-              Whopper, our commitment to premium ingredients, signature recipes, and family-friendly dining experiences
-              is what has
-              defined our brand for more than 50 successful years.</p>
-          </div>
-        </div>
-
-        <!-- Establishment #4 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/24chicken-image.jpg" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3">24 Chicken</h3>
-            <h5 style="font-weight:300; color: var(--primary)">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-o"></span>
-              50 reviews
-            </h5>
-            <p>At 24 Chicken, we are obsessed with serving the best possible fried chicken. Serving
-              happiness at a budget friendly price since 2017.</p>
-          </div>
-        </div>
-
-        <!-- Establishment #5 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/bonchon-image.jpg" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3"> BonChon </h3>
-            <h5 style="font-weight:300; color: var(--primary)">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              40 reviews
-            </h5>
-            <p> Crunch out loud! We set out to share the joy of hand-battered, double-fried, crazy crispy Korean Fried
-              Chicken around the world.
-            </p>
-          </div>
-        </div>
-
+        {{#each establishments}}
+          {{> establishment_list_partial this}}
+        {{/each}}
       </div>
     </div>
   </div>

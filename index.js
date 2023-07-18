@@ -32,3 +32,10 @@ app.listen(port, hostname, function () {
 
 // connects to the database
 db.connect();
+
+// register helpers
+hbs.registerHelper('stars', function(n, block) {
+    let filledStars = `<span class="fa fa-star checked"></span>`.repeat(n);
+    let emptyStars = `<span class="fa fa-star-o checked"></span>`.repeat(5 - n);
+    return filledStars + emptyStars;
+  });
