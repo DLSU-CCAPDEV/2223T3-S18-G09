@@ -8,25 +8,25 @@ const Review = require('../models/ReviewModel.js');
 
 const helper = require('../helpers/helper.js');
 
-const establishmentController = {
-    getEstablishments: async function (req, res) {
-        var result = await db.findMany(Establishment, {});
+const establishmentController = { 
+    getEstablishments: async function (req, res) { 
+        var result = await db.findMany(Establishment, {}); 
+ 
+        if (result.length > 0) { 
+            var establishments = result.map((item) => { 
+                return { 
+                    name: item.name, 
+                    description: item.description, 
+                    overall_rating: item.overall_rating, 
+                    total_reviews: item.total_reviews, 
+                }  
+            }); 
 
-        if (result.length > 0) {
-            var establishments = result.map((item) => {
-                return {
-                    name: item.name,
-                    description: item.description,
-                    overall_rating: item.overall_rating,
-                    total_reviews: item.total_reviews,
-                }
-            });
-
-            const username = req.session.username ? req.session.username : null;
-            // console.log(req.session.username);
-            res.render('establishments-list', {
-                establishments: establishments,
-                user: username
+            const username = req.session.username ? req.session.username : null; 
+            // console.log(req.session.username); 
+            res.render('establishments-list', { 
+                establishments: establishments,  
+                user: username 
             });
         }
 
