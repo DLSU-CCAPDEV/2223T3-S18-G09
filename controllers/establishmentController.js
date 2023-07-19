@@ -18,12 +18,15 @@ const establishmentController = {
                     name: item.name,
                     description: item.description,
                     overall_rating: item.overall_rating,
-                    total_reviews: item.total_reviews
+                    total_reviews: item.total_reviews,
                 }
             });
 
+            const username = req.session.username ? req.session.username : null;
+            // console.log(req.session.username);
             res.render('establishments-list', {
-                establishments: establishments
+                establishments: establishments,
+                user: username
             });
         }
 
@@ -107,6 +110,19 @@ const establishmentController = {
                 total_reviews: result.total_reviews,
                 contact: result.contact,
                 address: result.address,
+
+                // imagePaths array from the query
+                // contains paths to pfp, header, map, menu, and gallery images
+                // access using imagePaths.establishmentPfpPath, etc.
+                // access menu images using imagePaths.establishmentMenuPhotos[0], etc.
+                establishmentPfpPath: result.imagePaths.establishmentPfpPath,
+                establishmentHeaderPath: result.imagePaths.establishmentHeaderPath,
+                establishmentMapPath: result.imagePaths.establishmentMapPath,
+
+                establishmentMenuPhotos: result.imagePaths.establishmentMenuPhotos, // array
+                establishmentFoodPhotos: result.imagePaths.establishmentFoodPhotos, // array
+
+                // reviews array from the query
                 reviews: reviews
             };
 
