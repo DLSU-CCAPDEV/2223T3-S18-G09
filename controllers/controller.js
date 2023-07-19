@@ -17,10 +17,6 @@ const controller = {
         res.render('login');
     },
 
-    getSearchEstablishments: function (req, res) {
-        res.render('search-establishments');
-    },
-
     getSearchReviews: function (req, res) {
         res.render('search-reviews');
     },

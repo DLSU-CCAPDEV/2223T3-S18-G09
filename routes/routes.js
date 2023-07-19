@@ -17,7 +17,7 @@ app.get('/home*', controller.getHome);
 // handle page requests from the server
 app.get('/establishment-page/:establishmentName', establishmentController.getEstablishmentPage);
 
-app.get('/search-establishments', controller.getSearchEstablishments);
+app.get('/search-establishments', establishmentController.getSearchEstablishments);
 app.get('/search-reviews', controller.getSearchReviews);
 
 // for the sign-up routes

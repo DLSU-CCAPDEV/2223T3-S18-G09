@@ -73,51 +73,16 @@
       <!-- Sidebar -->
       <div class="col-md-3">
         <h4>FILTERS</h4>
-        <h5><a style="color: black; font-weight: bold;" href="/search-establishments"> Establishments </a></h5>
+        <h5><a style="color: black; font-weight: bold;" href="/search-establishments?search={{search_value}}"> Establishments </a></h5>
         <h5><a style="color: black;" href="/search-reviews"> Reviews </a></h5>
 
       </div>
       <div class="col-md-9">
-        <h3 class="mb-3"> 2 results found under “chicken” </h3>
+        <h3 class="mb-3"> {{results_count}} results found under “{{search_value}}” </h3>
 
-        <!-- Establishment #1 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/24chicken-image.jpg" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3">1. &emsp; 24 <b>Chicken</b></h3>
-            <h5 style="font-weight:300; color: var(--primary)"> 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-o"></span> 
-              50 reviews </h5>
-            <p>At 24 <b>Chicken</b>, we are obsessed with serving the best possible fried <b>chicken</b>. Serving
-              happiness at a budget friendly price since 2017.</p>
-          </div>
-        </div>
-
-        <!-- Establishment #2 -->
-        <div class="row mb-5">
-          <div class="col-md-3 mb-3">
-            <img class="img-fluid" src="../images/bonchon-image.jpg" alt="">
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-3"> 2. &emsp; BonChon </h3>
-            <h5 style="font-weight:300; color: var(--primary)"> 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span> 
-              40 reviews </h5>
-            <p> Crunch out loud! We set out to share the joy of hand-battered, double-fried, crazy crispy Korean Fried
-              <b>Chicken</b> around the world.
-            </p>
-          </div>
-        </div>
+        {{#each establishments}}
+          {{> establishment_list_partial this}}
+        {{/each}}
 
       </div>
     </div>
