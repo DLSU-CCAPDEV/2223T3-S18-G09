@@ -18,8 +18,9 @@ const controller = {
     },
 
     getSearchReviews: function (req, res) {
-        console.log(`test`);
-        res.render('search-reviews');
+        res.render('search-reviews', {
+            user: req.session.user
+        });
     },
 
     getSignUp: function (req, res) {

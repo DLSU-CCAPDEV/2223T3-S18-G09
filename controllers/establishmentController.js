@@ -18,15 +18,16 @@ const establishmentController = {
                     name: item.name, 
                     description: item.description, 
                     overall_rating: item.overall_rating, 
-                    total_reviews: item.total_reviews, 
+                    total_reviews: item.total_reviews,
+                    establishmentPfpPath: item.imagePaths.establishmentPfpPath,
                 }  
             }); 
 
-            const username = req.session.username ? req.session.username : null; 
+            const user = req.session.user ? req.session.user : null; 
             // console.log(req.session.username); 
             res.render('establishments-list', { 
                 establishments: establishments,  
-                user: username 
+                user: user 
             });
         }
 
@@ -43,8 +44,8 @@ const establishmentController = {
 
         var query = {
             $or: [
-              { name: { $regex: new RegExp(search, 'i') } },
-              { description: { $regex: new RegExp(search, 'i') } }
+                { name: { $regex: new RegExp(`\\b${search}\\b`, 'i') } },
+                { description: { $regex: new RegExp(`\\b${search}\\b`, 'i') } }
             ]
           }; // Query for searching in the database
 
@@ -56,14 +57,17 @@ const establishmentController = {
               name: item.name,
               description: item.description,
               overall_rating: item.overall_rating,
-              total_reviews: item.total_reviews
+              total_reviews: item.total_reviews,
+              establishmentPfpPath: item.imagePaths.establishmentPfpPath,
             }});
 
         // Load search page
         res.render('search-establishments', {
             establishments: establishments,
             results_count: establishments.length,
-            search_value: search
+            search_value: search,
+            user: req.session.user
+            
           });
     },
 
@@ -115,7 +119,6 @@ const establishmentController = {
                 // contains paths to pfp, header, map, menu, and gallery images
                 // access using imagePaths.establishmentPfpPath, etc.
                 // access menu images using imagePaths.establishmentMenuPhotos[0], etc.
-                establishmentPfpPath: result.imagePaths.establishmentPfpPath,
                 establishmentHeaderPath: result.imagePaths.establishmentHeaderPath,
                 establishmentMapPath: result.imagePaths.establishmentMapPath,
 
@@ -123,7 +126,16 @@ const establishmentController = {
                 establishmentFoodPhotos: result.imagePaths.establishmentFoodPhotos, // array
 
                 // reviews array from the query
-                reviews: reviews
+                reviews: reviews,
+                user: req.session.user,
+
+                Monday: result.establishmentTime.Monday,
+                Tuesday: result.establishmentTime.Tuesday,
+                Wednesday: result.establishmentTime.Wednesday,
+                Thursday: result.establishmentTime.Thursday,
+                Friday: result.establishmentTime.Friday,
+                Saturday: result.establishmentTime.Saturday,
+                Sunday: result.establishmentTime.Sunday
             };
 
             /* console.log(details.name);

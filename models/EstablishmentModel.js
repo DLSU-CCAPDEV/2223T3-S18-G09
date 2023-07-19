@@ -38,6 +38,15 @@ var EstablishmentSchema = new mongoose.Schema({
         establishmentHeaderPath: String,        // path to the header picture of the establishment
         establishmentMenuPhotos: [String],      // array of paths to the photos of the establishment, 1 to many
         establishmentFoodPhotos: [String],
+    },
+    establishmentTime: {
+        Monday: String,
+        Tuesday: String,
+        Wednesday: String,
+        Thursday: String,
+        Friday: String,
+        Saturday: String,
+        Sunday: String,
     }
 });
 

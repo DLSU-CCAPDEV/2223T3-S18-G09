@@ -37,8 +37,8 @@ const loginController = {
         }
         else {
             req.session.user = username;
+            console.log(req.session.user);
             res.redirect('/establishments-list');
-            
         }
     },
 }
