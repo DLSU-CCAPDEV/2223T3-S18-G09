@@ -1,3 +1,40 @@
+/*
+// import module `database` from `../models/db.js`
+const db = require('../models/db.js');
+
+// for the insertOne
+const Review = require('../models/ReviewModel.js');
+
+//inside submit-review
+
+var review = new Review({
+    review_id: 1234,
+    username: 'uwah',
+    establishment_id: 1234,
+    title: 'uwah',
+    body_desc 'uwah',
+    date '2022-09-09',
+    edited true,
+    rating 5,
+    votes {
+        numUpvotes: 1,
+        numDownvotes: 1,
+        upvotes: [uwah],
+        downvotes: [uwah]
+    },
+    photos './uwah.png',
+    owner_response_id 123,
+});
+
+db.insertOne(Review, review);
+*/
+
+// import module `database` from `../models/db.js`
+//const db = require('../models/db.js');
+
+// for the insertOne
+//const Review = require('../models/ReviewModel.js');
+
 // we can declare global variables here
 const USERNAME = "Brian Gabini";
 const USERPFP = "./images/user-pfp.jpg";
@@ -13,6 +50,28 @@ $(document).ready(function () {
 
     // form submission for the review
     $('#submit-review').click(function () {
+
+        /*
+        var review = new Review({
+            review_id: 1234,
+            username: 'uwah',
+            establishment_id: 1234,
+            title: 'uwah',
+            body_desc: 'uwah',
+            date: '2022-09-09',
+            edited: true,
+            rating: 5,
+            votes: {
+                numUpvotes: 1,
+                numDownvotes: 1,
+                upvotes: [uwah],
+                downvotes: [uwah]
+            },
+            photos: './uwah.png',
+            owner_response_id: 1234,
+        });
+        db.insertOne(Review, review);*/
+
         var review_container = $('#review-container');
 
         var userReviewText = $('#floatingTextarea2').val();
@@ -288,6 +347,7 @@ $(document).ready(function () {
         $('input[name="rating"]:checked').prop('checked', false);
         $('#formFileMultiple').val('');
         alert('Review submitted!');
+
     });
 
     // delete review

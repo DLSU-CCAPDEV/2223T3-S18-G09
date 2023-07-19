@@ -36,7 +36,9 @@ const loginController = {
             checkPassword(user.password, password); */
         }
         else {
+            req.session.user = username;
             res.redirect('/establishments-list');
+            
         }
     },
 }

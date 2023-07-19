@@ -18,6 +18,7 @@ const controller = {
     },
 
     getSearchReviews: function (req, res) {
+        console.log(`test`);
         res.render('search-reviews');
     },
 
@@ -35,6 +36,10 @@ const controller = {
 
     getUserProfileReviews: function (req, res) {
         res.render('user-profile-reviews');
+    },
+
+    getError: function (req, res) {
+        res.render('error', {error: ERROR});    
     }
 
     /* guide 

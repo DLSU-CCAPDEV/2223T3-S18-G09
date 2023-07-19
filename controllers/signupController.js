@@ -37,7 +37,7 @@ const signupController = {
         var username = req.body.username;
         var password = req.body.password;
         var description = req.body.description;
-
+        
         // avatar
         // description
 
@@ -47,6 +47,10 @@ const signupController = {
             username: username,
             password: password,
             description: description
+        }
+
+        var query = {
+            username: username
         }
 
         const userQuery = await db.findOne(User, query);
@@ -67,7 +71,8 @@ const signupController = {
                 res.render('error'); // Error, invalid data
             }
         } else {
-            res.render('error'); // Error, username already taken
+
+            res.render('error', {error: 'Username already taken'}); // Error, username already taken
         }
 
         // if user is found in the database, username is already taken

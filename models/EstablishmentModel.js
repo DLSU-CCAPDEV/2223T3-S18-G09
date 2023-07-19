@@ -29,10 +29,16 @@ var EstablishmentSchema = new mongoose.Schema({
     },
     total_reviews: {
         type: Number,
-        required: true
-    },
-    menu: [String], //Array of file path
-    photos: [String] //Array of file path
+        required: true 
+    }, 
+    // for the paths of the static images of an establishment, stored locally
+    imagePaths: {
+        establishmentPfpPath: String,           // path to the profile picture of the establishment
+        establishmentMapPath: String, 
+        establishmentHeaderPath: String,        // path to the header picture of the establishment
+        establishmentMenuPhotos: [String],      // array of paths to the photos of the establishment, 1 to many
+        establishmentFoodPhotos: [String],
+    }
 });
 
 /*
