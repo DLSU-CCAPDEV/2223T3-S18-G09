@@ -35,6 +35,35 @@ const establishmentController = {
         }
     },
 
+    getSearchEstablishments: async function (req, res) {
+        var search = req.query.search; // Retrieve search query
+
+        var query = {
+            $or: [
+              { name: { $regex: new RegExp(search, 'i') } },
+              { description: { $regex: new RegExp(search, 'i') } }
+            ]
+          }; // Query for searching in the database
+
+        var result = await db.findMany(Establishment, query);
+
+        // Process the result 
+        var establishments = result.map((item) => {
+            return {
+              name: item.name,
+              description: item.description,
+              overall_rating: item.overall_rating,
+              total_reviews: item.total_reviews
+            }});
+
+        // Load search page
+        res.render('search-establishments', {
+            establishments: establishments,
+            results_count: establishments.length,
+            search_value: search
+          });
+    },
+
     getEstablishmentPage: async function (req, res) {
         var establishmentNameStr = req.params.establishmentName;
 
