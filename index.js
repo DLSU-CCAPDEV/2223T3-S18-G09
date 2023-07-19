@@ -13,6 +13,9 @@ const db = require('./models/db.js');
 
 const app = express(); // create an instance of express
 
+// import module from '../helpers/helpers.js' 
+const helper = require('./helpers/helper.js');
+
 app.set('view engine', 'hbs'); // set the view engine to handlebars
 app.use(express.static('public')); // configure express to use public folder
 app.use(express.static('files'));
@@ -20,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false })); // configure express to use
 app.use('/', routes); // configure express to use routes.js
 
 hbs.registerPartials(__dirname + '/views/partials'); // register partials 
+hbs.registerHelper('replaceSpaces', helper.replaceSpaceWithHyphen);
+hbs.registerHelper('formatDate', helper.formatDate);
 
 dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file
@@ -34,8 +39,8 @@ app.listen(port, hostname, function () {
 db.connect();
 
 // register helpers
-hbs.registerHelper('stars', function(n, block) {
+hbs.registerHelper('stars', function (n, block) {
     let filledStars = `<span class="fa fa-star checked"></span>`.repeat(n);
     let emptyStars = `<span class="fa fa-star-o checked"></span>`.repeat(5 - n);
     return filledStars + emptyStars;
-  });
+});

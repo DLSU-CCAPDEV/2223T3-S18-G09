@@ -13,7 +13,10 @@ app.get('/', controller.getRoot);
 app.get('/establishments-list', establishmentController.getEstablishments);
 app.get('/home*', controller.getHome);
 
-app.get('/establishment-page', controller.getEstablishmentPage);
+// app.get('/establishment-page', controller.getEstablishmentPage);
+// handle page requests from the server
+app.get('/establishment-page/:establishmentName', establishmentController.getEstablishmentPage);
+
 app.get('/search-establishments', controller.getSearchEstablishments);
 app.get('/search-reviews', controller.getSearchReviews);
 
