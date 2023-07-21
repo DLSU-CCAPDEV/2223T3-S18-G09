@@ -42,6 +42,7 @@ app.use('/', routes); // configure express to use routes.js
 hbs.registerPartials(__dirname + '/views/partials'); // register partials 
 hbs.registerHelper('replaceSpaces', helper.replaceSpaceWithHyphen);
 hbs.registerHelper('formatDate', helper.formatDate);
+hbs.registerHelper('formatNumReview', helper.formatNumReview);
 
 dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file

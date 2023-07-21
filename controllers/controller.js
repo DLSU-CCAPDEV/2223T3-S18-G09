@@ -23,22 +23,6 @@ const controller = {
         });
     },
 
-    getSignUp: function (req, res) {
-        res.render('signup');
-    },
-
-    getUpdateProfile: function (req, res) {
-        res.render('update-profile');
-    },
-
-    getUserProfileOverview: function (req, res) {
-        res.render('user-profile-overview');
-    },
-
-    getUserProfileReviews: function (req, res) {
-        res.render('user-profile-reviews');
-    },
-
     getError: function (req, res) {
         res.render('error', {error: ERROR});    
     }

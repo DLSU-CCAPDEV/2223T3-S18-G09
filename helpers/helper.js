@@ -11,4 +11,13 @@ function formatDate(date) {
     return new Date(date).toLocaleDateString(undefined, options);
 }
 
-module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate };
+function formatNumReview(reviewCount) {
+    if (reviewCount == 1) {
+        return reviewCount + " Review";
+    }
+    else {
+        return reviewCount + " Reviews";
+    }
+}
+
+module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview };

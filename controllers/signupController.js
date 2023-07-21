@@ -32,30 +32,38 @@ const signupController = {
             Example: the value entered in <input type="text" name="fName">
             can be retrieved using `req.body.fName`
         */
-        var first_name = req.body.first_name;
-        var last_name = req.body.last_name;
-        var username = req.body.username;
-        var password = req.body.password;
-        var description = req.body.description;
-        
-        // avatar
-        // description
+        var first_name = req.body.first_name;  
+        var last_name = req.body.last_name; 
+        var username = req.body.username; 
+        var password = req.body.password; 
+        var description = req.body.description; 
+
+        // TODO: get the avatar from the input, for this, just use ajax, and set the type of the button to button instead of submit
+        // avatarImagePath
 
         var user = {
             first_name: first_name,
             last_name: last_name,
             username: username,
             password: password,
-            description: description
+            description: description,
+            joined: new Date(),
+            location: 'N/A'
         }
 
         var query = {
             username: username
         }
 
-        const userQuery = await db.findOne(User, query);
+        projection = {
+            username: 1
+        }
 
-        if (userQuery.username != username) {
+        const userQuery = await db.findOne(User, query, projection);
+
+        console.log(userQuery);
+
+        if (userQuery != username) {
             /*
             calls the function insertOne()
             defined in the `database` object in `../models/db.js`
@@ -63,7 +71,7 @@ const signupController = {
             */
             var response = await db.insertOne(User, user);
 
-            if(response != null){
+            if (response != null) {
                 // res.redirect('/establishments-list?first_name=' + first_name +'&lName=' + lName + '&idNum=' + idNum);
                 res.redirect('/login');
             }
@@ -72,11 +80,11 @@ const signupController = {
             }
         } else {
 
-            res.render('error', {error: 'Username already taken'}); // Error, username already taken
+            res.render('error', { error: 'Username already taken' }); // Error, username already taken
         }
 
         // if user is found in the database, username is already taken
-        
+
 
         /*
             upon adding a user to the database,

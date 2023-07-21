@@ -58,27 +58,37 @@
                     <form action="/signup" style="width: 300px;" method="post">
                         <div class="container mb-3">
                             <div class="row">
+
+                                {{!-- input field for the first_name --}}
                                 <div class="col-6 ps-0 pe-1">
                                     <input class="form-control" type="text" name="first_name" placeholder="First Name" required>
                                 </div>
+
+                                {{!-- input field for the last_name --}}
                                 <div class="col-6 pe-0 ps-1">
                                     <input class="form-control" type="text" name="last_name" placeholder="Last Name" required>
                                 </div>
                             </div>
                         </div>
 
+                        {{!-- input field for the username --}}
                         <div class="mb-3">
                             <input class="login-input form-control" type="text" name="username" placeholder="Username" required>
                         </div>
+
+                        {{!-- input field for the password --}}
                         <div class="mb-3">
                             <input class="login-input form-control" type="password" name="password" placeholder="Password" required>
                         </div>
 
+                        {{!-- input field for the password --}}
+                        {{!-- TODO: fix the functionality of the avatar retrieval later --}}
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="avatar-upload">Avatar</label>
                             <input type="file" name="avatar" class="form-control" id="avatar-upload" accept="image/*">
                         </div>
 
+                        {{!-- input field for the description --}}
                         <div class="mb-3" style="width: 300px;">
                             <textarea class="rounded" id="signup-textarea" name="description"
                                 placeholder="Tell us about yourself! (optional)"></textarea>
