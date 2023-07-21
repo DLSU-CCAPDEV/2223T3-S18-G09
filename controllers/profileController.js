@@ -81,11 +81,8 @@ const profileController = {
         /* TODO: get the number of reviews from the user using findMany in the Review Collections */
         var reviewQuery = { username: currentUser }
 
-        var reviewProjection = {
-            username: 1
-        }
 
-        var reviewResult = await db.findMany(Review, reviewQuery, reviewProjection);
+        var reviewResult = await db.findMany(Review, reviewQuery);
 
         var reviewCount = reviewResult.length;
 
@@ -98,10 +95,9 @@ const profileController = {
             location: userResult.location,
             joined: userResult.joined,
 
-            reviewCount: reviewCount
+            reviewCount: reviewCount,
+            reviews: reviewResult
 
-            /* we will also pass here all the reviews of the user, just use the review result */
-            /* we will do this after we finish implementing the partial of the review and connecting the jquery code to the edit and delete buttons, etc */
         }
 
 

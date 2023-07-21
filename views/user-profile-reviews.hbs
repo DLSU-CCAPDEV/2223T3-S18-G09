@@ -170,6 +170,10 @@
       <div class="col-md-6">
         <span class="label">Reviews</span>
 
+      {{#each reviews}}
+      {{> review_partial this}}
+      {{/each}}
+
       {{!-- review #1 --}}
        {{!--  <div class="col-md-10 border-top border-black">
           <br>
