@@ -6,6 +6,7 @@ const loginController = require('../controllers/loginController.js');
 const logoutController = require('../controllers/logoutController.js');
 const establishmentController = require('../controllers/establishmentController.js');
 const profileController = require('../controllers/profileController.js');
+const reviewsController = require('../controllers/reviewsController.js');
 
 /* app.get('/profile/:username', controller.getProfile);  */ // use this later on 
 
@@ -20,7 +21,7 @@ app.get('/home*', controller.getHome);
 app.get('/establishment-page/:establishmentName', establishmentController.getEstablishmentPage);
 
 app.get('/search-establishments', establishmentController.getSearchEstablishments);
-app.get('/search-reviews', controller.getSearchReviews);
+app.get('/search-reviews', reviewsController.getSearchReviews);
 
 // for the sign-up routes
 // app.get('/signup', controller.getSignUp);

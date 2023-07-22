@@ -421,3 +421,35 @@ $(document).ready(function () {
     });
 
 });
+
+function hideResponseFunction(ID, show_id, hide_id) {
+    var show = show_id;
+    var showRep = hide_id;
+    var btnRep = ID;
+
+    if (show.style.display === "none") {
+      show.style.display = "inline";
+      btnRep.text = " • Show Response";
+      showRep.style.display = "none";
+    } else {
+      show.style.display = "none";
+      btnRep.text = " • Hide Response";
+      showRep.style.display = "inline";
+    }
+  }
+
+  function readMoreFunction(dots_id, more_id, myBtn_id) {
+    var dots = dots_id;
+    var moreText = more_id;
+    var btnText = myBtn_id;
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less";
+      moreText.style.display = "inline";
+    }
+  }
