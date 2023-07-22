@@ -19,6 +19,15 @@
             {{{stars rating}}}
             • Reviewed on {{formatDate date}}
         </h6>
+
+        {{!-- If establishment name is passed. Will be used for search reviews and reviews on
+            user profile page. Not needed for reviews on establishment page --}}
+        {{#if establishment_name}} 
+            <a href="/establishment-page/{{replaceSpaces establishment_name}}">
+                <h4 style="font-weight: 600; color: black;"> {{establishment_name}} </h4>
+            </a>
+        {{/if}}
+        
         <h4 style="font-weight: 600;">{{title}}</h4>
         <p>{{body_desc}}</p>
         <div class="review-group">

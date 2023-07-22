@@ -43,6 +43,7 @@ hbs.registerPartials(__dirname + '/views/partials'); // register partials
 hbs.registerHelper('replaceSpaces', helper.replaceSpaceWithHyphen);
 hbs.registerHelper('formatDate', helper.formatDate);
 hbs.registerHelper('formatNumReview', helper.formatNumReview);
+hbs.registerHelper('stars', helper.stars);
 
 dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file
@@ -56,9 +57,3 @@ app.listen(port, hostname, function () {
 // connects to the database
 db.connect();
 
-// register helpers
-hbs.registerHelper('stars', function (n, block) {
-    let filledStars = `<span class="fa fa-star checked"></span>`.repeat(n);
-    let emptyStars = `<span class="fa fa-star-o checked"></span>`.repeat(5 - n);
-    return filledStars + emptyStars;
-});
