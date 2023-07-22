@@ -33,10 +33,9 @@ app.post('/signup', upload.single("file"), signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
 app.get('/user-profile-overview', profileController.getUserProfileOverview);
-app.get('/user-profile-reviews', profileController.getUserProfileReviews);
 
 // for the login routes
-app.get('/login', controller.redirectRoot);
+app.get('/login', loginController.getLogIn);
 app.post('/login', loginController.postLogin);
 
 app.get('/logout', logoutController.getLogOut);

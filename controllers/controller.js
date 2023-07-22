@@ -8,9 +8,12 @@ const controller = {
         res.redirect('/');
     },
 
-    /* login page will be the root */
+    /* login page will be the root unless logged in */
     getRoot: function (req, res) {
-        res.render('login');
+        if (req.session.user)
+            res.redirect('/establishments-list');
+        else
+            res.render('login');
     },
 
     getError: function (req, res) {
