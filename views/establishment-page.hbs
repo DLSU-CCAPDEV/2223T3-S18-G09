@@ -12,7 +12,7 @@
 
 <head>
     <title>Establishment Page</title>
-
+    
     <!-- Meta data -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,7 +101,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="modalLabel">Write a Review for {{name}}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <button id="buttonDismiss" type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -150,8 +150,9 @@
                                             accept="image/png, image/gif, image/jpeg">
                                     </div>
 
-                                    <input id="submit-review" class="submit-button btn btn-primary" type="button"
-                                        style="width: 200px;" value="Post Review" data-bs-dismiss="modal">
+                                    <input id="submit-review" class="submit-button btn btn-primary" type="button" style="width: 200px;" value="Post Review" data="{{establishment_id}}">
+                                    
+                                    
                                 </form>
                             </div>
                         </div>
@@ -377,7 +378,6 @@
                 <h4>SORT</h4>
                 <h5><a style="color: black;" href="#"> Most Upvotes ▽</a></h5>
                 <h5><a style="color: black;" href="#"> Rating ☆</a></h5>
-
             </div>
             <div id="review-container" class="col-md-9">
                 <h3 class="mb-3">Reviews</h3>
@@ -387,7 +387,7 @@
             {{> review_partial this}}
             {{/each}}
 
-                
+
 
             </div>
         </div>

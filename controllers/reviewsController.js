@@ -6,6 +6,7 @@ const Review = require('../models/ReviewModel.js');
 const Establishment = require('../models/EstablishmentModel.js');
 const OwnerResponse = require('../models/OwnerResponseModel.js');
 
+
 const reviewsController = {
     getSearchReviews: async function (req, res) {
         var search = req.query.search; // Retrieve search query
@@ -54,6 +55,63 @@ const reviewsController = {
             search_flag: true,
             owner_establishment_id: owner_establishment_id
           });
+    },
+
+    getWriteReview: async function (req, res) {
+
+        var review = await db.findMany(Review);
+        review.sort((a, b) => a.review_id - b.review_id);
+
+        var review_id = review[review.length - 1].review_id + 1; // get highest id and increment by 1
+        var username = req.session.user;
+        var establishment_id = req.query.establishment_id;
+        var title = req.query.title;
+        var body_desc = req.query.body_desc;
+        var date = Date.now();
+        var edited = false;
+        var rating = req.query.rating;
+        
+        var review = {
+            review_id: review_id,
+            username: username,
+            establishment_id: establishment_id,
+            title: title,
+            body_desc: body_desc,
+            date: date,
+            owner_response_id: null,
+            edited: edited,
+            rating: rating,
+            votes: {
+                numUpvotes: 0,
+                numDownvotes: 0,
+                upvotes: [],
+                downvotes: []
+            },
+            photos: [], 
+            owner_response_id: 0 
+          };
+
+        await db.insertOne(Review, review,);
+        res.render('partials/review-partial', {
+            username: review.username,
+            rating: review.rating,
+            date: review.date,
+            body_desc: review.body_desc,
+            title: review.title,
+            review_id: review.review_id,
+            user: req.session.user, 
+            owner_establishment_id: req.session.owner_establishment_id}, 
+            function (err, html) {
+                if (err) {
+                    // Handle the error
+                    console.error('Error rendering the partial:', err);
+                    res.status(500).send('Error rendering the partial.');
+                } else {
+                    // No error, continue with rendering
+                    // console.log('Rendered HTML:', html);
+                    res.send(html);
+                }
+         });
     }
 
 

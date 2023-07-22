@@ -38,4 +38,7 @@ app.post('/login', loginController.postLogin);
 
 app.get('/logout', logoutController.getLogOut);
 
+// For ajax
+app.get(`/write-review`, reviewsController.getWriteReview)
+
 module.exports = app;

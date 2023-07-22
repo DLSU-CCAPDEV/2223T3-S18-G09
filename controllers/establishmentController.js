@@ -32,7 +32,6 @@ const establishmentController = {
                 user: user
             });
         }
-
         /*
             if there is no establishments
         */
@@ -126,6 +125,7 @@ const establishmentController = {
 
         if (result != null) {
             var details = {
+                establishment_id: result.establishment_id,
                 name: result.name,
                 description: result.description,
                 overall_rating: result.overall_rating,
@@ -160,7 +160,6 @@ const establishmentController = {
             console.log(details.description);
             console.log(details.overall_rating);
             console.log(details.reviews[0].username); */
-
             res.render('establishment-page', details);
         } else {
             res.render('error', { error: 'Establishment not found.' });
