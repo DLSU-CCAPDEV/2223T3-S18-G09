@@ -1,16 +1,18 @@
-
-// import module `database` from `../models/db.js`
 const db = require('../models/db.js');
 
-// import module `User` from `../models/UserModel.js`
 const User = require('../models/UserModel.js');
+
+const path = require("path");
+
+const fs = require("fs");
+
+
 
 /*
     defines an object which contains functions executed as callback
     when a client requests for `signup` paths in the server
 */
 const signupController = {
-
     /*
         executed when the client sends an HTTP GET request `/signup`
         as defined in `../routes/routes.js`
@@ -19,84 +21,72 @@ const signupController = {
         res.render('signup');
     },
 
-    /*
-        executed when the client sends an HTTP POST request `/signup`
+    /* 
+        executed when the client sends an HTTP POST request `/signup` 
         as defined in `../routes/routes.js`
     */
     postSignUp: async function (req, res) {
+        // var avatarImagePath = '../images/default-user-images/default-avatar.png';
 
-        /*
-            when submitting forms using HTTP POST method
-            the values in the input fields are stored in `req.body` object
-            each <input> element is identified using its `name` attribute
-            Example: the value entered in <input type="text" name="fName">
-            can be retrieved using `req.body.fName`
-        */
-        var first_name = req.body.first_name;
-        var last_name = req.body.last_name;
-        var username = req.body.username;
-        var password = req.body.password;
-        var description = req.body.description;
-
-        // TODO: get the avatar from the input, for this, just use ajax, and set the type of the button to button instead of submit
-        // avatarImagePath
-
-        var user = {
-            first_name: first_name,
-            last_name: last_name,
-            username: username,
-            password: password,
-            description: description,
-            joined: new Date(),
-            location: 'N/A',
-            avatarImagePath: '../images/default-user-images/default-avatar.png', // set the default avatar image path
-            bannerImagePath: '../images/default-user-images/default-banner.jpg'
+        if (!req.file) {
+            return res.status(400).json({ message: "No file received." });
         }
 
-        var query = {
-            username: username
-        }
+        const sourcePath = req.file.path;
+        const destinationPath = path.join(__dirname, "..", "files", "images", "user-uploads", req.file.originalname);
 
-        projection = {
-            username: 1
-        }
+        const avatarImagePath = '../images/user-uploads/' + req.file.originalname;
 
-        const userQuery = await db.findOne(User, query, projection);
-
-        if (userQuery == null) {
-            /*
-            calls the function insertOne()
-            defined in the `database` object in `../models/db.js`
-            this function adds a document to collection `users`
-            */
-            var response = await db.insertOne(User, user);
-
-            if (response != null) {
-                // res.redirect('/establishments-list?first_name=' + first_name +'&lName=' + lName + '&idNum=' + idNum);
-                res.redirect('/login');
+        fs.rename(sourcePath, destinationPath, async (error) => {
+            if (error) {
+                console.error(error);
+                return res.status(500).json({ message: "File transfer failed." });
             }
-            else {
-                res.render('error'); // Error, invalid data
+
+            /* put the database querying here to add the filename to the database */
+
+            var first_name = req.body.first_name;
+            var last_name = req.body.last_name;
+            var username = req.body.username;
+            var password = req.body.password;
+            var description = req.body.description;
+            var joined = new Date();
+            // var avatarImagePath = avatarImagePath;
+            var location = 'Somewhere';
+            var bannerImagePath = '../images/default-user-images/default-banner.jpg';
+
+            /* check if the user is unique */
+            var userQuery = { username: username };
+
+            var userProjection = {
+                username: 1
             }
-        } else {
 
-            res.render('error', { error: 'Username already taken' }); // Error, username already taken
-        }
+            var userResult = await db.findOne(User, userQuery, userProjection);
 
-        // if user is found in the database, username is already taken
+            if (userResult == null) {
 
+                var user = {
+                    first_name: first_name,
+                    last_name: last_name,
+                    username: username,
+                    password: password,
+                    description: description,
+                    joined: joined,
+                    avatarImagePath: avatarImagePath,
+                    bannerImagePath: bannerImagePath,
+                    location: location
+                }
 
-        /*
-            upon adding a user to the database,
-            redirects the client to `/success` using HTTP GET,
-            defined in `../routes/routes.js`
-            passing values using URL
-            which calls getSuccess() method
-            defined in `./successController.js`
-        */
+                await db.insertOne(User, user);
 
-        // check if username is already in the database
-        // username needs to be unique
+                res.json({ success: true });
+
+            } else {
+                res.json({ success: false });
+            }
+        });
+
     }
 }
 
