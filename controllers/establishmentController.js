@@ -114,14 +114,15 @@ const establishmentController = {
 
         /* append a new property, avatarImagePath */
         for (let i = 0; i < reviews.length; i++) {
-            reviews[i].avatarImagePath = await db.findOne(User, { username: reviews[i].username }, { avatarImagePath: 1 });
+            var avatarImagePath = await db.findOne(User, { username: reviews[i].username }, { avatarImagePath: 1 });
+            reviews[i].avatarImagePath = avatarImagePath.avatarImagePath;
         }
 
         // console.log(reviews[0].establishment_id);
         /* check if its added */
-        for (let i = 0; i < reviews.length; i++) {
+        /* for (let i = 0; i < reviews.length; i++) {
             console.log(reviews[i].avatarImagePath);
-        }
+        } */
 
         if (result != null) {
             var details = {
