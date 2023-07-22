@@ -8,19 +8,9 @@ const controller = {
         res.redirect('/');
     },
 
-    getEstablishmentPage: function (req, res) {
-        res.render('establishment-page');
-    },
-
     /* login page will be the root */
     getRoot: function (req, res) {
         res.render('login');
-    },
-
-    getSearchReviews: function (req, res) {
-        res.render('search-reviews', {
-            user: req.session.user
-        });
     },
 
     getError: function (req, res) {
