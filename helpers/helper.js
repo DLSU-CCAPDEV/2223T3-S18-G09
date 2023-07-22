@@ -26,4 +26,20 @@ function stars (n, block) {
     return filledStars + emptyStars;
 };
 
-module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars };
+function isEqual (value1, value2) {
+    return value1 == value2;
+}
+
+function trimAndReadMore(id, body_desc) {
+    if (body_desc.length <= 250) {
+      return body_desc;
+    } else {
+      const trimmedText = body_desc.substr(0, 250);
+      return `
+        <p>${trimmedText}<span id="dots${id}">...</span><span id="more${id}" style="display: none;">${body_desc.substr(250, body_desc.length)}</span> 
+        <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}">Read more</a></p>`;
+    }
+  }
+  
+
+module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars, isEqual, trimAndReadMore };

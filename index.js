@@ -44,6 +44,8 @@ hbs.registerHelper('replaceSpaces', helper.replaceSpaceWithHyphen);
 hbs.registerHelper('formatDate', helper.formatDate);
 hbs.registerHelper('formatNumReview', helper.formatNumReview);
 hbs.registerHelper('stars', helper.stars);
+hbs.registerHelper('isEqual', helper.isEqual);
+hbs.registerHelper('trimAndReadMore', helper.trimAndReadMore);
 
 dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file

@@ -3,6 +3,7 @@ const db = require('../models/db.js');
 
 // import module `User` from `../models/UserModel.js`
 const User = require('../models/UserModel.js'); 
+const EstablishmentOwner = require('../models/EstablishmentOwnerModel.js'); 
 
 /* 
     defines an object which contains functions executed as callback 
@@ -29,6 +30,14 @@ const loginController = {
         // implement a function to check if the username is in the database, 
         const user = await db.findOne(User, query);
 
+        // Check if user is an owner 
+        const establishmentOwner = await db.findOne(EstablishmentOwner, {username: username})
+        var ownerEstablishmentId = null;
+        if(establishmentOwner) {
+            ownerEstablishmentId = establishmentOwner.establishment_id;
+        }
+
+
         if(!user){
             res.render('error');
 
@@ -37,7 +46,9 @@ const loginController = {
         }
         else {
             req.session.user = username;
-            console.log(req.session.user);
+            req.session.owner_establishment_id = ownerEstablishmentId;
+            console.log(`Current User: ` + req.session.user);
+            console.log(`Establishment Owner ID: ` + req.session.owner_establishment_id);
             res.redirect('/establishments-list');
         }
     },

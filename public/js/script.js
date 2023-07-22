@@ -423,9 +423,9 @@ $(document).ready(function () {
 });
 
 function hideResponseFunction(ID, show_id, hide_id) {
-    var show = show_id;
-    var showRep = hide_id;
-    var btnRep = ID;
+    var show = document.getElementById(show_id);
+    var showRep = document.getElementById(hide_id);
+    var btnRep = document.getElementById(ID);
 
     if (show.style.display === "none") {
       show.style.display = "inline";

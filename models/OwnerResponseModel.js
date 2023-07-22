@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 // defines the schema for collection `ownerresponses`
 var OwnerResponseSchema = new mongoose.Schema({
     review_id: {
-        type: String,
+        type: Number,
         required: true
     },
     body_desc: {

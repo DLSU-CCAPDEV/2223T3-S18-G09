@@ -1,4 +1,4 @@
-<div class="row mb-5">
+<div class="row mb-5"> 
     <div class="col-md-2 mb-3 pt-3">
         <div class="container">
             <div class="row mb-3 justify-content-center">
@@ -11,10 +11,84 @@
             <div class="row justify-content-center text-center">
                 <h6> {{username}}</h6>
             </div>
-
         </div>
     </div>
-    <div class="col-md-10">
+    
+    <div class="col-md-10 position-relative">
+        {{#if (isEqual user username)}}
+            {{!-- Edit button --}}
+            <div class="d-flex justify-content-end position-absolute top-0 p-0" style="max-width: 100%; left: 95%;">
+                <button class="btn btn-danger edit-review text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-review-modal-{{review_id}}" style="font-size: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path></svg></button>
+            </div>
+            
+            <!-- Modal for editing review -->
+            <div class="modal fade" id="edit-review-modal-{{review_id}}" tabindex="-1" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="edit-modalLabel-{{review_id}}">Edit Review</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form style="max-width: 600px;">
+                                <div class="my-3">
+                                    <input id="edit-review-title-{{review_id}}" class="form-control w-100" type="text"
+                                        placeholder="Title" required value="{{title}}">
+                                </div>
+
+                                <div class="border p-3 my-3 rounded">
+                                    <div class="container d-flex">
+                                        <span class="star-cb-group me-2">
+                                            <input type="radio" id="edit-rating-5-{{review_id}}" name="edit-rating-{{review_id}}" value="5" />
+                                            <label for="edit-rating-5-{{review_id}}">5</label>
+                                            <input type="radio" id="edit-rating-4-{{review_id}}" name="edit-rating-{{review_id}}" value="4" />
+                                            <label for="edit-rating-4-{{review_id}}">4</label>
+                                            <input type="radio" id="edit-rating-3-{{review_id}}" name="edit-rating-{{review_id}}" value="3" />
+                                            <label for="edit-rating-3-{{review_id}}">3</label>
+                                            <input type="radio" id="edit-rating-2-{{review_id}}" name="edit-rating-{{review_id}}" value="2" />
+                                            <label for="edit-rating-2-{{review_id}}">2</label>
+                                            <input type="radio" id="edit-rating-1-{{review_id}}" name="edit-rating-{{review_id}}" value="1" />
+                                            <label for="edit-rating-1-{{review_id}}">1</label>
+                                            <input type="radio" id="edit-rating-0-{{review_id}}" name="edit-rating-{{review_id}}" value="0"
+                                                class="star-cb-clear" checked />
+                                            <label for="edit-rating-0-{{review_id}}">0</label>
+                                        </span>
+                                        <h6>Select your rating</h6>
+                                    </div>
+
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0" id="edit-floatingTextarea2-{{review_id}}"
+                                            style="height: 200px" required>{{body_desc}}</textarea>
+                                        <label for="edit-floatingTextarea2-{{review_id}}">Tell us about your experience!</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-formFileMultiple" class="form-label">Attach Photos</label>
+                                    <input class="form-control" type="file" id="edit-formFileMultiple-{{review_id}}" multiple
+                                        accept="image/png, image/gif, image/jpeg">
+                                </div>
+
+                                <input id="edit-review-submit-{{review_id}}" class="submit-button btn btn-primary" type="button"
+                                    style="width: 200px;" value="Post Review" data-bs-dismiss="modal">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Delete button --}}
+            <div class="d-flex justify-content-end position-absolute start-100 top-0">
+                <button class="btn btn-danger ml-auto btn-close delete-review t">
+                </button>
+            </div>
+        {{/if}}
+        
+
         <h6>
             {{{stars rating}}}
             • Reviewed on {{formatDate date}}
@@ -24,12 +98,14 @@
             user profile page. Not needed for reviews on establishment page --}}
         {{#if establishment_name}} 
             <a href="/establishment-page/{{replaceSpaces establishment_name}}">
-                <h4 style="font-weight: 600; color: black;"> {{establishment_name}} </h4>
+                <h4 style="font-weight: 600; color: var(--primary);"> {{establishment_name}} </h4>
             </a>
         {{/if}}
         
         <h4 style="font-weight: 600;">{{title}}</h4>
-        <p>{{body_desc}}</p>
+
+
+        {{{trimAndReadMore review_id body_desc}}}
         <div class="review-group">
             <div class="container d-flex px-2">
                 <p class="mx-2">Was this review helpful to you?</p>
@@ -52,5 +128,69 @@
                 </span>
             </div>
         </div>
+
+        {{!-- Owner Response --}}
+        {{#with owner_response}} {{!-- Show only if there is owner response --}}
+            <p class="mx-5" style="color: black;">
+              <span id="show{{../review_id}}">
+                <b>Response from the Owner</b>
+              </span>
+
+              <span id="hide{{../review_id}}" style="display: none;">
+                <b>Response from the Owner</b>
+
+                <span style="color: #B4B4B4"> Replied on {{formatDate date}}</span>
+                <br>
+                {{body_desc}}
+              </span>
+              <a onclick="hideResponseFunction(`response{{../review_id}}`, `show{{../review_id}}`, `hide{{../review_id}}`)" id="response{{../review_id}}"> • Show Response</a>
+        {{else}}
+          {{!-- If user is an owner of the establishment, show write a response button
+            if there is no response yet--}}
+          {{#if (isEqual owner_establishment_id establishment_id)}} 
+              <div class="col" id="response-btn{{review_id}}">
+                <button class="btn btn-danger fs-6 mx-5 btn-sm" data-bs-toggle="modal"
+                  data-bs-target="#write-response-modal{{review_id}}">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-square me-1" viewBox="0 0 16 16">
+                    <path
+                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                  </svg>
+
+                  Write a Response</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="write-response-modal{{review_id}}" tabindex="-1" aria-labelledby="modalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel{{review_id}}">Respond to {{username}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form style="max-width: 600px;">
+                          <div class="border p-3 my-3 rounded">
+                            <div class="form-floating">
+                              <textarea class="form-control border-0" id="floatingTextarea2{{review_id}}" style="height: 200px"
+                                required></textarea>
+                              <label for="floatingTextarea2">Response from the owner</label>
+                            </div>
+                          </div>
+                          <input id="submit-response{{review_id}}" class="submit-button btn btn-primary position-relative"
+                            type="button" style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {{/if}}
+        {{/with}}
+
+        
     </div>
 </div>
