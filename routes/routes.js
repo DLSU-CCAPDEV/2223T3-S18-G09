@@ -8,10 +8,13 @@ const establishmentController = require('../controllers/establishmentController.
 const profileController = require('../controllers/profileController.js');
 const reviewsController = require('../controllers/reviewsController.js');
 
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 /* app.get('/profile/:username', controller.getProfile);  */ // use this later on 
 
 app.get('/', controller.getRoot);
-/* app.get('/*', controller.redirectRoot); */ // if not yet signed in always redirect to login page
+/* app.get('/*', controller.redirectRoot); */ // if not yet signed in always redirect to login page 
 
 app.get('/establishments-list', establishmentController.getEstablishments);
 app.get('/home*', controller.getHome);
@@ -26,7 +29,7 @@ app.get('/search-reviews', reviewsController.getSearchReviews);
 // for the sign-up routes
 // app.get('/signup', controller.getSignUp);
 app.get('/signup', signupController.getSignUp);
-app.post('/signup', signupController.postSignUp);
+app.post('/signup', upload.single("file"), signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
 app.get('/user-profile-overview', profileController.getUserProfileOverview);
