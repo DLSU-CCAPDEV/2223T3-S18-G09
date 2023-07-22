@@ -21,6 +21,7 @@ var UserSchema = new mongoose.Schema({
     },
     description: String,        // this will contain the description of the user to be placed as the bio in the profile page 
     avatarImagePath: String,    // this will contain the path of the image file uploaded by the user 
+    bannerImagePath: String,    // this will contain the path of the image file uploaded by the user
     location: String,           // this will contain the location of the user
     joined: Date                // this will contain the location of the user 
 });

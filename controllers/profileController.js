@@ -5,6 +5,8 @@ const User = require('../models/UserModel.js');
 
 const Review = require('../models/ReviewModel.js');
 
+const Establishment = require('../models/EstablishmentModel.js');
+
 const profileController = {
     getProfile: async function (req, res) {
 
@@ -30,7 +32,8 @@ const profileController = {
             avatarImagePath: 1,
             description: 1,
             location: 1,
-            joined: 1
+            joined: 1,
+            bannerImagePath: 1
         }
 
         var userResult = await db.findOne(User, userQuery, userProjection);
@@ -51,6 +54,7 @@ const profileController = {
             last_name: userResult.last_name,
             location: userResult.location,
             avatarImagePath: userResult.avatarImagePath,
+            bannerImagePath: userResult.bannerImagePath,
             description: userResult.description,
             location: userResult.location,
             joined: userResult.joined,
@@ -73,7 +77,8 @@ const profileController = {
             avatarImagePath: 1,
             description: 1,
             location: 1,
-            joined: 1
+            joined: 1,
+            bannerImagePath: 1
         }
 
         var userResult = await db.findOne(User, userQuery, userProjection);
@@ -84,6 +89,27 @@ const profileController = {
 
         var reviewResult = await db.findMany(Review, reviewQuery);
 
+        /* add the establishment_name to the reviews */
+
+        var reviews = reviewResult.map((item) => {
+            return {
+                review_id: item.review_id,
+                username: item.username,
+                establishment_id: item.establishment_id,
+                title: item.title,
+                body_desc: item.body_desc,
+                date: item.date,
+                edited: item.edited,
+                rating: item.rating,
+                votes: item.votes,
+            }
+        });
+
+        for (let i = 0; i < reviewResult.length; i++) {
+            var establishmentQuery = await db.findOne(Establishment, { establishment_id: reviewResult[i].establishment_id }, { name: 1 });
+            reviews[i].establishment_name = establishmentQuery.name;
+        }
+
         var reviewCount = reviewResult.length;
 
         var details = {
@@ -91,12 +117,13 @@ const profileController = {
             last_name: userResult.last_name,
             location: userResult.location,
             avatarImagePath: userResult.avatarImagePath,
+            bannerImagePath: userResult.bannerImagePath,
             description: userResult.description,
             location: userResult.location,
             joined: userResult.joined,
 
             reviewCount: reviewCount,
-            reviews: reviewResult
+            reviews: reviews
 
         }
 

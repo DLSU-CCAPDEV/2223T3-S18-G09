@@ -75,14 +75,14 @@
   </nav>
 
   <!-- absolute positioned background header -->
-  <img class="user-header position-absolute" src="../images/user-banner.jpg" alt="User Header">
+  <img class="user-header position-absolute" src="{{bannerImagePath}}" alt="User Header">
 
   <div class="container-fluid m-0">
     <div class="row">
       <div class="col position-relative col-md-2">
         <!-- Picture here -->
         <img class="img-thumbnail position-absolute user-pfp" style="width:175px; height:175px;"
-          src="../images/user-pfp.jpg" alt="User PFP">
+          src="{{avatarImagePath}}" alt="User PFP">
 
       </div>
 
@@ -171,7 +171,7 @@
         <span class="label">Reviews</span>
 
       {{#each reviews}}
-      {{> review_partial this}}
+      {{> profile_review_partial this}}
       {{/each}}
 
       {{!-- review #1 --}}

@@ -8,26 +8,28 @@ const Review = require('../models/ReviewModel.js');
 
 const helper = require('../helpers/helper.js');
 
-const establishmentController = { 
-    getEstablishments: async function (req, res) { 
-        var result = await db.findMany(Establishment, {}); 
- 
-        if (result.length > 0) { 
-            var establishments = result.map((item) => { 
-                return { 
-                    name: item.name, 
-                    description: item.description, 
-                    overall_rating: item.overall_rating, 
+const User = require('../models/UserModel.js');
+
+const establishmentController = {
+    getEstablishments: async function (req, res) {
+        var result = await db.findMany(Establishment, {});
+
+        if (result.length > 0) {
+            var establishments = result.map((item) => {
+                return {
+                    name: item.name,
+                    description: item.description,
+                    overall_rating: item.overall_rating,
                     total_reviews: item.total_reviews,
                     establishmentPfpPath: item.imagePaths.establishmentPfpPath,
-                }  
-            }); 
+                }
+            });
 
-            const user = req.session.user ? req.session.user : null; 
+            const user = req.session.user ? req.session.user : null;
             // console.log(req.session.username); 
-            res.render('establishments-list', { 
-                establishments: establishments,  
-                user: user 
+            res.render('establishments-list', {
+                establishments: establishments,
+                user: user
             });
         }
 
@@ -47,19 +49,20 @@ const establishmentController = {
                 { name: { $regex: new RegExp(`\\b${search}\\b`, 'i') } },
                 { description: { $regex: new RegExp(`\\b${search}\\b`, 'i') } }
             ]
-          }; // Query for searching in the database
+        }; // Query for searching in the database
 
         var result = await db.findMany(Establishment, query);
 
         // Process the result 
         var establishments = result.map((item) => {
             return {
-              name: item.name,
-              description: item.description,
-              overall_rating: item.overall_rating,
-              total_reviews: item.total_reviews,
-              establishmentPfpPath: item.imagePaths.establishmentPfpPath,
-            }});
+                name: item.name,
+                description: item.description,
+                overall_rating: item.overall_rating,
+                total_reviews: item.total_reviews,
+                establishmentPfpPath: item.imagePaths.establishmentPfpPath,
+            }
+        });
 
         // Load search page
         res.render('search-establishments', {
@@ -67,8 +70,8 @@ const establishmentController = {
             results_count: establishments.length,
             search_value: search,
             user: req.session.user
-            
-          });
+
+        });
     },
 
     getEstablishmentPage: async function (req, res) {
@@ -88,6 +91,8 @@ const establishmentController = {
 
         var result2 = await db.findMany(Review, reviewQuery);
 
+
+
         // console.log(JSON.stringify(result2));
 
         var reviews = result2.map((item) => {
@@ -101,10 +106,23 @@ const establishmentController = {
                 edited: item.edited,
                 rating: item.rating,
                 votes: item.votes,
+
+                // imagePaths array from the query
+                // avatarImagePath: await db.findOne(User, { username: item.username }, { avatarImagePath: 1 })
             }
         });
 
+        /* append a new property, avatarImagePath */
+        for (let i = 0; i < reviews.length; i++) {
+            var avatarImagePath = await db.findOne(User, { username: reviews[i].username }, { avatarImagePath: 1 });
+            reviews[i].avatarImagePath = avatarImagePath.avatarImagePath;
+        }
+
         // console.log(reviews[0].establishment_id);
+        /* check if its added */
+        /* for (let i = 0; i < reviews.length; i++) {
+            console.log(reviews[i].avatarImagePath);
+        } */
 
         if (result != null) {
             var details = {
@@ -145,8 +163,10 @@ const establishmentController = {
 
             res.render('establishment-page', details);
         } else {
-            res.render('error', 'Establishment not found.');
+            res.render('error', { error: 'Establishment not found.' });
         }
     }
 }
+
+
 module.exports = establishmentController;
