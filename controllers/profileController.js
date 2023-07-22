@@ -30,7 +30,8 @@ const profileController = {
             avatarImagePath: 1,
             description: 1,
             location: 1,
-            joined: 1
+            joined: 1,
+            bannerImagePath: 1
         }
 
         var userResult = await db.findOne(User, userQuery, userProjection);
@@ -51,6 +52,7 @@ const profileController = {
             last_name: userResult.last_name,
             location: userResult.location,
             avatarImagePath: userResult.avatarImagePath,
+            bannerImagePath: userResult.bannerImagePath,
             description: userResult.description,
             location: userResult.location,
             joined: userResult.joined,
@@ -73,7 +75,8 @@ const profileController = {
             avatarImagePath: 1,
             description: 1,
             location: 1,
-            joined: 1
+            joined: 1,
+            bannerImagePath: 1
         }
 
         var userResult = await db.findOne(User, userQuery, userProjection);
@@ -91,6 +94,7 @@ const profileController = {
             last_name: userResult.last_name,
             location: userResult.location,
             avatarImagePath: userResult.avatarImagePath,
+            bannerImagePath: userResult.bannerImagePath,
             description: userResult.description,
             location: userResult.location,
             joined: userResult.joined,

@@ -32,11 +32,11 @@ const signupController = {
             Example: the value entered in <input type="text" name="fName">
             can be retrieved using `req.body.fName`
         */
-        var first_name = req.body.first_name;  
-        var last_name = req.body.last_name; 
-        var username = req.body.username; 
-        var password = req.body.password; 
-        var description = req.body.description; 
+        var first_name = req.body.first_name;
+        var last_name = req.body.last_name;
+        var username = req.body.username;
+        var password = req.body.password;
+        var description = req.body.description;
 
         // TODO: get the avatar from the input, for this, just use ajax, and set the type of the button to button instead of submit
         // avatarImagePath
@@ -48,7 +48,9 @@ const signupController = {
             password: password,
             description: description,
             joined: new Date(),
-            location: 'N/A'
+            location: 'N/A',
+            avatarImagePath: '../images/default-user-images/default-avatar.png', // set the default avatar image path
+            bannerImagePath: '../images/default-user-images/default-banner.jpg'
         }
 
         var query = {
@@ -61,9 +63,7 @@ const signupController = {
 
         const userQuery = await db.findOne(User, query, projection);
 
-        console.log(userQuery);
-
-        if (userQuery != username) {
+        if (userQuery == null) {
             /*
             calls the function insertOne()
             defined in the `database` object in `../models/db.js`
