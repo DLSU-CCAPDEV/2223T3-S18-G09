@@ -155,6 +155,7 @@ const reviewsController = {
            
             function (err, html) {
                 if (err) {
+                    console.log(err);
                     // Handle the error
                     // console.error('Error rendering the partial:', err);
                     res.status(500).send('Error rendering the partial.');
@@ -256,7 +257,7 @@ const reviewsController = {
                 if (err) {
                     // Handle the error
                     // console.error('Error rendering the partial:', err);
-                    res.status(500).send('Error rendering the partial.');
+                    res.status(500).send(err);
                 } else {
                     // No error, continue with rendering
                     // console.log('Rendered HTML:', html);

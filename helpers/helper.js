@@ -44,11 +44,16 @@ function trimAndReadMore(id, body_desc) {
   
 
 function inArray(element, array) {
-    if (array.includes(element))
-      return true;
-    else
-      return false;
+        try {
+            if (array.includes(element))
+                return true;
+            else
+                return false;
+        } catch (error) {
+            return false;
+        }
 }
+
   
 
 module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars, isEqual, trimAndReadMore, inArray };
