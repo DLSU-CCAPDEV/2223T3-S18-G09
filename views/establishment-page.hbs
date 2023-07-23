@@ -56,14 +56,16 @@
         <div class="row ">
             <!-- Establishment info -->
             <div class="col">
-                <div>
-                    <span class="fw-bold fs-1" style="color: white;">{{name}}</span>
-                    <br>
-                    <span class="fs-5" style="color: white;">★★★✩✩ 10 Reviews</span>
-                    <br>
-                    <span class="fs-5" style="color: white;" A>₱₱₱ - Burgers</span>
-                    <br>
-                    <span class="fs-5" style="color: white;" A>Open 10 AM - 12 PM</span>
+                <div style="background-color: var(--primary); max-width: 400px" class="p-2 rounded">
+                    <div>
+                        <span class="fw-bold fs-1" style="color: white;">{{name}}</span>
+                        <br>
+                        <span class="fs-5" style="color: white;">{{{stars overall_rating}}} {{total_reviews}} reviews</span>
+                        <br>
+                        <span class="fs-5" style="color: white;" A>₱₱₱ - Burgers</span>
+                        <br>
+                        <span class="fs-5" style="color: white;" A>Open 10 AM - 12 PM</span>
+                    </div>
                 </div>
             </div>
             <div class="col position-relative d-flex justify-content-end">
