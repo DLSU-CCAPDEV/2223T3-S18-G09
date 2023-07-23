@@ -11,6 +11,8 @@ $(document).ready(function () {
             var newPassword = $('#update-newpassword').val();
 
             $.get('/update-2db', { first_name, last_name, username, description, oldPassword, newPassword});
+            alert('Profile Updated!');
+            window.location.href = '/user-profile-overview/' + username;
         }
         else {
             alert('New Passwords do not match!');

@@ -40,7 +40,15 @@ function trimAndReadMore(id, body_desc) {
         <p style='text-align: justify; text-justify: inter-word'>${trimmedText}<span id="dots${id}">...</span><span id="more${id}" style="display: none;">${body_desc.substr(250, body_desc.length)}</span> 
         <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}" style="color: var(--primary)">Read more</a></p>`;
     }
-  }
+}
   
 
-module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars, isEqual, trimAndReadMore };
+function inArray(element, array) {
+    if (array.includes(element))
+      return true;
+    else
+      return false;
+}
+  
+
+module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars, isEqual, trimAndReadMore, inArray };

@@ -38,6 +38,7 @@ const reviewsController = {
                 edited: item.edited,
                 rating: item.rating,
                 photos: item.photos,
+                votes: item.votes,
                 owner_response_id: item.owner_response_id, 
                 establishment_name: establishment.name,
                 owner_response: ownerResponse ? {
