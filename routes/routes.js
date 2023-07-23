@@ -32,7 +32,7 @@ app.get('/signup', signupController.getSignUp);
 app.post('/signup', upload.single("file"), signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
-app.get('/user-profile-overview', profileController.getUserProfileOverview);
+app.get('/user-profile-overview/:username', profileController.getUserProfileOverview);
 
 // for the login routes
 app.get('/login', loginController.getLogIn);

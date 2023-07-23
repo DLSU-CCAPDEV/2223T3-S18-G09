@@ -44,32 +44,7 @@
     <script type="text/javascript" src="../js/update.js"></script>
 
 	<!-- navigation bar -->
-	<nav class="navbar navbar-expand-sm navbar-light px-2">
-		<div class="container-fluid">
-			<div style="padding-right: 10%">
-				<a class="logo" href="/establishments-list">Palatable</a>
-			</div>
-
-			<div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-				<form class="d-flex w-auto" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
-					<a href="/search-establishments">
-						<button class="btn btn-outline-danger" type="button"><svg xmlns="http://www.w3.org/2000/svg"
-								width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-								<path
-									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-							</svg></button>
-					</a>
-				</form>
-
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="/login">Sign out</a>
-					</li>
-				</ul>
-
-			</div>
-	</nav>
+	{{> navbar}}
 
 	<!-- absolute positioned background header with opacity-->
 	<img class="user-header position-absolute" src="../images/user-banner.jpg" alt="User Header" style="opacity:0.4;">
@@ -109,7 +84,7 @@
 							<label for="floatingInput">Last Name</label>
 						</div>
 						<div class="form-floating mb-2">
-							<input type="text" class="form-control" id="update-username" value="{{username}}" required>
+							<input type="text" class="form-control" id="update-username" value="{{user}}" required>
 							<label for="floatingInput">Username</label>
 						</div>
 

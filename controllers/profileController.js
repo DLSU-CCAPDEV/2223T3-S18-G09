@@ -27,7 +27,7 @@ const profileController = {
         var details = {
             first_name: userResult.first_name,
             last_name: userResult.last_name,
-            username: userResult.username,
+            user: userResult.username,  //from username to user to make navbar work
             description: userResult.description
         }
         
@@ -39,10 +39,15 @@ const profileController = {
 
     getUserProfileOverview: async function (req, res) {
         const currentUser = req.session.user;
-        //const currentUser = 'uwah';
 
-        var userQuery = { username: currentUser };
+        var urlQuery = req.params.username;
 
+        if (urlQuery == currentUser) {
+            var userQuery = { username: currentUser };
+        } else {
+            var userQuery = { username: urlQuery };
+        }
+        
         var userProjection = {
             first_name: 1,
             last_name: 1,
@@ -57,13 +62,14 @@ const profileController = {
         var userResult = await db.findOne(User, userQuery, userProjection);
 
         /* TODO: get the number of reviews from the user using findMany in the Review Collections */
-        var reviewQuery = { username: currentUser }
 
+        /*
         var reviewProjection = {
             username: 1
         }
+        */
 
-        var reviewResult = await db.findMany(Review, reviewQuery);
+        var reviewResult = await db.findMany(Review, userQuery);
 
         /* add the establishment_name to the reviews */
 
@@ -89,7 +95,7 @@ const profileController = {
         var reviewCount = reviewResult.length;
 
         var details = {
-            currentPage: 'profile',
+            username: urlQuery,
             first_name: userResult.first_name,
             last_name: userResult.last_name,
             location: userResult.location,
