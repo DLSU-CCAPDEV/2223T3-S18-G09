@@ -16,7 +16,7 @@
     <div class="col-md-10 position-relative">
         {{#if (isEqual user username)}}
             {{!-- Edit button --}}
-            <div class="d-flex justify-content-end position-absolute top-0 p-0" style="max-width: 100%; left: 95%;">
+            <div class="d-flex justify-content-end position-absolute top-0 p-0" style="max-width: 100%; left: 95%">
                 <button class="btn btn-danger edit-review text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-review-modal-{{review_id}}" style="font-size: 10px;" data="{{review_id}}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path></svg></button>
@@ -61,7 +61,7 @@
 
                                     <div class="form-floating">
                                         <textarea class="form-control border-0" id="edit-floatingTextarea2-{{review_id}}"
-                                            style="height: 200px" required>{{body_desc}}</textarea>
+                                            style="height: 200px; text-align: justify; text-justify: inter-word" required>{{body_desc}}</textarea>
                                         <label for="edit-floatingTextarea2-{{review_id}}">Tell us about your experience!</label>
                                     </div>
                                 </div>
@@ -82,8 +82,10 @@
 
             {{!-- Delete button --}}
             <div class="d-flex justify-content-end position-absolute start-100 top-0">
-                <button id="delete-btn-{{review_id}}" class="btn btn-danger ml-auto btn-close delete-review t" data="{{review_id}}">
-                </button>
+                <button id="delete-btn-{{review_id}}" class="btn btn-danger ml-auto delete-review t" data="{{review_id}}" style="font-size: 10px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+</svg></button>
             </div>
         {{/if}}
         
@@ -134,18 +136,27 @@
         {{!-- Owner Response --}}
         {{#if owner_response_text}}
             <p class="mx-5" style="color: black;">
-              <span id="show{{review_id}}">
+                <span id="show{{review_id}}">
                 <b>Response from the Owner</b>
-              </span>
+                </span>
 
-              <span id="hide{{review_id}}" style="display: none;">
+                <span id="hide{{review_id}}" style="display: none;">
                 <b>Response from the Owner</b>
 
                 <span style="color: #B4B4B4"> Replied on {{formatDate owner_response_date}}</span>
                 <br>
                 {{owner_response_text}}
-              </span>
-              <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
+                </span>
+                <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
+                {{#if establishment_owner}}
+                    <br>
+                    <button class="btn btn-danger edit-review text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-review-modal-{{review_id}}" style="font-size: 10px;" data="{{review_id}}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path></svg> Edit Response</button>
+
+                    <button id="delete-btn-{{review_id}}" class="btn btn-danger ml-auto delete-review t" data="{{review_id}}" style="font-size: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></button>
+                {{/if}}
             </p>
         {{else}}
             {{#if establishment_owner}} 
