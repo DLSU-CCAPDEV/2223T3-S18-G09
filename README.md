@@ -15,8 +15,8 @@ Project Group 9 Repository (Dolon, Fetalvero, Gabini, Tumalad)
 4. Run the command `npm install` to initialize and install all necessary modules used in the project.
 5. Before running the server we run the command `node add_data.js` to initialize the demo content of the database. The data includes the ff:
 ```
-7 user accounts - 2 visitor account(non-owner users), 5 owner accounts(each account associated to one establishment)
-5 establishments - Jus and Jerry's, Burger King, Jollibee, BonChon, 24 Chicken
-5 reviews - 1 review on each establishment
+    7 user accounts - 2 visitor account(non-owner users), 5 owner accounts(each account associated to one establishment)
+    5 establishments - Jus and Jerry's, Burger King, Jollibee, BonChon, 24 Chicken
+    5 reviews - 1 review on each establishment
 ```
 6. We may now run our server. To do this, we run the command `node index.js`.
