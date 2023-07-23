@@ -1,40 +1,3 @@
-/*
-// import module `database` from `../models/db.js`
-const db = require('../models/db.js');
-
-// for the insertOne
-const Review = require('../models/ReviewModel.js');
-
-//inside submit-review
-
-var review = new Review({
-    review_id: 1234,
-    username: 'uwah',
-    establishment_id: 1234,
-    title: 'uwah',
-    body_desc 'uwah',
-    date '2022-09-09',
-    edited true,
-    rating 5,
-    votes {
-        numUpvotes: 1,
-        numDownvotes: 1,
-        upvotes: [uwah],
-        downvotes: [uwah]
-    },
-    photos './uwah.png',
-    owner_response_id 123,
-});
-
-db.insertOne(Review, review);
-*/
-
-// import module `database` from `../models/db.js`
-//const db = require('../models/db.js');
-
-// for the insertOne
-//const Review = require('../models/ReviewModel.js');
-
 // we can declare global variables here
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -83,30 +46,7 @@ $(document).ready(function () {
             function (data, status) {
                 $('#review-container').append(data);
             });
-
-        /*
-        var review = new Review({
-            review_id: 1234,
-            username: 'uwah',
-            establishment_id: 1234,
-            title: 'uwah',
-            body_desc: 'uwah',
-            date: '2022-09-09',
-            edited: true,
-            rating: 5,
-            votes: {
-                numUpvotes: 1,
-                numDownvotes: 1,
-                upvotes: [uwah],
-                downvotes: [uwah]
-            },
-            photos: './uwah.png',
-            owner_response_id: 1234,
-        });
-        db.insertOne(Review, review);*/
-
         
-
         // set default values if inputs are empty
         // if (userReviewText == '') {
         //     userReviewText = 'No review text';

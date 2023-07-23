@@ -41,8 +41,9 @@ app.post('/login', loginController.postLogin);
 app.get('/logout', logoutController.getLogOut);
 
 // For ajax
-app.get(`/write-review`, reviewsController.getWriteReview)
-app.get(`/delete-review`, reviewsController.getDeleteReview)
-app.get(`/update-review`, reviewsController.getUpdateReview)
+app.get(`/delete-review`, reviewsController.getDeleteReview);
+app.get(`/update-review`, reviewsController.getUpdateReview);
+app.get(`/write-review`, reviewsController.getWriteReview);
+app.get(`/update-2db`, profileController.getUpdate);
 
 module.exports = app;

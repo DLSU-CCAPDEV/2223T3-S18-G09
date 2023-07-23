@@ -40,6 +40,9 @@
 		integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
 		crossorigin="anonymous"></script>
 
+	<!-- script for js functionality -->
+    <script type="text/javascript" src="../js/update.js"></script>
+
 	<!-- navigation bar -->
 	<nav class="navbar navbar-expand-sm navbar-light px-2">
 		<div class="container-fluid">
@@ -70,7 +73,7 @@
 
 	<!-- absolute positioned background header with opacity-->
 	<img class="user-header position-absolute" src="../images/user-banner.jpg" alt="User Header" style="opacity:0.4;">
-	<form class="form-floating"> <!-- sends data to nowhere for now-->
+	<form class="form-floating">
 		<div class="container-fluid m-0">
 			<div class="row">
 				<div class="col col-md-3" style="padding-top:110px;">
@@ -98,15 +101,15 @@
 					<div class="col col-md-10 border-top border-black">
 						<br>
 						<div class="form-floating mb-2">
-							<input type="text" class="form-control" id="update-firstname" value="Brian" required>
+							<input type="text" class="form-control" id="update-firstname" value="{{first_name}}" required>
 							<label for="floatingInput">First Name</label>
 						</div>
 						<div class="form-floating mb-2">
-							<input type="text" class="form-control" id="update-lastname" value="Gabini" required>
+							<input type="text" class="form-control" id="update-lastname" value="{{last_name}}" required>
 							<label for="floatingInput">Last Name</label>
 						</div>
 						<div class="form-floating mb-2">
-							<input type="text" class="form-control" id="update-username" value="@Hello_World" required>
+							<input type="text" class="form-control" id="update-username" value="{{username}}" required>
 							<label for="floatingInput">Username</label>
 						</div>
 
@@ -122,11 +125,11 @@
 								<label for="floatingInput">New Password</label>
 							</div>
 							<div class="form-floating mb-2 ms-5">
-								<input type="password" class="form-control" id="update-newpassword">
+								<input type="password" class="form-control" id="verify-newpassword">
 								<label for="floatingInput">Retype New Password</label>
 							</div>
 							<div class="form-floating mb-2">
-								<textarea id="update-description" class="form-control" style="height:150px;"></textarea>
+								<textarea id="update-description" class="form-control" style="height:150px;">{{description}}</textarea>
 								<label for="floatingInput">Tell us about yourself! (optional)</label>
 							</div>
 						</div>
@@ -138,9 +141,9 @@
 
 
 
-							<a href="/user-profile-overview">
+							<!--<a href="/user-profile-overview">-->
 								<input type="button" class="btn btn-danger" id="submit" name="submit" value="Submit">
-							</a>
+							<!--</a>-->
 						</div>
 
 					</div>

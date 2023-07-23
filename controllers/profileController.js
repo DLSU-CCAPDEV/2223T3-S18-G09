@@ -6,6 +6,7 @@ const User = require('../models/UserModel.js');
 const Review = require('../models/ReviewModel.js');
 
 const Establishment = require('../models/EstablishmentModel.js');
+const { redirectRoot } = require('./controller.js');
 
 const profileController = {
     getProfile: async function (req, res) {
@@ -13,8 +14,24 @@ const profileController = {
     },
 
     // this is for rendering the profile page
-    getUpdateProfile: function (req, res) {
-        res.render('update-profile');
+    getUpdateProfile: async function (req, res) {
+        const currentUser = req.session.user;
+        var userQuery = { username: currentUser };
+        var userProjection = {
+            first_name: 1,
+            last_name: 1,
+            username: 1,
+            description: 1
+        }
+        var userResult = await db.findOne(User, userQuery, userProjection);
+        var details = {
+            first_name: userResult.first_name,
+            last_name: userResult.last_name,
+            username: userResult.username,
+            description: userResult.description
+        }
+        
+        res.render('update-profile', details);
     },
 
     // there should be another for submitting the form and shit
@@ -22,6 +39,7 @@ const profileController = {
 
     getUserProfileOverview: async function (req, res) {
         const currentUser = req.session.user;
+        //const currentUser = 'uwah';
 
         var userQuery = { username: currentUser };
 
@@ -88,6 +106,40 @@ const profileController = {
         res.render('user-profile-overview', details);
     },
 
+    getUpdate: async function (req,res) {
+        const currentUser = req.session.user;
+        var userQuery = { username: currentUser };
+        var userResult = await db.findOne(User, userQuery, {password: 1, username: 1});
+        var noDup = await db.findOne(User, {username: req.query.username}, {username: 1});
+
+
+        if (noDup && !noDup.username == currentUser){
+            console.log('Username Already Exists!');
+        }
+        else if(userResult.password == req.query.oldPassword || req.query.oldPassword == ""){
+            var updatePassword = req.query.newPassword;
+            
+            if (req.query.newPassword == "" || req.query.oldPassword == ""){
+                updatePassword = userResult.password;
+            }
+
+            var update = {
+                first_name: req.query.first_name,
+                last_name: req.query.last_name,
+                username: req.query.username,
+                description: req.query.description,
+                password: updatePassword
+            }
+            const updateData = await db.updateOne(User,{username: userResult.username},update);
+            req.session.user = req.query.username;
+            req.session.save();
+            //i have no clue how to redirect it back to user-profile
+            //res.render('user-profile-overview');
+        }
+        else {
+            console.log('Incorrect Password');
+        }
+    }
 };
 
 module.exports = profileController;
