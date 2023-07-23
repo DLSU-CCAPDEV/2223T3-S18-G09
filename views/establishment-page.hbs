@@ -384,7 +384,7 @@
 
             {{!-- reviews here --}}
             {{#each reviews}}
-            {{> review_partial this}}
+            {{> review_partial this user=../user owner_establishment_id=../owner_establishment_id}}
             {{/each}}
 
 

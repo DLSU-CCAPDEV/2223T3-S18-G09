@@ -105,7 +105,7 @@ const establishmentController = {
                 edited: item.edited,
                 rating: item.rating,
                 votes: item.votes,
-
+                
                 // imagePaths array from the query
                 // avatarImagePath: await db.findOne(User, { username: item.username }, { avatarImagePath: 1 })
             }

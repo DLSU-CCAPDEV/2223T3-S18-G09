@@ -79,10 +79,8 @@ $(document).ready(function () {
         // Get establishment that the user will write review for
         var establishment_id = $(`#submit-review`).attr("data");
 
-        console.log(establishment_id);
         $.get('/write-review', { title: userReviewTitle, body_desc: userReviewText, establishment_id: establishment_id, rating: rating }, 
             function (data, status) {
-                console.log(data);
                 $('#review-container').append(data);
             });
 
@@ -377,14 +375,19 @@ $(document).ready(function () {
 
 
 
-    // delete review
-    // change later when there's a button for deleting
-    $(document).on('click', '.delete-review', function () {
-        // $(this).parent().parent().parent().remove();
-        $(this).closest('.user-review').remove();
 
-        alert('Review removed!');
-    });
+    // delete review
+
+    
+    $(document).on('click', '.delete-review', function () {
+        var review_id = $(this).attr("data");
+        var reviewElement = $(this).closest('.user-review');
+        console.log(reviewElement)
+        $.get('/delete-review', { review_id: review_id }, 
+            function (data, status) {
+                reviewElement.remove();
+            });
+    });      
 
     // create an edit review function
     // change later when there's a button for editing

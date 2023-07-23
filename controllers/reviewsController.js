@@ -107,6 +107,7 @@ const reviewsController = {
             review_id: review.review_id,
             user: req.session.user, 
             owner_establishment_id: req.session.owner_establishment_id, 
+            establishment_id: review.establishment_id,
             avatarImagePath: review.avatarImagePath
             },
            
@@ -121,9 +122,12 @@ const reviewsController = {
                     res.send(html);
                 }
          });
+    },
+
+    getDeleteReview: async function (req, res) {
+        await db.deleteOne(Review, {review_id: req.query.review_id});
+        res.send(true);
     }
-
-
 }
 
 module.exports = reviewsController;
