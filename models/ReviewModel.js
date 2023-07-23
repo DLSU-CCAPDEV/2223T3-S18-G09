@@ -39,9 +39,11 @@ var ReviewSchema = new mongoose.Schema({
         downvotes: [String] // Array of usernames (Strings)
         },
     photos: [String],  // Array of file path
-    owner_response_id: {
-        type: Number,
-        required: true
+    owner_response_text: {
+        type: String
+    },
+    owner_response_date: {
+        type: Date
     }
 });
 
