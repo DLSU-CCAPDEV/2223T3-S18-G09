@@ -17,7 +17,11 @@ const controller = {
     },
 
     getError: function (req, res) {
-        res.render('error', {error: ERROR});    
+        error = {
+            code: 404,
+            error: 'There is nothing to see here...'
+        }
+        res.render('error', error);    
     }
 
     /* guide 
