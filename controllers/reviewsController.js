@@ -44,7 +44,8 @@ const reviewsController = {
                     body_desc: ownerResponse.body_desc,
                     date: ownerResponse.date
                 } : null,
-                avatarImagePath: user.avatarImagePath
+                avatarImagePath: user.avatarImagePath,
+                edited: item.edited
             };
         }));
         
@@ -144,6 +145,8 @@ const reviewsController = {
 
     getDeleteReview: async function (req, res) {
         var review = await db.findOne(Review, {review_id: req.query.review_id});
+
+        console.log(review);
         var establishment_id = review.establishment_id;
         var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
         var total_reviews_counter = establishment.total_reviews;
@@ -156,6 +159,55 @@ const reviewsController = {
         // Decrement total number of reviews and update overall rating
         await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter - 1, overall_rating: new_overall_rating});
         res.send(true);
+    },
+
+    getUpdateReview: async function (req, res) {
+        // Get necessary variables
+        var review_id = req.query.review_id;
+        var title = req.query.title;
+        var body_desc = req.query.body_desc;
+        var new_rating = req.query.rating;
+
+        var review = await db.findOne(Review, {review_id: req.query.review_id});
+        var establishment_id = review.establishment_id;
+        var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
+        var user = await db.findOne(User, { username: review.username });
+
+        var old_rating = review.rating;
+
+        // Remove previous rating from overall rating 
+        var total_reviews_counter = establishment.total_reviews;
+        var new_overall_rating = ((establishment.overall_rating * total_reviews_counter) - old_rating + Number(new_rating)) / total_reviews_counter;
+
+        // Update in database
+        await db.updateOne(Review, {review_id: review_id}, {title: title, body_desc: body_desc, rating: new_rating, edited: true});
+        await db.updateOne(Establishment, {establishment_id: establishment_id}, {overall_rating: new_overall_rating});
+        
+        res.render('partials/review-partial', {
+            username: review.username,
+            rating: new_rating,
+            date: review.date,
+            body_desc: body_desc,
+            title: title,
+            review_id: review_id,
+            user: req.session.user, 
+            owner_establishment_id: req.session.owner_establishment_id, 
+            establishment_id: review.establishment_id,
+            avatarImagePath: user.avatarImagePath,
+            edited: true
+            },
+           
+            function (err, html) {
+                if (err) {
+                    // Handle the error
+                    console.error('Error rendering the partial:', err);
+                    res.status(500).send('Error rendering the partial.');
+                } else {
+                    // No error, continue with rendering
+                    // console.log('Rendered HTML:', html);
+                    res.send(html);
+                }
+         });
     }
 }
 

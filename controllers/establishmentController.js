@@ -132,6 +132,7 @@ const establishmentController = {
                 total_reviews: result.total_reviews,
                 contact: result.contact,
                 address: result.address,
+                edited: result.edited,
 
                 // imagePaths array from the query
                 // contains paths to pfp, header, map, menu, and gallery images

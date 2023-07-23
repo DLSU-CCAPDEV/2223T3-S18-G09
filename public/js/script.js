@@ -382,7 +382,7 @@ $(document).ready(function () {
     $(document).on('click', '.delete-review', function () {
         var review_id = $(this).attr("data");
         var reviewElement = $(this).closest('.user-review');
-        console.log(reviewElement)
+    
         $.get('/delete-review', { review_id: review_id }, 
             function (data, status) {
                 reviewElement.remove();
@@ -450,6 +450,64 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '.edit-review-submit', function () {
+        var review_id = $(this).attr("data");
+        var edit_review_title = `#edit-review-title-` + review_id;
+        var edit_review_text = `#edit-floatingTextarea2-` + review_id;
+        var edit_review_rating = `input[name="` + `edit-rating-` + review_id + `"]:checked`;
+        var reviewElement = $(this).closest('.user-review');
+
+        // Validate if input fields are empty
+        if(!$(edit_review_title).val() && !$(edit_review_text).val()) {
+            $(edit_review_title).addClass(`is-invalid`);
+            $(edit_review_text).addClass(`is-invalid`);
+            return;
+        }
+        else if(!$(edit_review_title).val()) {
+            $(edit_review_title).addClass(`is-invalid`);
+            $(edit_review_text).removeClass(`is-invalid`);
+            return;
+        }
+        else if(!$(edit_review_text).val()) {
+            $(edit_review_text).addClass(`is-invalid`);
+            $(edit_review_title).removeClass(`is-invalid`);
+            return;
+        }
+        else {
+            $(edit_review_title).removeClass(`is-invalid`);
+            $(edit_review_text).removeClass(`is-invalid`);
+        }
+
+
+        // Get input from fields
+        var userReviewText = $(edit_review_text).val();
+        var userReviewTitle = $(edit_review_title).val(); 
+        var rating = $(edit_review_rating).val();
+
+
+
+        $.get('/update-review', { title: userReviewTitle, body_desc: userReviewText, review_id: review_id, rating: rating }, 
+            function (data, status) {
+                // reviewElement.removeClass(`row`);
+                // reviewElement.removeClass(`mb-5`);
+                // reviewElement.removeClass(`user-review`);
+
+                $(reviewElement).replaceWith(data);
+
+                // reset input fields after submission
+        
+            });
+
+        $(edit_review_text).val('');
+        $(edit_review_title).val('');
+        $(edit_review_rating).prop('checked', false);
+        var edit_form = '#formFileMultiple-' + review_id;
+        $(edit_form).val('');
+        alert('Review updated!');
+        var closeBtn = `closeBtn-` +  review_id;
+        document.getElementById(closeBtn).click(); // close modal
+    });
+
 });
 
 function hideResponseFunction(ID, show_id, hide_id) {
@@ -483,3 +541,6 @@ function hideResponseFunction(ID, show_id, hide_id) {
       moreText.style.display = "inline";
     }
   }
+
+
+  
