@@ -448,19 +448,18 @@ $(document).ready(function () {
         document.getElementById(closeBtn).click(); // close modal
     });
 
-    // Event listener for the radio buttons
+    // Rating filter on establishment list
     $('input[type="radio"]').on('change', function () {
         // Get the selected rating
         var selectedRating = $(this).val();
-  
-        if (selectedRating > 0) {
-            $('.establishment-item').hide();
-            $('.establishment-item[data-rating="' + selectedRating + '"]').show();
-        } else {
-            $('.establishment-item').show(); //Reset filter at 0 stars
-        }
+
+        $('.establishment-item').hide();
+        $('.establishment-item[data-rating="' + selectedRating + '"]').show();
     });
 
+    $('#filterReset').click(function () {
+        $('.establishment-item').show(); //Reset filter
+    });
 });
 
 function hideResponseFunction(ID, show_id, hide_id) {
