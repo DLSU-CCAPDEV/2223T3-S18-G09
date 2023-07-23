@@ -112,7 +112,7 @@
                 <p class="mx-2">Was this review helpful to you?</p>
                 <!-- UPVOTE -->
                 <span style="font-size: 16px">{{votes.numUpvotes}}</span>
-                {{!--
+
                 {{#if (inArray user votes.upvotes)}}
                     <span class="upvote active-vote" style="color: var(--accent1);">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-up-fill"></i>
@@ -120,14 +120,12 @@
                     <span class="upvote" style="color: var(--accent1);">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-up"></i>
                 {{/if}}
-                --}}
-                    <span class="upvote" style="color: var(--accent1);">
-                        <i style="font-size: 16px" class="bi bi-hand-thumbs-up"></i>
+
                 </span>
                 &nbsp;
                 <!-- DOWNVOTE -->
                 <span style="font-size: 16px">{{votes.numDownvotes}}</span>
-                {{!--
+                
                 {{#if (inArray user votes.downvotes)}}
                     <span class="downvote active-vote" style="color: var(--accent1);">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-down-fill"></i>
@@ -135,9 +133,7 @@
                     <span class="downvote" style="color: var(--accent1);">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-down"></i>
                 {{/if}}
-                --}}
-                    <span class="downvote" style="color: var(--accent1);">
-                        <i style="font-size: 16px" class="bi bi-hand-thumbs-down"></i>
+
                 </span>
             </div>
         </div>
