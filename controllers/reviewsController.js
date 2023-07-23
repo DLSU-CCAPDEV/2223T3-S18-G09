@@ -108,8 +108,12 @@ const reviewsController = {
         // Insert to db
         await db.insertOne(Review, review,);
 
+
+        // Get new overall rating
+        var new_overall_rating = ((establishment.overall_rating * establishment.total_reviews) + Number(rating)) / (total_reviews_counter + 1);
+
         // Increment total reviews of establishment
-        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter + 1});
+        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter + 1, overall_rating: new_overall_rating});
         
 
         res.render('partials/review-partial', {
@@ -144,10 +148,13 @@ const reviewsController = {
         var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
         var total_reviews_counter = establishment.total_reviews;
 
+        // Get new overall rating
+        var new_overall_rating = ((establishment.overall_rating * establishment.total_reviews) - Number(review.rating)) / (total_reviews_counter - 1);
+
         await db.deleteOne(Review, {review_id: req.query.review_id});
 
-        // Decrement total number of reviews
-        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter - 1});
+        // Decrement total number of reviews and update overall rating
+        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter - 1, overall_rating: new_overall_rating});
         res.send(true);
     }
 }

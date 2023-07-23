@@ -21,8 +21,8 @@ function formatNumReview(reviewCount) {
 }
 
 function stars (n, block) {
-    n = typeof n === 'number' ? Math.round(n) : 0;
-
+    n = typeof n === 'number' ? Math.round(n) :Math.round(Number(n)) || 0;
+    console.log(n);
     let filledStars = `<span class="fa fa-star checked"></span>`.repeat(n);
     let emptyStars = `<span class="fa fa-star-o checked"></span>`.repeat(5 - n);
     return filledStars + emptyStars;
