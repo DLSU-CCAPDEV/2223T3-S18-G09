@@ -13,17 +13,17 @@ $(document).ready(function () {
     $('#submit-review').click(function () {
 
         // Validate if input fields are empty
-        if(!$(`#review-title`).val() && !$(`#floatingTextarea2`).val()) {
+        if(!$(`#review-title`).val().trim() && !$(`#floatingTextarea2`).val().trim()) {
             $(`#review-title`).addClass(`is-invalid`);
             $(`#floatingTextarea2`).addClass(`is-invalid`);
             return;
         }
-        else if(!$(`#review-title`).val()) {
+        else if(!$(`#review-title`).val().trim()) {
             $(`#review-title`).addClass(`is-invalid`);
             $(`#floatingTextarea2`).removeClass(`is-invalid`);
             return;
         }
-        else if(!$(`#floatingTextarea2`).val()) {
+        else if(!$(`#floatingTextarea2`).val().trim()) {
             $(`#floatingTextarea2`).addClass(`is-invalid`);
             $(`#review-title`).removeClass(`is-invalid`);
             return;
@@ -32,8 +32,8 @@ $(document).ready(function () {
         // AJAX CALL    
         // Get input from fields
         
-        var userReviewText = $('#floatingTextarea2').val();
-        var userReviewTitle = $('#review-title').val(); 
+        var userReviewText = $('#floatingTextarea2').val().trim();
+        var userReviewTitle = $('#review-title').val().trim(); 
         var rating = $('input[name="rating"]:checked').val();
         if (rating == undefined)
             rating = 0;
@@ -398,17 +398,17 @@ $(document).ready(function () {
         var reviewElement = $(this).closest('.user-review');
 
         // Validate if input fields are empty
-        if(!$(edit_review_title).val() && !$(edit_review_text).val()) {
+        if(!$(edit_review_title).val().trim() && !$(edit_review_text).val().trim()) {
             $(edit_review_title).addClass(`is-invalid`);
             $(edit_review_text).addClass(`is-invalid`);
             return;
         }
-        else if(!$(edit_review_title).val()) {
+        else if(!$(edit_review_title).val().trim()) {
             $(edit_review_title).addClass(`is-invalid`);
             $(edit_review_text).removeClass(`is-invalid`);
             return;
         }
-        else if(!$(edit_review_text).val()) {
+        else if(!$(edit_review_text).val().trim()) {
             $(edit_review_text).addClass(`is-invalid`);
             $(edit_review_title).removeClass(`is-invalid`);
             return;
@@ -420,8 +420,8 @@ $(document).ready(function () {
 
 
         // Get input from fields
-        var userReviewText = $(edit_review_text).val();
-        var userReviewTitle = $(edit_review_title).val(); 
+        var userReviewText = $(edit_review_text).val().trim();
+        var userReviewTitle = $(edit_review_title).val().trim(); 
         var rating = $(edit_review_rating).val();
 
 

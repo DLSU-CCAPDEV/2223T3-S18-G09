@@ -144,22 +144,34 @@ const reviewsController = {
     },
 
     getDeleteReview: async function (req, res) {
-        var review = await db.findOne(Review, {review_id: req.query.review_id});
-
-        console.log(review);
-        var establishment_id = review.establishment_id;
-        var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
-        var total_reviews_counter = establishment.total_reviews;
-
-        // Get new overall rating
-        var new_overall_rating = ((establishment.overall_rating * establishment.total_reviews) - Number(review.rating)) / (total_reviews_counter - 1);
-
-        await db.deleteOne(Review, {review_id: req.query.review_id});
-
-        // Decrement total number of reviews and update overall rating
-        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter - 1, overall_rating: new_overall_rating});
-        res.send(true);
-    },
+        try {
+          var review = await db.findOne(Review, { review_id: req.query.review_id });
+          var establishment_id = review.establishment_id;
+          var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
+          var total_reviews_counter = establishment.total_reviews;
+      
+          // Get new overall rating
+          var new_overall_rating = ((establishment.overall_rating * establishment.total_reviews) - Number(review.rating)) / (total_reviews_counter - 1);
+          
+          // Handle divisions by 0
+          if (isNaN(new_overall_rating)) {
+            new_overall_rating = 0;
+          }
+      
+          console.log(new_overall_rating);
+      
+          await db.deleteOne(Review, { review_id: req.query.review_id });
+      
+          // Decrement total number of reviews and update overall rating
+          await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, { total_reviews: total_reviews_counter - 1, overall_rating: new_overall_rating });
+      
+          res.send(true);
+        } catch (error) {
+          // If there's an error, handle it here and return false
+          res.send(false);
+        }
+      },
+      
 
     getUpdateReview: async function (req, res) {
         // Get necessary variables
@@ -178,6 +190,9 @@ const reviewsController = {
         // Remove previous rating from overall rating 
         var total_reviews_counter = establishment.total_reviews;
         var new_overall_rating = ((establishment.overall_rating * total_reviews_counter) - old_rating + Number(new_rating)) / total_reviews_counter;
+        if (isNaN(new_overall_rating)) {
+            new_overall_rating = 0;
+        }
 
         // Update in database
         await db.updateOne(Review, {review_id: review_id}, {title: title, body_desc: body_desc, rating: new_rating, edited: true});
