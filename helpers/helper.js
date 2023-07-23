@@ -38,7 +38,7 @@ function trimAndReadMore(id, body_desc) {
       const trimmedText = body_desc.substr(0, 250);
       return `
         <p>${trimmedText}<span id="dots${id}">...</span><span id="more${id}" style="display: none;">${body_desc.substr(250, body_desc.length)}</span> 
-        <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}">Read more</a></p>`;
+        <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}" style="color: var(--primary)">Read more</a></p>`;
     }
   }
   
