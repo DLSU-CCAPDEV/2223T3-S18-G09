@@ -5,6 +5,7 @@ const db = require('../models/db.js');
 const Review = require('../models/ReviewModel.js');
 const Establishment = require('../models/EstablishmentModel.js');
 const OwnerResponse = require('../models/OwnerResponseModel.js');
+const User = require('../models/UserModel.js');
 
 
 const reviewsController = {
@@ -25,6 +26,7 @@ const reviewsController = {
         var reviews = await Promise.all(result.map(async (item) => {
             var establishment = await db.findOne(Establishment, { establishment_id: item.establishment_id });
             var ownerResponse = await db.findOne(OwnerResponse, { review_id: item.review_id });
+            var user = await db.findOne(User, { username: item.username });
 
             return {
                 review_id: item.review_id,
@@ -41,7 +43,8 @@ const reviewsController = {
                 owner_response: ownerResponse ? {
                     body_desc: ownerResponse.body_desc,
                     date: ownerResponse.date
-                } : null
+                } : null,
+                avatarImagePath: user.avatarImagePath
             };
         }));
         
@@ -71,6 +74,8 @@ const reviewsController = {
         var edited = false;
         var rating = req.query.rating;
         
+        var user = await db.findOne(User, { username: username });
+
         var review = {
             review_id: review_id,
             username: username,
@@ -81,6 +86,7 @@ const reviewsController = {
             owner_response_id: null,
             edited: edited,
             rating: rating,
+            avatarImagePath: user.avatarImagePath,
             votes: {
                 numUpvotes: 0,
                 numDownvotes: 0,
@@ -100,7 +106,10 @@ const reviewsController = {
             title: review.title,
             review_id: review.review_id,
             user: req.session.user, 
-            owner_establishment_id: req.session.owner_establishment_id}, 
+            owner_establishment_id: req.session.owner_establishment_id, 
+            avatarImagePath: review.avatarImagePath
+            },
+           
             function (err, html) {
                 if (err) {
                     // Handle the error
