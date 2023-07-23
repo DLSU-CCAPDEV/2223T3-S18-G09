@@ -108,6 +108,38 @@
 
 
         {{{trimAndReadMore review_id body_desc}}}
+
+        {{!-- If there are photos in a review --}}
+        {{#if photos}}
+            <!-- Image Carousel -->
+            <div id="carousel-{{review_id}}" class="carousel slide my-3">
+            <div class="carousel-indicators">
+                {{#each photos}}
+                <button type="button" data-bs-target="#carousel-{{review_id}}" data-bs-slide-to="{{@index}}"
+                {{#if @first}}class="active" aria-current="true"{{/if}} aria-label="Slide {{@index}}"></button>
+                {{/each}}
+            </div>
+            <div class="carousel-inner" role="listbox">
+                {{#each photos}}
+                <div class="carousel-item {{#if @first}}active{{/if}}">
+                <img src="{{this}}" class="d-block w-100" alt="...">
+                </div>
+                {{/each}}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{review_id}}"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{review_id}}"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        {{/if}}
+
+        
         <div class="review-group">
             <div class="container d-flex px-2">
                 <p class="mx-2">Was this review helpful to you?</p>

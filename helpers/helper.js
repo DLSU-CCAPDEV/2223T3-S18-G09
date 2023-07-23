@@ -41,6 +41,5 @@ function trimAndReadMore(id, body_desc) {
         <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}" style="color: var(--primary)">Read more</a></p>`;
     }
   }
-  
 
 module.exports = { replaceSpaceWithHyphen, replaceHyphenWithSpace, formatDate, formatNumReview, stars, isEqual, trimAndReadMore };

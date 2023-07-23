@@ -1,3 +1,7 @@
+const path = require("path");
+
+const fs = require("fs");
+
 // import module `database` from `../models/db.js`
 const db = require('../models/db.js');
 
@@ -38,7 +42,8 @@ const reviewsController = {
                 edited: item.edited,
                 rating: item.rating,
                 photos: item.photos,
-                owner_response_id: item.owner_response_id, 
+                owner_response_id: item.owner_response_id,
+                imagePaths: item.imagePaths,
                 establishment_name: establishment.name,
                 owner_response: ownerResponse ? {
                     body_desc: ownerResponse.body_desc,
@@ -61,22 +66,39 @@ const reviewsController = {
           });
     },
 
-    getWriteReview: async function (req, res) {
-
-        var review = await db.findMany(Review);
-        review.sort((a, b) => a.review_id - b.review_id);
-
+    postWriteReview: async function (req, res) {
         // Get necessary data from input fields
-        var review_id = review[review.length - 1].review_id + 1; // get highest id and increment by 1
+        var review = await db.findMany(Review);
         var username = req.session.user;
-        var establishment_id = req.query.establishment_id;
-        var title = req.query.title;
-        var body_desc = req.query.body_desc;
+        var establishment_id = req.body.establishment_id;
+        var title = req.body.title;
+        var body_desc = req.body.body_desc;
         var date = Date.now();
         var edited = false;
-        var rating = req.query.rating;
-        
+        var rating = req.body.rating;
 
+        review.sort((a, b) => a.review_id - b.review_id);
+        var review_id = review[review.length - 1].review_id + 1; // get highest id and increment by 1
+
+        var files =  req.files;
+        var filesArr = [];
+        if (req.files) {
+            for (const file of files) {
+                const sourcePath = file.path;
+                const destinationPath = path.join(__dirname, "..", "files", "images", "user-uploads",`review-photo-` + review_id + `-` + file.originalname);
+                const reviewPhotoPath = '../images/user-uploads/' + `review-photo-` + review_id + `-` + file.originalname;
+                // Process each file and save it to the destination path
+                
+                fs.rename(sourcePath, destinationPath, (err) => {
+                    if (err) {
+                        // console.error('Error renaming file:', err);
+                        // Handle the error, e.g., show an error message or log it
+                    } else {
+                        filesArr.push(reviewPhotoPath);
+                    }
+                });
+            }
+        }
         // To get avatar image path
         var user = await db.findOne(User, { username: username });
 
@@ -102,21 +124,20 @@ const reviewsController = {
                 upvotes: [],
                 downvotes: []
             },
-            photos: [], 
-            owner_response_id: 0 
+            photos: filesArr, 
+            owner_response_id: 0,
           };
         
         // Insert to db
-        await db.insertOne(Review, review,);
+        await db.insertOne(Review, review);
 
-
+        
         // Get new overall rating
         var new_overall_rating = ((establishment.overall_rating * establishment.total_reviews) + Number(rating)) / (total_reviews_counter + 1);
 
         // Increment total reviews of establishment
         await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter + 1, overall_rating: new_overall_rating});
         
-
         res.render('partials/review-partial', {
             username: review.username,
             rating: review.rating,
@@ -127,13 +148,14 @@ const reviewsController = {
             user: req.session.user, 
             owner_establishment_id: req.session.owner_establishment_id, 
             establishment_id: review.establishment_id,
-            avatarImagePath: review.avatarImagePath
+            avatarImagePath: review.avatarImagePath,
+            photos: review.photos
             },
            
             function (err, html) {
                 if (err) {
                     // Handle the error
-                    console.error('Error rendering the partial:', err);
+                    // console.error('Error rendering the partial:', err);
                     res.status(500).send('Error rendering the partial.');
                 } else {
                     // No error, continue with rendering
@@ -158,8 +180,6 @@ const reviewsController = {
             new_overall_rating = 0;
           }
       
-          console.log(new_overall_rating);
-      
           await db.deleteOne(Review, { review_id: req.query.review_id });
       
           // Decrement total number of reviews and update overall rating
@@ -173,19 +193,38 @@ const reviewsController = {
       },
       
 
-    getUpdateReview: async function (req, res) {
+    postUpdateReview: async function (req, res) {
         // Get necessary variables
-        var review_id = req.query.review_id;
-        var title = req.query.title;
-        var body_desc = req.query.body_desc;
-        var new_rating = req.query.rating;
+        var review_id = req.body.review_id;
+        var title = req.body.title;
+        var body_desc = req.body.body_desc;
+        var new_rating = req.body.rating;
 
-        var review = await db.findOne(Review, {review_id: req.query.review_id});
+        var review = await db.findOne(Review, {review_id: req.body.review_id});
+        
         var establishment_id = review.establishment_id;
         var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
         var user = await db.findOne(User, { username: review.username });
-
         var old_rating = review.rating;
+
+        var files =  req.files;
+        var filesArr = [];
+        if (req.files) {
+            // Use Promise.all to wait for all fs.rename operations to complete
+            await Promise.all(files.map(async (file) => {
+                const sourcePath = file.path;
+                const destinationPath = path.join(__dirname, "..", "files", "images", "user-uploads", `review-photo-` + review_id + `-` + file.originalname);
+                const reviewPhotoPath = '../images/user-uploads/' + `review-photo-` + review_id + `-` + file.originalname;
+                
+                try {
+                    await fs.promises.rename(sourcePath, destinationPath);
+                    filesArr.push(reviewPhotoPath);
+                } catch (err) {
+                    // Handle any errors that occur during file processing
+                    console.error('Error renaming file:', err);
+                }
+            }));
+        }
 
         // Remove previous rating from overall rating 
         var total_reviews_counter = establishment.total_reviews;
@@ -193,9 +232,8 @@ const reviewsController = {
         if (isNaN(new_overall_rating)) {
             new_overall_rating = 0;
         }
-
         // Update in database
-        await db.updateOne(Review, {review_id: review_id}, {title: title, body_desc: body_desc, rating: new_rating, edited: true});
+        await db.updateOne(Review, {review_id: review_id}, {title: title, body_desc: body_desc, rating: new_rating, edited: true, photos: filesArr});
         await db.updateOne(Establishment, {establishment_id: establishment_id}, {overall_rating: new_overall_rating});
         
         res.render('partials/review-partial', {
@@ -209,13 +247,14 @@ const reviewsController = {
             owner_establishment_id: req.session.owner_establishment_id, 
             establishment_id: review.establishment_id,
             avatarImagePath: user.avatarImagePath,
-            edited: true
+            edited: true,
+            photos: filesArr
             },
            
             function (err, html) {
                 if (err) {
                     // Handle the error
-                    console.error('Error rendering the partial:', err);
+                    // console.error('Error rendering the partial:', err);
                     res.status(500).send('Error rendering the partial.');
                 } else {
                     // No error, continue with rendering

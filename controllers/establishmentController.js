@@ -82,15 +82,15 @@ const establishmentController = {
 
         var result = await db.findOne(Establishment, query);
 
+        console.log(result.establishment_id);
+    
         var reviewQuery = {
             establishment_id: result.establishment_id
         }
 
-        // console.log(reviewQuery.establishment_id);
+        
 
         var result2 = await db.findMany(Review, reviewQuery);
-
-
 
         // console.log(JSON.stringify(result2));
 
@@ -105,7 +105,7 @@ const establishmentController = {
                 edited: item.edited,
                 rating: item.rating,
                 votes: item.votes,
-                
+                photos: item.photos,
                 // imagePaths array from the query
                 // avatarImagePath: await db.findOne(User, { username: item.username }, { avatarImagePath: 1 })
             }
