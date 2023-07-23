@@ -42,6 +42,7 @@ const reviewsController = {
                 edited: item.edited,
                 rating: item.rating,
                 photos: item.photos,
+                votes: item.votes,
                 owner_response_id: item.owner_response_id,
                 imagePaths: item.imagePaths,
                 establishment_name: establishment.name,

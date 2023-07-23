@@ -46,4 +46,7 @@ app.post(`/update-review`, upload.array('files'), reviewsController.postUpdateRe
 app.post(`/write-review`, upload.array('files'), reviewsController.postWriteReview);
 app.get(`/update-2db`, profileController.getUpdate);
 
+//Error
+app.get('/*', controller.getError);
+
 module.exports = app;

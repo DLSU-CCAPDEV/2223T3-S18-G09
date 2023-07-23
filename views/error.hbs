@@ -1,8 +1,22 @@
 <html>
-    <head>Error Page</head>
+    <head>
+        <title>Uh oh!</title>
+        {{> prerequisites}}
+    </head>
 
     <body>
-        <h1>ERROR</h1>
-        <p>{{error}}</p>
+        <nav class="navbar navbar-expand-sm navbar-light px-2">
+            <a class="logo" href="/establishments-list">Palatable</a>
+        </nav>
+
+        <div class="d-flex justify-content-center p-5">
+            <div class="text-center">
+                <h1 style="font-weight: bolder; font-size: 250; color: var(--primary)">{{code}}</h1>
+                <p style="font-size: 50;">{{error}}</p>
+                <a href="/establishments-list">
+                    <p style="font-size: 30;">Get back to Home Page</p>
+                </a>
+            </div>
+        </div>
     </body>
 </html>

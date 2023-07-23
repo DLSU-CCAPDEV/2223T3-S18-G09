@@ -46,6 +46,7 @@ hbs.registerHelper('formatNumReview', helper.formatNumReview);
 hbs.registerHelper('stars', helper.stars);
 hbs.registerHelper('isEqual', helper.isEqual);
 hbs.registerHelper('trimAndReadMore', helper.trimAndReadMore);
+hbs.registerHelper('inArray', helper.inArray);
 
 dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file
