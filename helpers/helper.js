@@ -40,12 +40,8 @@ function trimAndReadMore(id, body_desc) {
         <p style='text-align: justify; text-justify: inter-word'>${trimmedText}<span id="dots${id}">...</span><span id="more${id}" style="display: none;">${body_desc.substr(250, body_desc.length)}</span> 
         <a onclick="readMoreFunction(dots${id}, more${id}, myBtn${id})" id="myBtn${id}" style="color: var(--primary)">Read more</a></p>`;
     }
-<<<<<<< HEAD
-  }
-=======
 }
   
->>>>>>> 995e21870df5357312d50252775a578e0830accb
 
 function inArray(element, array) {
     if (array.includes(element))

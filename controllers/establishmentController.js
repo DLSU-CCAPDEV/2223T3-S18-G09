@@ -109,12 +109,9 @@ const establishmentController = {
                 edited: item.edited,
                 rating: item.rating,
                 votes: item.votes,
-<<<<<<< HEAD
                 photos: item.photos,
-=======
                 owner_response_text: '',
                 user: req.session.user
->>>>>>> 995e21870df5357312d50252775a578e0830accb
                 // imagePaths array from the query
                 // avatarImagePath: await db.findOne(User, { username: item.username }, { avatarImagePath: 1 })
             }
