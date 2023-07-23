@@ -65,6 +65,7 @@ const reviewsController = {
         var review = await db.findMany(Review);
         review.sort((a, b) => a.review_id - b.review_id);
 
+        // Get necessary data from input fields
         var review_id = review[review.length - 1].review_id + 1; // get highest id and increment by 1
         var username = req.session.user;
         var establishment_id = req.query.establishment_id;
@@ -74,8 +75,15 @@ const reviewsController = {
         var edited = false;
         var rating = req.query.rating;
         
+
+        // To get avatar image path
         var user = await db.findOne(User, { username: username });
 
+        // Find establishment that the user will write review for
+        var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
+        var total_reviews_counter = establishment.total_reviews;
+
+        // Store in an object
         var review = {
             review_id: review_id,
             username: username,
@@ -96,8 +104,14 @@ const reviewsController = {
             photos: [], 
             owner_response_id: 0 
           };
-
+        
+        // Insert to db
         await db.insertOne(Review, review,);
+
+        // Increment total reviews of establishment
+        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter + 1});
+        
+
         res.render('partials/review-partial', {
             username: review.username,
             rating: review.rating,
@@ -125,7 +139,15 @@ const reviewsController = {
     },
 
     getDeleteReview: async function (req, res) {
+        var review = await db.findOne(Review, {review_id: req.query.review_id});
+        var establishment_id = review.establishment_id;
+        var establishment = await db.findOne(Establishment, { establishment_id: establishment_id });
+        var total_reviews_counter = establishment.total_reviews;
+
         await db.deleteOne(Review, {review_id: req.query.review_id});
+
+        // Decrement total number of reviews
+        await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, {total_reviews: total_reviews_counter - 1});
         res.send(true);
     }
 }
