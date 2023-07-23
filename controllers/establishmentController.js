@@ -12,6 +12,8 @@ const User = require('../models/UserModel.js');
 
 const OwnRes = require('../models/OwnerResponseModel.js');
 
+const OwnEst = require('../models/EstablishmentOwnerModel.js');
+
 const establishmentController = {
     getEstablishments: async function (req, res) {
         var result = await db.findMany(Establishment, {});
@@ -108,11 +110,16 @@ const establishmentController = {
                 rating: item.rating,
                 votes: item.votes,
                 owner_response_text: '',
+                user: req.session.user
                 // imagePaths array from the query
                 // avatarImagePath: await db.findOne(User, { username: item.username }, { avatarImagePath: 1 })
             }
         });
-
+        var rich = false;
+        var ceo = await db.findOne(OwnEst, {username: req.session.user, establishment_id: result.establishment_id});
+        if(ceo){
+            rich = true;
+        }
         /* append a new property, avatarImagePath */
         for (let i = 0; i < reviews.length; i++) {
             var avatarImagePath = await db.findOne(User, { username: reviews[i].username }, { avatarImagePath: 1 });
@@ -122,6 +129,7 @@ const establishmentController = {
                 reviews[i].owner_response_text = ownerResponse.body_desc;
                 reviews[i].owner_response_date = ownerResponse.date;
             }
+            reviews[i].establishment_owner = rich;
         }
 
         // console.log(reviews[0].establishment_id);

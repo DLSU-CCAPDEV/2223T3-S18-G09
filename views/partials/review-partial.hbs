@@ -148,7 +148,7 @@
               <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
             </p>
         {{else}}
-            {{#if true}} 
+            {{#if establishment_owner}} 
                 <div class="col" id="response-btn{{review_id}}">
                 <button class="btn btn-danger fs-6 mx-5 btn-sm" data-bs-toggle="modal"
                     data-bs-target="#write-response-modal{{review_id}}">
