@@ -46,4 +46,7 @@ app.get(`/update-review`, reviewsController.getUpdateReview);
 app.get(`/write-review`, reviewsController.getWriteReview);
 app.get(`/update-2db`, profileController.getUpdate);
 
+//Error
+app.get('/*', controller.getError);
+
 module.exports = app;

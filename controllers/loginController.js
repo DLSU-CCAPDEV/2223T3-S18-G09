@@ -39,7 +39,11 @@ const loginController = {
 
 
         if(!user){
-            res.render('error');
+            var data = {
+                username : username,
+                error_message : 'Invalid username or password!'
+            }
+            res.render('login', data);
 
             /* checkUsername(user.username, username);
             checkPassword(user.password, password); */
