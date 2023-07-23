@@ -117,7 +117,7 @@ $(document).ready(function () {
             $(this).html(`<i style="font-size: 16px" class="bi bi-hand-thumbs-up-fill"></i>`);
             $(this).addClass('active-vote');
 
-            var dv = $(this).next('.downvote'); //This stopped workin
+            var dv = $(this).nextAll('.downvote').first(); //This stopped workin
             dv.removeClass('active-vote'); //This stopped workin
             dv.html(`<i style="font-size: 16px" class="bi bi-hand-thumbs-down"></i>`); //This stopped workin
 
@@ -149,7 +149,7 @@ $(document).ready(function () {
             $(this).html(`<i style="font-size: 16px" class="bi bi-hand-thumbs-down-fill"></i>`);
             $(this).addClass('active-vote');
 
-            var uv = $(this).prev('.upvote'); //This stopped workin
+            var uv = $(this).prevAll('.upvote').first(); //This stopped workin
             uv.removeClass('active-vote'); //This stopped workin
             uv.html(`<i style="font-size: 16px" class="bi bi-hand-thumbs-up"></i>`); //This stopped workin
 
