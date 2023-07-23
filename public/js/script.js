@@ -448,6 +448,19 @@ $(document).ready(function () {
         document.getElementById(closeBtn).click(); // close modal
     });
 
+    // Event listener for the radio buttons
+    $('input[type="radio"]').on('change', function () {
+        // Get the selected rating
+        var selectedRating = $(this).val();
+  
+        if (selectedRating > 0) {
+            $('.establishment-item').hide();
+            $('.establishment-item[data-rating="' + selectedRating + '"]').show();
+        } else {
+            $('.establishment-item').show(); //Reset filter at 0 stars
+        }
+    });
+
 });
 
 function hideResponseFunction(ID, show_id, hide_id) {
