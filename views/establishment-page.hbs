@@ -80,8 +80,17 @@
     <div class="container pb-4" style="margin-top: 40px; border-color:black; border-style:solid; border-width: 0px 0px 3px 0px;">
         <div class="row">
             <!-- Review Button -->
+
+            
             <div class="col">
+                {{!-- Redirect if user is not logged in. If user is logged in, allow write review --}}
+
+
+                {{#if user}}
                 <button class="btn btn-warning fs-5 " data-bs-toggle="modal" data-bs-target="#write-review-modal">
+                {{else}}
+                <button class="btn btn-warning fs-5" onclick="location.href='/login'">
+                {{/if}}
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-pencil-square" viewBox="0 0 16 16">
