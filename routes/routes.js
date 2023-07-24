@@ -45,13 +45,13 @@ app.get('/logout', logoutController.getLogOut);
 app.get(`/delete-review`, reviewsController.getDeleteReview);
 app.post(`/update-review`, upload.array('files'), reviewsController.postUpdateReview);
 app.post(`/write-review`, upload.array('files'), reviewsController.postWriteReview);
-app.get(`/update-2db`, profileController.getUpdate);
+app.post(`/update-2db`, upload.array('files'), profileController.postUpdate);
 
 app.get('/upvote', votingController.getUpvote);
 app.get('/downvote', votingController.getDownvote);
 
 
-app.get(`/delete-response`, reviewsController.getDeleteResponse);
+// app.get(`/delete-response`, reviewsController.getDeleteResponse);
 //app.post(`/update-response`, upload.array('files'), reviewsController.postUpdateResponse);
 //Error
 app.get('/*', controller.getError);
