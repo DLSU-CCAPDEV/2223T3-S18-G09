@@ -425,5 +425,27 @@ var review = {
     },
 };
 
-db.insertOne(Review, review);
+var resp = {
+    review_id: 0,
+    body_desc: 'Thanks for the reply, we hope to see you around!',
+    date: '2023-04-04'
+};
+
+db.insertOne(OwnerResponse, resp);
+
+var resp = {
+    review_id: 2,
+    body_desc: 'I like the part when he said {give example}, definitely one of the reviews of all time.',
+    date: '2023-05-24'
+};
+
+db.insertOne(OwnerResponse, resp);
+
+var resp = {
+    review_id: 4,
+    body_desc: 'Haha, I like your\'e enthusiasm, we might bring in more varieties in the future so stay tuned.',
+    date: '2023-06-17'
+};
+
+db.insertOne(OwnerResponse, resp);
 
