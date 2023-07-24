@@ -24,14 +24,18 @@ const profileController = {
             first_name: 1,
             last_name: 1,
             username: 1,
-            description: 1
+            description: 1,
+            avatarImagePath: 1,
+            bannerImagePath: 1
         }
         var userResult = await db.findOne(User, userQuery, userProjection);
         var details = {
             first_name: userResult.first_name,
             last_name: userResult.last_name,
             user: userResult.username,  //from username to user to make navbar work
-            description: userResult.description
+            description: userResult.description,
+            avatarImagePath: userResult.avatarImagePath,
+            bannerImagePath: userResult.bannerImagePath
         }
         
         res.render('update-profile', details);
