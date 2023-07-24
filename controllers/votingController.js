@@ -195,7 +195,6 @@ const votingController = {
             numDownvotes: numDownvotes,
             success: true,
         };
-
         res.send(data);
     }
 }
