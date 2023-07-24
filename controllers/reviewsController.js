@@ -270,11 +270,21 @@ const reviewsController = {
         try {
           await db.deleteOne(OwnerResponse, { review_id: req.query.review_id });
           res.send(true);
-          
+
         } catch (error) {
           res.send(false);
         }
       },
+
+    getUpdateResponse: async function (req, res) {
+        try {
+            await db.updateOne(OwnerResponse, { review_id: req.query.id }, {body_desc: req.query.text});
+            res.send(true);
+            
+          } catch (error) {
+            res.send(false);
+          }
+    }
 }
 
 module.exports = reviewsController;

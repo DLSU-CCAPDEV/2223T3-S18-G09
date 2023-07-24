@@ -52,7 +52,8 @@ app.get('/downvote', votingController.getDownvote);
 
 
 app.get(`/delete-response`, reviewsController.getDeleteResponse);
-//app.post(`/update-response`, upload.array('files'), reviewsController.postUpdateResponse);
+app.get(`/update-response`, reviewsController.getUpdateResponse);
+
 //Error
 app.get('/*', controller.getError);
 

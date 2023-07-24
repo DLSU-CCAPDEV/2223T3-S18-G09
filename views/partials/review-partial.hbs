@@ -13,7 +13,7 @@
         </div>
     </div>
     
-    <div class="col-md-10 position-relative">
+    <div class="col-md-10 position-relative" id="response-reedit{{review_id}}">
         {{#if (isEqual user username)}}
             {{!-- Edit button --}}
             <div class="d-flex justify-content-end position-absolute top-0 p-0" style="max-width: 100%; left: 95%">
@@ -183,7 +183,9 @@
 
                 <span style="color: #B4B4B4"> Replied on {{formatDate owner_response_date}}</span>
                 <br>
+                <span id="rewrite{{owner_response_id}}">
                 {{owner_response_text}}
+                </span>
                 </span>
                 <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
                 {{#if establishment_owner}}

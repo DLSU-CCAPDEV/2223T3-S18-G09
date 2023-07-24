@@ -254,88 +254,45 @@ $(document).ready(function () {
     // Delete Response
     $(document).on('click', '.delete-response', function () {
         var review_id = $(this).attr("data");
-        var reviewElement = $(this).closest('.user-response');
+        var reviewElement = $(this).closest('.user-response');  
         $.get('/delete-response', { review_id: review_id }, 
             function (data, status) {
                 reviewElement.remove();
+                
+                // To follow: Appends Write a Response Button after deleting
+
+                // var eyy = $('#response-reedit' + review_id);
+                // var div = $('<div></div>').addClass('col').attr('id', 'response-button' + review_id);
+                // var button = $('<button></button>').addClass('btn btn-danger fs-6 mx-5 btn-sm').attr({'data-bs-toggle': 'moddal','ata-bs-target': '#write-response-modal' + review_id});
+                // var i = $('<i></i>').css('font-size', '16px').addClass('bi bi-pencil-square me-1');
+                // button.append(i);
+                // button.text('Write a Response');
+                // div.append(button);
+                // eyy.append(div);
             });
     });  
 
     // Edit Review
     $(document).on('click', '.edit-response-submit', function () {
-        alert('It works too');
+         var review_id = $(this).attr("data");
+         var edit_response_text = `#edit-floatingTextarea2-` + review_id;
+         var reviewElement = $(this).closest('.user-response');
+
+         // Validate if input fields are empty
+         if(!$(edit_response_text).val().trim()){
+            $(edit_response_text).addClass(`is-invalid`);
+            return;
+         }
+         // Get input from fields
+         var userResponseText = $(edit_response_text).val().trim();
+
+        $.get("/update-response", {id: review_id, text: userResponseText});
+        $('#rewrite' + review_id).text(userResponseText);
+        $(edit_response_text).val(userResponseText);
+        alert('Response updated!');
+        var closeBtn = `closeBtn-` +  review_id;
+        document.getElementById(closeBtn).click(); // close modal
     });
-    //     var review_id = $(this).attr("data");
-    //     var edit_review_title = `#edit-review-title-` + review_id;
-    //     var edit_review_text = `#edit-floatingTextarea2-` + review_id;
-    //     var edit_review_rating = `input[name="` + `edit-rating-` + review_id + `"]:checked`;
-    //     var reviewElement = $(this).closest('.user-review');
-
-    //     // Validate if input fields are empty
-    //     if(!$(edit_review_title).val().trim() && !$(edit_review_text).val().trim()) {
-    //         $(edit_review_title).addClass(`is-invalid`);
-    //         $(edit_review_text).addClass(`is-invalid`);
-    //         return;
-    //     }
-    //     else if(!$(edit_review_title).val().trim()) {
-    //         $(edit_review_title).addClass(`is-invalid`);
-    //         $(edit_review_text).removeClass(`is-invalid`);
-    //         return;
-    //     }
-    //     else if(!$(edit_review_text).val().trim()) {
-    //         $(edit_review_text).addClass(`is-invalid`);
-    //         $(edit_review_title).removeClass(`is-invalid`);
-    //         return;
-    //     }
-    //     else {
-    //         $(edit_review_title).removeClass(`is-invalid`);
-    //         $(edit_review_text).removeClass(`is-invalid`);
-    //     }
-
-
-    //     // Get input from fields
-    //     var userReviewText = $(edit_review_text).val().trim();
-    //     var userReviewTitle = $(edit_review_title).val().trim(); 
-    //     var rating = $(edit_review_rating).val();
-
-    //     // Get files uploaded
-    //     var edit_form = `edit-formFileMultiple-` + review_id;
-    //     var input = document.getElementById(edit_form);
-    //     var inputFiles = input.files;
-    //     if (!inputFiles) {
-    //         inputFiles = null;
-    //     }
-
-    //     const formData = new FormData();
-    //     // Append each file to the formData with a unique key, e.g., "file1", "file2", etc.
-    //     for (let i = 0; i < inputFiles.length; i++) {
-    //         formData.append(`files`, inputFiles[i]);
-    //     }
-
-    //     formData.append('title', userReviewTitle);
-    //     formData.append('body_desc', userReviewText);
-    //     formData.append('rating', rating);
-    //     formData.append(`review_id`, review_id);
-
-    //     $.post({
-    //         url: "/update-review",
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         success: function (data) {
-    //             $(reviewElement).replaceWith(data);
-    //         },
-    //     });
-
-    //     $(edit_review_text).val('');
-    //     $(edit_review_title).val('');
-    //     $(edit_review_rating).prop('checked', false);
-    //     var edit_form = '#edit-formFileMultiple-' + review_id;
-    //     $(edit_form).val('');
-    //     alert('Review updated!');
-    //     var closeBtn = `closeBtn-` +  review_id;
-    //     document.getElementById(closeBtn).click(); // close modal
-    //});
 });
 
 function hideResponseFunction(ID, show_id, hide_id) {
