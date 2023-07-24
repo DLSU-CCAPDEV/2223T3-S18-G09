@@ -129,6 +129,7 @@ const establishmentController = {
             if(ownerResponse){
                 reviews[i].owner_response_text = ownerResponse.body_desc;
                 reviews[i].owner_response_date = ownerResponse.date;
+                reviews[i].owner_response_id = ownerResponse.review_id;
             }
             reviews[i].establishment_owner = rich;
         }
