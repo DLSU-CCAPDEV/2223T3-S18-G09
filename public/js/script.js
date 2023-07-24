@@ -251,6 +251,24 @@ $(document).ready(function () {
         $('.establishment-item').show(); //Reset filter
     });
 
+    // Create Response
+    $(document).on('click', '.create-response', function () {
+        var review_id = $(this).attr("data");
+        var userResponseText = $('#floatingTextarea2' + review_id);
+        var currentDate = currDate;
+        var body_desc = userResponseText.val();
+
+        var reviewElement = $(this).closest('.user-response');  
+        $.get('/create-response', {id: review_id, date: currentDate, text: body_desc}, 
+            function (data, status) {
+            });
+        userResponseText.text('');
+        $('#response-btn' + review_id).hide();
+        alert('Response submitted!');
+        var closeBtn = `btn-close` +  review_id;
+        document.getElementById(closeBtn).click();
+    });  
+
     // Delete Response
     $(document).on('click', '.delete-response', function () {
         var review_id = $(this).attr("data");
@@ -272,11 +290,12 @@ $(document).ready(function () {
             });
     });  
 
-    // Edit Review
+    // Edit Response
     $(document).on('click', '.edit-response-submit', function () {
          var review_id = $(this).attr("data");
          var edit_response_text = `#edit-floatingTextarea2-` + review_id;
-         var reviewElement = $(this).closest('.user-response');
+         var currentDate = currDate;
+         //var reviewElement = $(this).closest('.user-response');
 
          // Validate if input fields are empty
          if(!$(edit_response_text).val().trim()){
@@ -286,7 +305,7 @@ $(document).ready(function () {
          // Get input from fields
          var userResponseText = $(edit_response_text).val().trim();
 
-        $.get("/update-response", {id: review_id, text: userResponseText});
+        $.get("/update-response", {id: review_id, date: currentDate, text: userResponseText});
         $('#rewrite' + review_id).text(userResponseText);
         $(edit_response_text).val(userResponseText);
         alert('Response updated!');

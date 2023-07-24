@@ -53,6 +53,7 @@ app.get('/downvote', votingController.getDownvote);
 
 app.get(`/delete-response`, reviewsController.getDeleteResponse);
 app.get(`/update-response`, reviewsController.getUpdateResponse);
+app.get(`/create-response`, reviewsController.getCreateResponse);
 
 //Error
 app.get('/*', controller.getError);

@@ -239,7 +239,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                         <h1 class="modal-title fs-5" id="modalLabel{{review_id}}">Respond to {{username}}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close{{review_id}}" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <form style="max-width: 600px;">
@@ -250,8 +250,8 @@
                                 <label for="floatingTextarea2">Response from the owner</label>
                             </div>
                             </div>
-                            <input id="submit-response{{review_id}}" class="submit-button btn btn-primary position-relative"
-                            type="button" style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal">
+                            <input id="submit-response{{review_id}}" class="submit-button btn btn-primary position-relative create-response"
+                            type="button" style="width: 200px; left:55%;" value="Post Response" data-bs-dismiss="modal" data="{{review_id}}">
                         </form>
                         </div>
                     </div>

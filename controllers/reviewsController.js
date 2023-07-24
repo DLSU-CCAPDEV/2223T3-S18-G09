@@ -182,7 +182,11 @@ const reviewsController = {
             new_overall_rating = 0;
           }
       
-          await db.deleteOne(Review, { review_id: req.query.review_id });
+          await db.deleteOne(Review, { review_id: req.query.review_id});
+          var resp = await db.findOne(OwnerResponse, { review_id: req.query.review_id});
+          if (resp) {
+            await db.deleteOne(OwnerResponse, { review_id: req.query.review_id});
+          }
       
           // Decrement total number of reviews and update overall rating
           await db.updateOne(Establishment, { establishment_id: establishment.establishment_id }, { total_reviews: total_reviews_counter - 1, overall_rating: new_overall_rating });
@@ -278,7 +282,17 @@ const reviewsController = {
 
     getUpdateResponse: async function (req, res) {
         try {
-            await db.updateOne(OwnerResponse, { review_id: req.query.id }, {body_desc: req.query.text});
+            await db.updateOne(OwnerResponse, { review_id: req.query.id }, {body_desc: req.query.text, date: req.query.date});
+            res.send(true);
+            
+          } catch (error) {
+            res.send(false);
+          }
+    },
+
+    getCreateResponse: async function (req, res) {
+        try {
+            await db.insertOne(OwnerResponse, {review_id: req.query.id, body_desc: req.query.text, date: req.query.date});
             res.send(true);
             
           } catch (error) {
