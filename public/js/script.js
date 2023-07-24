@@ -259,9 +259,31 @@ $(document).ready(function () {
         var body_desc = userResponseText.val();
 
         var reviewElement = $(this).closest('.user-response');  
-        $.get('/create-response', {id: review_id, date: currentDate, text: body_desc}, 
-            function (data, status) {
-            });
+        $.get('/create-response', {id: review_id, date: currentDate, text: body_desc});
+        
+        var eyy = $('#response-reedit' + review_id);
+        var p = $('<p></p>').addClass('mx-5 user-response').css({'color': 'black'});
+        var span1 = $('<span></span>').attr({'id': 'show'+review_id});
+        var b1 = $('<b></b>').text('Response from the Owner');
+        var span2 = $('<span></span>').attr({'id': 'hide'+review_id}).css({'display': 'none'});
+        var b2 = $('<b></b>').text('Response from the Owner');
+        var span3 = $('<span></span>').css({'color': '#B4B4B4'}).text(' Replied on '+ currDateString);
+        var span4 = $('<span></span>').attr({'id': 'rewrite'+review_id}).text(body_desc);
+        var br = $('<br>')
+        
+        var a1 = $('<a></a>').attr({'onclick':'hideResponseFunction(`response'+review_id+'`, `show'+review_id+'`, `hide'+review_id+'`)','id':'response'+review_id});
+        a1.text(' • Show Response');
+
+        span1.append(b1);
+        span2.append(b2);
+        span2.append(span3);
+        span2.append(br);
+        span2.append(span4);
+        p.append(span1);
+        p.append(span2);
+        p.append(a1);
+        eyy.append(p);
+
         userResponseText.text('');
         $('#response-btn' + review_id).hide();
         alert('Response submitted!');
