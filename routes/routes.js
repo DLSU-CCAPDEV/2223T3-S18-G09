@@ -50,6 +50,9 @@ app.get(`/update-2db`, profileController.getUpdate);
 app.get('/upvote', votingController.getUpvote);
 app.get('/downvote', votingController.getDownvote);
 
+
+app.get(`/delete-response`, reviewsController.getDeleteResponse);
+//app.post(`/update-response`, upload.array('files'), reviewsController.postUpdateResponse);
 //Error
 app.get('/*', controller.getError);
 

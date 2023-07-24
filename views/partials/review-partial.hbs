@@ -173,7 +173,7 @@
 
         {{!-- Owner Response --}}
         {{#if owner_response_text}}
-            <p class="mx-5" style="color: black;">
+            <p class="mx-5 user-response" style="color: black;">
                 <span id="show{{review_id}}">
                 <b>Response from the Owner</b>
                 </span>
@@ -188,11 +188,36 @@
                 <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
                 {{#if establishment_owner}}
                     <br>
-                    <button class="btn btn-danger edit-review text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-review-modal-{{review_id}}" style="font-size: 10px;" data="{{review_id}}">
+                    <button class="btn btn-danger edit-response text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-response-modal-{{owner_response_id}}" style="font-size: 10px;" data="{{owner_response_id}}">
                         <i class="bi bi-pencil-square"></i> Edit Response</button>
 
-                    <button id="delete-btn-{{review_id}}" class="btn btn-danger ml-auto delete-review t" data="{{review_id}}" style="font-size: 10px;">
+                    <button id="delete-btn-{{owner_response_id}}" class="btn btn-danger ml-auto delete-response t" data="{{owner_response_id}}" style="font-size: 10px;">
                         <i class="bi bi-trash-fill"></i></button>
+                    
+                    <!-- Modal for editing response -->
+                    <div class="modal fade" id="edit-response-modal-{{owner_response_id}}" tabindex="-1" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="edit-modalLabel-{{owner_response_id}}">Edit Response</h1>
+                                    <button id="closeBtn-{{owner_response_id}}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form style="max-width: 600px;">
+                                        <div class="form-floating border p-3 my-3 rounded">
+                                            <textarea class="form-control border-0" id="edit-floatingTextarea2-{{owner_response_id}}"
+                                                style="height: 200px; text-align: justify; text-justify: inter-word" required>{{owner_response_text}}</textarea>
+                                            <label for="edit-floatingTextarea2-{{owner_response_id}}">Respond to {{username}}</label>
+                                        </div>
+
+                                        <input id="edit-response-submit-{{owner_response_id}}" class="submit-button btn btn-primary edit-response-submit" type="button"
+                                            style="width: 200px;" value="Edit Response" data="{{owner_response_id}}">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {{/if}}
             </p>
         {{else}}

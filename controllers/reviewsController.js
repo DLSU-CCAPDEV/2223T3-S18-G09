@@ -264,7 +264,17 @@ const reviewsController = {
                     res.send(html);
                 }
          });
-    }
+    },
+
+    getDeleteResponse: async function (req, res) {
+        try {
+          await db.deleteOne(OwnerResponse, { review_id: req.query.review_id });
+          res.send(true);
+          
+        } catch (error) {
+          res.send(false);
+        }
+      },
 }
 
 module.exports = reviewsController;
