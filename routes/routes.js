@@ -7,6 +7,7 @@ const logoutController = require('../controllers/logoutController.js');
 const establishmentController = require('../controllers/establishmentController.js');
 const profileController = require('../controllers/profileController.js');
 const reviewsController = require('../controllers/reviewsController.js');
+const votingController = require('../controllers/votingController.js');
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
@@ -45,6 +46,9 @@ app.get(`/delete-review`, reviewsController.getDeleteReview);
 app.post(`/update-review`, upload.array('files'), reviewsController.postUpdateReview);
 app.post(`/write-review`, upload.array('files'), reviewsController.postWriteReview);
 app.get(`/update-2db`, profileController.getUpdate);
+
+app.get('/upvote', votingController.getUpvote);
+app.get('/downvote', votingController.getDownvote);
 
 //Error
 app.get('/*', controller.getError);

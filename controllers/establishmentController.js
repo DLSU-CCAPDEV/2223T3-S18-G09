@@ -87,12 +87,12 @@ const establishmentController = {
         var result = await db.findOne(Establishment, query);
 
         console.log(result.establishment_id);
-    
+
         var reviewQuery = {
             establishment_id: result.establishment_id
         }
 
-        
+
 
         var result2 = await db.findMany(Review, reviewQuery);
 
@@ -117,16 +117,16 @@ const establishmentController = {
             }
         });
         var rich = false;
-        var ceo = await db.findOne(OwnEst, {username: req.session.user, establishment_id: result.establishment_id});
-        if(ceo){
+        var ceo = await db.findOne(OwnEst, { username: req.session.user, establishment_id: result.establishment_id });
+        if (ceo) {
             rich = true;
         }
         /* append a new property, avatarImagePath */
         for (let i = 0; i < reviews.length; i++) {
             var avatarImagePath = await db.findOne(User, { username: reviews[i].username }, { avatarImagePath: 1 });
-            var ownerResponse = await db.findOne(OwnRes, { review_id: reviews[i].review_id});
+            var ownerResponse = await db.findOne(OwnRes, { review_id: reviews[i].review_id });
             reviews[i].avatarImagePath = avatarImagePath.avatarImagePath;
-            if(ownerResponse){
+            if (ownerResponse) {
                 reviews[i].owner_response_text = ownerResponse.body_desc;
                 reviews[i].owner_response_date = ownerResponse.date;
             }
@@ -172,6 +172,10 @@ const establishmentController = {
                 Saturday: result.establishmentTime.Saturday,
                 Sunday: result.establishmentTime.Sunday
             };
+
+            console.log(
+                'From establishment controller: ' + details.user
+            );
 
             /* console.log(details.name);
             console.log(details.description);

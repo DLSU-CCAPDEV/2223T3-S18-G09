@@ -143,26 +143,27 @@
             <div class="container d-flex px-2">
                 <p class="mx-2">Was this review helpful to you?</p>
                 <!-- UPVOTE -->
-                <span style="font-size: 16px">{{votes.numUpvotes}}</span>
+                <span class="numUpvotes" style="font-size: 16px">{{votes.numUpvotes}}</span>
 
+                {{!-- if user is in votes array then fill this --}}
                 {{#if (inArray user votes.upvotes)}}
-                    <span class="upvote active-vote" style="color: var(--accent1);">
+                    <span class="upvote active-vote" style="color: var(--accent1);" data="{{review_id}}">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-up-fill"></i>
                 {{else}}
-                    <span class="upvote" style="color: var(--accent1);">
+                    <span class="upvote" style="color: var(--accent1);" data="{{review_id}}">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-up"></i>
                 {{/if}}
 
                 </span>
                 &nbsp;
                 <!-- DOWNVOTE -->
-                <span style="font-size: 16px">{{votes.numDownvotes}}</span>
+                <span class="numDownvotes" style="font-size: 16px">{{votes.numDownvotes}}</span>
                 
                 {{#if (inArray user votes.downvotes)}}
-                    <span class="downvote active-vote" style="color: var(--accent1);">
+                    <span class="downvote active-vote" style="color: var(--accent1);" data="{{review_id}}">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-down-fill"></i>
                 {{else}}
-                    <span class="downvote" style="color: var(--accent1);">
+                    <span class="downvote" style="color: var(--accent1);" data="{{review_id}}">
                         <i style="font-size: 16px" class="bi bi-hand-thumbs-down"></i>
                 {{/if}}
 
