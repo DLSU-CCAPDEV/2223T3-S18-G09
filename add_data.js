@@ -359,7 +359,7 @@ var review = {
     body_desc: "I really like the chicken chops with the garlicky soy garlic flavor 5 out 5 would recommend!",
     date: "2017-10-27",
     edited: false,
-    rating: 0,
+    rating: 5,
     votes: {
         numUpvotes: 0,
         numDownvotes: 0,
@@ -378,7 +378,7 @@ var review = {
     body_desc: "I really like ordering from this restaurant when I'm craving for a good burger.",
     date: "2017-10-11",
     edited: false,
-    rating: 0,
+    rating: 5,
     votes: {
         numUpvotes: 0,
         numDownvotes: 0,
@@ -397,7 +397,7 @@ var review = {
     body_desc: "Nagustuhan ko yung chicken nila kasi malaki yung serving tapos masarap pa yung lasa.",
     date: "2017-10-23",
     edited: false,
-    rating: 0,
+    rating: 5,
     votes: {
         numUpvotes: 0,
         numDownvotes: 0,
@@ -416,7 +416,7 @@ var review = {
     body_desc: "I tried the bulgogi once as well as the korean chicken, it was really good and I would recommend it to anyone!",
     date: "2017-10-04",
     edited: false,
-    rating: 0,
+    rating: 5,
     votes: {
         numUpvotes: 0,
         numDownvotes: 0,
