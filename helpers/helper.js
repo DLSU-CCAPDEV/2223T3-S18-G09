@@ -44,7 +44,14 @@ function trimAndReadMore(id, body_desc) {
 
 
 function inArray(element, array) {
-    return array.includes(element);
+        try {
+            if (array.includes(element))
+                return true;
+            else
+                return false;
+        } catch (error) {
+            return false;
+        }
 }
 
 
