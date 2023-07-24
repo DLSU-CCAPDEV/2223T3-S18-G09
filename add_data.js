@@ -343,7 +343,7 @@ var review = {
     rating: 5,
     votes: {
         numVotes: 0,
-        numDownVotes: 0,
+        numDownvotes: 0,
         upvotes: [],
         downvotes: []
     },
@@ -362,7 +362,7 @@ var review = {
     rating: 0,
     votes: {
         numVotes: 0,
-        numDownVotes: 0,
+        numDownvotes: 0,
         upvotes: [],
         downvotes: []
     },
@@ -381,7 +381,7 @@ var review = {
     rating: 0,
     votes: {
         numVotes: 0,
-        numDownVotes: 0,
+        numDownvotes: 0,
         upvotes: [],
         downvotes: []
     },
@@ -400,7 +400,7 @@ var review = {
     rating: 0,
     votes: {
         numVotes: 0,
-        numDownVotes: 0,
+        numDownvotes: 0,
         upvotes: [],
         downvotes: []
     },
@@ -419,7 +419,7 @@ var review = {
     rating: 0,
     votes: {
         numVotes: 0,
-        numDownVotes: 0,
+        numDownvotes: 0,
         upvotes: [],
         downvotes: []
     },
