@@ -11,6 +11,7 @@ const votingController = require('../controllers/votingController.js');
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+const validation = require('../helpers/validation.js');
 
 /* app.get('/profile/:username', controller.getProfile);  */ // use this later on 
 
@@ -30,7 +31,7 @@ app.get('/search-reviews', reviewsController.getSearchReviews);
 // for the sign-up routes
 // app.get('/signup', controller.getSignUp);
 app.get('/signup', signupController.getSignUp);
-app.post('/signup', upload.single("file"), signupController.postSignUp);
+app.post('/signup', upload.single("file"), validation.signupValidation, signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
 app.get('/user-profile-overview/:username', profileController.getUserProfileOverview);
@@ -54,6 +55,9 @@ app.get('/downvote', votingController.getDownvote);
 app.get(`/delete-response`, reviewsController.getDeleteResponse);
 app.get(`/update-response`, reviewsController.getUpdateResponse);
 app.get(`/create-response`, reviewsController.getCreateResponse);
+
+// new additions
+app.get('/getCheckUsername', signupController.getCheckUsername)
 
 //Error
 app.get('/*', controller.getError);
