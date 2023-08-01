@@ -46,7 +46,10 @@ app.get('/logout', logoutController.getLogOut);
 app.get(`/delete-review`, reviewsController.getDeleteReview);
 app.post(`/update-review`, upload.array('files'), reviewsController.postUpdateReview);
 app.post(`/write-review`, upload.array('files'), reviewsController.postWriteReview);
-app.post(`/update-2db`, upload.array('files'), profileController.postUpdate);
+app.post(`/update-2db`, upload.fields([
+    { name: 'avatar', maxCount: 1 },
+    { name: 'banner', maxCount: 1 }
+  ]), profileController.postUpdate);
 
 app.get('/upvote', votingController.getUpvote);
 app.get('/downvote', votingController.getDownvote);

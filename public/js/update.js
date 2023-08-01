@@ -18,30 +18,19 @@ $(document).ready(function () {
             input_banner = document.getElementById('updateform-banner');
             input_pfp = document.getElementById('updateform-pfp');
 
-            var input_arr;
-            if(!input_banner.files && !input_pfp.files) {
-                input_arr = null;
-            }
-            else {
-                var input_arr = [];
-
-                input_arr.length = 2;
-                input_arr[0] = input_pfp.files[0];
-                input_arr[1] = input_banner.files[0];
-            }
-            console.log(input_arr);
+            console.log(input_pfp.files[0]);
+            console.log(input_banner.files[0]);
 
             const formData = new FormData();
+            formData.append('avatar', input_pfp.files[0]);
+            formData.append('banner', input_banner.files[0]);
+            
             formData.append('first_name', first_name);
             formData.append('last_name', last_name);
             formData.append('username', username);
             formData.append('description', description);
             formData.append('oldPassword', oldPassword);
             formData.append('newPassword', newPassword);
-
-            for (let i = 0; i < input_arr.length; i++) {
-                formData.append(`files`, input_arr[i]);
-            }
 
             $.post({
                 url: "/update-2db",

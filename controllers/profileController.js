@@ -126,7 +126,7 @@ const profileController = {
         var noDup = await db.findOne(User, {username: req.body.username}, {username: 1});
 
         var files =  req.files;
-
+        // console.log(req.files);
         var pathName1 = userResult.avatarImagePath;
         var pathName2 = userResult.bannerImagePath;
 
@@ -135,10 +135,10 @@ const profileController = {
 
         if (req.files) {
             // PFP
-            if(files[0]){
-                var sourcePath1 = files[0].path;
-                var destinationPath1 = path.join(__dirname, "..", "files", "images", "user-uploads",`pfp-` + files[0].originalname);
-                var pathName1 = '../images/user-uploads/' + `pfp-` + files[0].originalname;
+            if(req.files.avatar && Array.isArray(req.files.avatar) && req.files.avatar.length > 0){
+                var sourcePath1 = req.files.avatar[0].path;
+                var destinationPath1 = path.join(__dirname, "..", "files", "images", "user-uploads",`pfp-` + req.files.avatar[0].originalname);
+                var pathName1 = '../images/user-uploads/' + `pfp-` + req.files.avatar[0].originalname;
                 
                 fs.rename(sourcePath1, destinationPath1, (err) => {
                     if (err) {
@@ -150,10 +150,10 @@ const profileController = {
                 });
             }
 
-            if(files[1]){
-                var sourcePath2 = files[1].path;
-                var destinationPath2 = path.join(__dirname, "..", "files", "images", "user-uploads",`pfp-` + files[1].originalname);
-                var pathName2 = '../images/user-uploads/' + `pfp-` + files[1].originalname;
+            if(req.files.banner && Array.isArray(req.files.banner) && req.files.banner.length > 0){
+                var sourcePath2 = req.files.banner[0].path;
+                var destinationPath2 = path.join(__dirname, "..", "files", "images", "user-uploads",`pfp-` + req.files.banner[0].originalname);
+                var pathName2 = '../images/user-uploads/' + `pfp-` + req.files.banner[0].originalname;
                 
                 fs.rename(sourcePath2, destinationPath2, (err) => {
                     if (err) {
