@@ -10,7 +10,8 @@ const Review = require('../models/ReviewModel.js');
 const Establishment = require('../models/EstablishmentModel.js');
 const OwnerResponse = require('../models/OwnerResponseModel.js');
 const User = require('../models/UserModel.js');
-
+const OwnEst = require('../models/EstablishmentOwnerModel.js');
+const OwnRes = require('../models/OwnerResponseModel.js');
 
 const reviewsController = {
     getSearchReviews: async function (req, res) {
@@ -31,6 +32,15 @@ const reviewsController = {
             var establishment = await db.findOne(Establishment, { establishment_id: item.establishment_id });
             var ownerResponse = await db.findOne(OwnerResponse, { review_id: item.review_id });
             var user = await db.findOne(User, { username: item.username });
+            var rich = false;
+            var ceo = await db.findOne(OwnEst, { username: req.session.user, establishment_id: item.establishment_id });
+            if (ceo) {
+                rich = true;
+            }
+            var ownerResponse = await db.findOne(OwnRes, { review_id: item.review_id });
+            const owner_response_text = ownerResponse ? ownerResponse.body_desc : null;
+            const owner_response_date = ownerResponse ? ownerResponse.date : null;
+            const owner_response_id = ownerResponse ? ownerResponse.review_id : null;
 
             return {
                 review_id: item.review_id,
@@ -50,8 +60,14 @@ const reviewsController = {
                     body_desc: ownerResponse.body_desc,
                     date: ownerResponse.date
                 } : null,
+                owner_response_text: '',
                 avatarImagePath: user.avatarImagePath,
-                edited: item.edited
+                edited: item.edited,
+                establishment_owner: rich,
+                user: req.session.user,
+                owner_response_text: owner_response_text,
+                owner_response_date: owner_response_date,
+                owner_response_id: owner_response_id
             };
         }));
         
