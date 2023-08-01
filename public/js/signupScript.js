@@ -302,6 +302,8 @@ $(document).ready(function () {
         formData.append('bannerImagePath', bannerImagePath);
         /* the avatarImagePath will be processed later if it's not using the default avatar */
 
+        console.log('line305 signupScript');
+
         /* this is where the ajax processing comes in */
         /* the client sends a .POST request */
         $.post({

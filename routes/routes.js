@@ -31,7 +31,7 @@ app.get('/search-reviews', reviewsController.getSearchReviews);
 // for the sign-up routes
 // app.get('/signup', controller.getSignUp);
 app.get('/signup', signupController.getSignUp);
-app.post('/signup', upload.single("file"), validation.signupValidation, signupController.postSignUp);
+app.post('/signup', upload.single("file"), /* validation.signupValidation, */ signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
 app.get('/user-profile-overview/:username', profileController.getUserProfileOverview);
