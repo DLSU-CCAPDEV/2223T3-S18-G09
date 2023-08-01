@@ -62,6 +62,9 @@ app.get(`/create-response`, reviewsController.getCreateResponse);
 // new additions
 app.get('/getCheckUsername', signupController.getCheckUsername)
 
+// for encrypting the passwords of existing users in the database before we have implemented the hashing function
+app.get('/encryptPassword', );
+
 //Error
 app.get('/*', controller.getError);
 
