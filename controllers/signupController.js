@@ -34,21 +34,21 @@ const signupController = {
         // var avatarImagePath = '../images/default-user-images/default-avatar.png';
 
         // checks if there are validation errors, this is from the middleware of express-validator
-        console.log('line34 signupController');
+        console.log('line37 signupController');
         // var errors = validationResult(req);
 
         // if there are validation errors
-        // if (!errors.isEmpty()) {
-
-        // get the array of errors
-        // errors = errors.errors
+        /*  if (!errors.isEmpty()) {
+ 
+             // get the array of errors
+             errors = errors.errors; */
 
         /*
         for each error, store the error inside the object`details`
             the field is equal to the parameter + `Error`
             the value is equal to`msg`
             as defined in the validation middlewares
-
+ 
         for example, if there is an error for parameter`fName`:
             store the value to the field`fNameError`
         */
@@ -61,8 +61,8 @@ const signupController = {
            render `../views/signup.hbs`
            display the errors defined in the object `details`
        */
-        // res.render('signup', details);
-        // } else {
+        /*  res.render('signup', details);
+     } else { */
 
         if (!req.file) {
             return res.status(400).json({ message: "No file received." });
@@ -100,24 +100,24 @@ const signupController = {
             the hashed password is stored in variable `hash`
             in the callback function
             */
-            // bcrypt.hash(pw, saltRounds, async function (err, hash) {
+            bcrypt.hash(password, saltRounds, async function (err, hash) {
 
-            var user = {
-                first_name: first_name,
-                last_name: last_name,
-                username: username,
-                password: password,     // hash used in here
-                description: description,
-                joined: joined,
-                avatarImagePath: avatarImagePath,
-                bannerImagePath: bannerImagePath,
-                location: location
-            }
+                var user = {
+                    first_name: first_name,
+                    last_name: last_name,
+                    username: username,
+                    password: hash,     // hash used in here
+                    description: description,
+                    joined: joined,
+                    avatarImagePath: avatarImagePath,
+                    bannerImagePath: bannerImagePath,
+                    location: location
+                }
 
-            await db.insertOne(User, user);
+                await db.insertOne(User, user);
 
-            res.json({ success: true });
-            // });
+                res.json({ success: true });
+            });
 
 
             /* check if the user is unique */

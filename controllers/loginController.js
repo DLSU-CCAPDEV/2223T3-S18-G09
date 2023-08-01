@@ -34,7 +34,7 @@ const loginController = {
         const result = await db.findOne(User, { username: username });
 
         // send an error message if the user is not found in the database
-        /* if (!result) {
+        if (!result) {
             var data = {
                 username: username,
                 error_message: 'Username and/or Password is incorrect.'
@@ -42,7 +42,7 @@ const loginController = {
             res.render('login', data);
 
             return;
-        } */
+        }
 
         // Check if user is an owner 
         const establishmentOwner = await db.findOne(EstablishmentOwner, { username: username })
@@ -56,24 +56,24 @@ const loginController = {
             to check if the password entered by the user
             is equal to the hashed password in the database
         */
-        // bcrypt.compare(password, result.password, function (err, equal) {
-        if (result) {
-            req.session.user = username;
-            req.session.owner_establishment_id = ownerEstablishmentId;
-            console.log(`Current User: ` + req.session.user);
-            console.log(`Establishment Owner ID: ` + req.session.owner_establishment_id);
-            res.redirect('/establishments-list');
-        } else {
-            var data = {
-                username: username,
-                error_message: 'Username and/or Password is incorrect.'
-            }
-            res.render('login', data);
+        bcrypt.compare(password, result.password, function (err, equal) {
+            if (equal) {
+                req.session.user = username;
+                req.session.owner_establishment_id = ownerEstablishmentId;
+                console.log(`Current User: ` + req.session.user);
+                console.log(`Establishment Owner ID: ` + req.session.owner_establishment_id);
+                res.redirect('/establishments-list');
+            } else {
+                var data = {
+                    username: username,
+                    error_message: 'Username and/or Password is incorrect.'
+                }
+                res.render('login', data);
 
-            /* checkUsername(user.username, username);
-            checkPassword(user.password, password); */
-        }
-        // });
+                /* checkUsername(user.username, username);
+                checkPassword(user.password, password); */
+            }
+        });
     },
 }
 

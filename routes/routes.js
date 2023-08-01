@@ -31,7 +31,7 @@ app.get('/search-reviews', reviewsController.getSearchReviews);
 // for the sign-up routes
 // app.get('/signup', controller.getSignUp);
 app.get('/signup', signupController.getSignUp);
-app.post('/signup', upload.single("file"), /* validation.signupValidation, */ signupController.postSignUp);
+app.post('/signup', /* validation.signupValidation, */ upload.single("file"), signupController.postSignUp);
 
 app.get('/update-profile', profileController.getUpdateProfile);
 app.get('/user-profile-overview/:username', profileController.getUserProfileOverview);
@@ -49,7 +49,7 @@ app.post(`/write-review`, upload.array('files'), reviewsController.postWriteRevi
 app.post(`/update-2db`, upload.fields([
     { name: 'avatar', maxCount: 1 },
     { name: 'banner', maxCount: 1 }
-  ]), profileController.postUpdate);
+]), profileController.postUpdate);
 
 app.get('/upvote', votingController.getUpvote);
 app.get('/downvote', votingController.getDownvote);

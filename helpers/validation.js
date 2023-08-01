@@ -26,10 +26,10 @@ const validation = {
             // checks if `first_name` is not empty
             check('first_name', 'First name should not be empty.').notEmpty(),
 
-            // checks if lName is not empty
+            // checks if last_name is not empty
             check('last_name', 'Last name should not be empty.').notEmpty(),
 
-            // checks if `pw` contains at least 8 characters
+            // checks if `password` contains at least 8 characters
             check('password', 'Passwords should contain at least 8 characters.').isLength({ min: 8 }),
 
         ];

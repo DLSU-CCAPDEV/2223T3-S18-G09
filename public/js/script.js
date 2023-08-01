@@ -13,27 +13,27 @@ $(document).ready(function () {
     $('#submit-review').click(function () {
 
         // Validate if input fields are empty
-        if(!$(`#review-title`).val().trim() && !$(`#floatingTextarea2`).val().trim()) {
+        if (!$(`#review-title`).val().trim() && !$(`#floatingTextarea2`).val().trim()) {
             $(`#review-title`).addClass(`is-invalid`);
             $(`#floatingTextarea2`).addClass(`is-invalid`);
             return;
         }
-        else if(!$(`#review-title`).val().trim()) {
+        else if (!$(`#review-title`).val().trim()) {
             $(`#review-title`).addClass(`is-invalid`);
             $(`#floatingTextarea2`).removeClass(`is-invalid`);
             return;
         }
-        else if(!$(`#floatingTextarea2`).val().trim()) {
+        else if (!$(`#floatingTextarea2`).val().trim()) {
             $(`#floatingTextarea2`).addClass(`is-invalid`);
             $(`#review-title`).removeClass(`is-invalid`);
             return;
         }
-        
+
         // AJAX CALL    
         // Get input from fields
-        
+
         var userReviewText = $('#floatingTextarea2').val().trim();
-        var userReviewTitle = $('#review-title').val().trim(); 
+        var userReviewTitle = $('#review-title').val().trim();
         var rating = $('input[name="rating"]:checked').val();
         if (rating == undefined)
             rating = 0;
@@ -60,7 +60,7 @@ $(document).ready(function () {
 
 
         // Get establishment that the user will write review for
-        
+
 
         $.post({
             url: "/write-review",
@@ -92,12 +92,12 @@ $(document).ready(function () {
     $(document).on('click', '.delete-review', function () {
         var review_id = $(this).attr("data");
         var reviewElement = $(this).closest('.user-review');
-    
-        $.get('/delete-review', { review_id: review_id }, 
+
+        $.get('/delete-review', { review_id: review_id },
             function (data, status) {
                 reviewElement.remove();
             });
-    });      
+    });
 
     // SCRIPT FOR VOTING
     // Upvote
@@ -106,7 +106,7 @@ $(document).ready(function () {
         if ($(this).hasClass('active-vote')) {
             $(this).removeClass('active-vote');
             $(this).html(`<i style="font-size: 16px" class="bi bi-hand-thumbs-up"></i>`);
-            
+
             /* Pseudo code
             Remove username from upvotes array
             --numUpvotes
@@ -173,17 +173,17 @@ $(document).ready(function () {
         var reviewElement = $(this).closest('.user-review');
 
         // Validate if input fields are empty
-        if(!$(edit_review_title).val().trim() && !$(edit_review_text).val().trim()) {
+        if (!$(edit_review_title).val().trim() && !$(edit_review_text).val().trim()) {
             $(edit_review_title).addClass(`is-invalid`);
             $(edit_review_text).addClass(`is-invalid`);
             return;
         }
-        else if(!$(edit_review_title).val().trim()) {
+        else if (!$(edit_review_title).val().trim()) {
             $(edit_review_title).addClass(`is-invalid`);
             $(edit_review_text).removeClass(`is-invalid`);
             return;
         }
-        else if(!$(edit_review_text).val().trim()) {
+        else if (!$(edit_review_text).val().trim()) {
             $(edit_review_text).addClass(`is-invalid`);
             $(edit_review_title).removeClass(`is-invalid`);
             return;
@@ -196,7 +196,7 @@ $(document).ready(function () {
 
         // Get input from fields
         var userReviewText = $(edit_review_text).val().trim();
-        var userReviewTitle = $(edit_review_title).val().trim(); 
+        var userReviewTitle = $(edit_review_title).val().trim();
         var rating = $(edit_review_rating).val();
 
         // Get files uploaded
@@ -234,7 +234,7 @@ $(document).ready(function () {
         var edit_form = '#edit-formFileMultiple-' + review_id;
         $(edit_form).val('');
         alert('Review updated!');
-        var closeBtn = `closeBtn-` +  review_id;
+        var closeBtn = `closeBtn-` + review_id;
         document.getElementById(closeBtn).click(); // close modal
     });
 
@@ -258,20 +258,20 @@ $(document).ready(function () {
         var currentDate = currDate;
         var body_desc = userResponseText.val();
 
-        var reviewElement = $(this).closest('.user-response');  
-        $.get('/create-response', {id: review_id, date: currentDate, text: body_desc});
-        
+        var reviewElement = $(this).closest('.user-response');
+        $.get('/create-response', { id: review_id, date: currentDate, text: body_desc });
+
         var eyy = $('#response-reedit' + review_id);
-        var p = $('<p></p>').addClass('mx-5 user-response').css({'color': 'black'});
-        var span1 = $('<span></span>').attr({'id': 'show'+review_id});
+        var p = $('<p></p>').addClass('mx-5 user-response').css({ 'color': 'black' });
+        var span1 = $('<span></span>').attr({ 'id': 'show' + review_id });
         var b1 = $('<b></b>').text('Response from the Owner');
-        var span2 = $('<span></span>').attr({'id': 'hide'+review_id}).css({'display': 'none'});
+        var span2 = $('<span></span>').attr({ 'id': 'hide' + review_id }).css({ 'display': 'none' });
         var b2 = $('<b></b>').text('Response from the Owner');
-        var span3 = $('<span></span>').css({'color': '#B4B4B4'}).text(' Replied on '+ currDateString);
-        var span4 = $('<span></span>').attr({'id': 'rewrite'+review_id}).text(body_desc);
+        var span3 = $('<span></span>').css({ 'color': '#B4B4B4' }).text(' Replied on ' + currDateString);
+        var span4 = $('<span></span>').attr({ 'id': 'rewrite' + review_id }).text(body_desc);
         var br = $('<br>')
-        
-        var a1 = $('<a></a>').attr({'onclick':'hideResponseFunction(`response'+review_id+'`, `show'+review_id+'`, `hide'+review_id+'`)','id':'response'+review_id});
+
+        var a1 = $('<a></a>').attr({ 'onclick': 'hideResponseFunction(`response' + review_id + '`, `show' + review_id + '`, `hide' + review_id + '`)', 'id': 'response' + review_id });
         a1.text(' • Show Response');
 
         span1.append(b1);
@@ -287,18 +287,18 @@ $(document).ready(function () {
         userResponseText.text('');
         $('#response-btn' + review_id).hide();
         alert('Response submitted!');
-        var closeBtn = `btn-close` +  review_id;
+        var closeBtn = `btn-close` + review_id;
         document.getElementById(closeBtn).click();
-    });  
+    });
 
     // Delete Response
     $(document).on('click', '.delete-response', function () {
         var review_id = $(this).attr("data");
-        var reviewElement = $(this).closest('.user-response');  
-        $.get('/delete-response', { review_id: review_id }, 
+        var reviewElement = $(this).closest('.user-response');
+        $.get('/delete-response', { review_id: review_id },
             function (data, status) {
                 reviewElement.remove();
-                
+
                 // To follow: Appends Write a Response Button after deleting
 
                 // var eyy = $('#response-reedit' + review_id);
@@ -310,28 +310,28 @@ $(document).ready(function () {
                 // div.append(button);
                 // eyy.append(div);
             });
-    });  
+    });
 
     // Edit Response
     $(document).on('click', '.edit-response-submit', function () {
-         var review_id = $(this).attr("data");
-         var edit_response_text = `#edit-floatingTextarea2-` + review_id;
-         var currentDate = currDate;
-         //var reviewElement = $(this).closest('.user-response');
+        var review_id = $(this).attr("data");
+        var edit_response_text = `#edit-floatingTextarea2-` + review_id;
+        var currentDate = currDate;
+        //var reviewElement = $(this).closest('.user-response');
 
-         // Validate if input fields are empty
-         if(!$(edit_response_text).val().trim()){
+        // Validate if input fields are empty
+        if (!$(edit_response_text).val().trim()) {
             $(edit_response_text).addClass(`is-invalid`);
             return;
-         }
-         // Get input from fields
-         var userResponseText = $(edit_response_text).val().trim();
+        }
+        // Get input from fields
+        var userResponseText = $(edit_response_text).val().trim();
 
-        $.get("/update-response", {id: review_id, date: currentDate, text: userResponseText});
+        $.get("/update-response", { id: review_id, date: currentDate, text: userResponseText });
         $('#rewrite' + review_id).text(userResponseText);
         $(edit_response_text).val(userResponseText);
         alert('Response updated!');
-        var closeBtn = `closeBtn-` +  review_id;
+        var closeBtn = `closeBtn-` + review_id;
         document.getElementById(closeBtn).click(); // close modal
     });
 });
@@ -342,28 +342,28 @@ function hideResponseFunction(ID, show_id, hide_id) {
     var btnRep = document.getElementById(ID);
 
     if (show.style.display === "none") {
-      show.style.display = "inline";
-      btnRep.text = " • Show Response";
-      showRep.style.display = "none";
+        show.style.display = "inline";
+        btnRep.text = " • Show Response";
+        showRep.style.display = "none";
     } else {
-      show.style.display = "none";
-      btnRep.text = " • Hide Response";
-      showRep.style.display = "inline";
+        show.style.display = "none";
+        btnRep.text = " • Hide Response";
+        showRep.style.display = "inline";
     }
-  }
+}
 
-  function readMoreFunction(dots_id, more_id, myBtn_id) {
+function readMoreFunction(dots_id, more_id, myBtn_id) {
     var dots = dots_id;
     var moreText = more_id;
     var btnText = myBtn_id;
 
     if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more";
-      moreText.style.display = "none";
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
     } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less";
-      moreText.style.display = "inline";
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
     }
-  }
+}
