@@ -5,6 +5,14 @@
 // import module `database` from `../models/db.js`
 const db = require('./models/db.js');
 
+// To encrypt the '123' password
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const defaultpass = "123";
+const salt = bcrypt.genSaltSync(saltRounds);
+const hash = bcrypt.hashSync(defaultpass, salt);
+console.log('hashed "123" password: ' + hash);
+
 db.connect();
 
 const mongoose = require('mongoose');
@@ -36,7 +44,7 @@ async function insertReview(review) {
 /* the owner accounts */
 var user = {
     username: "kenshinfetalvero",
-    password: "123",
+    password: hash,
     first_name: "Kenshin",
     last_name: "Fetalvero",
     description: "CEO of Jollibee",
@@ -50,7 +58,7 @@ db.insertOne(User, user);
 
 var user = {
     username: "briangabini",
-    password: "123",
+    password: hash,
     first_name: "Brian",
     last_name: "Gabini",
     description: "CEO of Jus and Jerry's",
@@ -64,7 +72,7 @@ db.insertOne(User, user);
 
 var user = {
     username: "shawnetumalad",
-    password: "123",
+    password: hash,
     first_name: "Shawne",
     last_name: "Tumalad",
     description: "CEO of Burger King",
@@ -78,7 +86,7 @@ db.insertOne(User, user);
 
 var user = {
     username: "johndolon",
-    password: "123",
+    password: hash,
     first_name: "John",
     last_name: "Dolon",
     description: "CEO of 24 Chicken",
@@ -92,7 +100,7 @@ db.insertOne(User, user);
 
 var user = {
     username: "jmdolon",
-    password: "123",
+    password: hash,
     first_name: "John",
     last_name: "Dolon",
     description: "CEO of BonChon",
@@ -107,7 +115,7 @@ db.insertOne(User, user);
 /* the other 2 visitor accounts */
 var user = {
     username: "randomuser1",
-    password: "123",
+    password: hash,
     first_name: "Alfredo",
     last_name: "Cruz",
     description: "I like burgers!",
@@ -121,7 +129,7 @@ db.insertOne(User, user);
 
 var user = {
     username: "randomuser2",
-    password: "123",
+    password: hash,
     first_name: "Pepito",
     last_name: "Manaloto",
     description: "I like chicken!",
@@ -448,4 +456,3 @@ var resp = {
 };
 
 db.insertOne(OwnerResponse, resp);
-
