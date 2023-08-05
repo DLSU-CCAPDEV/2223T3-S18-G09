@@ -7,7 +7,7 @@
                     <img src="{{avatarImagePath}}" alt="User Pfp" style="width: 100px; height: 75px" class="rounded-circle">
                 </div>
                 <div class="row justify-content-center text-center">
-                    <h6 style="color: black;"> {{username}} </h6>
+                    <h6 id="getUsername" style="color: black;"> {{username}} </h6>
                 </div>
             </a>
         </div>
@@ -173,24 +173,24 @@
 
         {{!-- Owner Response --}}
         {{#if owner_response_text}}
-            <p class="mx-5 user-response" style="color: black;">
+            <span class="mx-5 user-response" style="color: black;">
                 <span id="show{{review_id}}">
                 <b>Response from the Owner</b>
                 </span>
 
-                <span id="hide{{review_id}}" style="display: none;">
+                <span id="hide{{review_id}}" style="display: none">
                 <b>Response from the Owner</b>
 
                 <span style="color: #B4B4B4"> Replied on {{formatDate owner_response_date}}</span>
                 <br>
-                <span id="rewrite{{owner_response_id}}">
+                <span id="rewrite{{owner_response_id}}" style='margin-left: 60px'>
                 {{owner_response_text}}
                 </span>
                 </span>
                 <a onclick="hideResponseFunction(`response{{review_id}}`, `show{{review_id}}`, `hide{{review_id}}`)" id="response{{review_id}}"> • Show Response</a>
                 {{#if establishment_owner}}
                     <br>
-                    <button class="btn btn-danger edit-response text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-response-modal-{{owner_response_id}}" style="font-size: 10px;" data="{{owner_response_id}}">
+                    <button class="btn btn-danger edit-response text-nowrap" data-bs-toggle="modal" data-bs-target="#edit-response-modal-{{owner_response_id}}" style="font-size: 10px;margin-left: 60px" data="{{owner_response_id}}">
                         <i class="bi bi-pencil-square"></i> Edit Response</button>
 
                     <button id="delete-btn-{{owner_response_id}}" class="btn btn-danger ml-auto delete-response t" data="{{owner_response_id}}" style="font-size: 10px;">
@@ -221,7 +221,7 @@
                         </div>
                     </div>
                 {{/if}}
-            </p>
+            </span>
         {{else}}
             {{#if establishment_owner}} 
                 <div class="col" id="response-btn{{review_id}}">

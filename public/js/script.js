@@ -257,35 +257,86 @@ $(document).ready(function () {
         var userResponseText = $('#floatingTextarea2' + review_id);
         var currentDate = currDate;
         var body_desc = userResponseText.val();
-
-        var reviewElement = $(this).closest('.user-response');
+        var username = $('#getUsername').text();
+        //var reviewElement = $(this).closest('.user-response');
         $.get('/create-response', { id: review_id, date: currentDate, text: body_desc });
 
+        //text
         var eyy = $('#response-reedit' + review_id);
-        var p = $('<p></p>').addClass('mx-5 user-response').css({ 'color': 'black' });
+        var p = $('<span></span>').addClass('mx-5 user-response').css({ 'color': 'black' });
         var span1 = $('<span></span>').attr({ 'id': 'show' + review_id });
         var b1 = $('<b></b>').text('Response from the Owner');
         var span2 = $('<span></span>').attr({ 'id': 'hide' + review_id }).css({ 'display': 'none' });
         var b2 = $('<b></b>').text('Response from the Owner');
         var span3 = $('<span></span>').css({ 'color': '#B4B4B4' }).text(' Replied on ' + currDateString);
-        var span4 = $('<span></span>').attr({ 'id': 'rewrite' + review_id }).text(body_desc);
-        var br = $('<br>')
+        var span4 = $('<span></span>').attr({ 'id': 'rewrite' + review_id }).css({ 'margin-left': '60px' }).text(body_desc);
 
         var a1 = $('<a></a>').attr({ 'onclick': 'hideResponseFunction(`response' + review_id + '`, `show' + review_id + '`, `hide' + review_id + '`)', 'id': 'response' + review_id });
         a1.text(' • Show Response');
 
+        //buttons
+        var edit = $('<button></button>').addClass('btn btn-danger edit-response text-nowrap').attr({'data-bs-toggle':'modal', 'data-bs-target': '#edit-response-modal-' + review_id, 'data':review_id}).css({'font-size':'10px', 'margin-left':'60px', 'margin-right':'4px'});
+        var i = $('<i></i>').addClass('bi bi-pencil-square');
+        var del = $('<button></button>').addClass('btn btn-danger ml-auto delete-response t').attr({'id':'delete-btn-' + review_id, 'data':review_id}).css({'font-size':'10px'});
+        var i2 = $('<i></i>').addClass('bi bi-trash-fill');
+
+        //modal
+        var divOuter = $('<div></div>').addClass('modal fade').attr({'id':'edit-response-modal-' + review_id, 'tabindex': '-1', 'aria-labelledby':'modalLabel', 'aria-hidden':'true'});
+        var divInner1 = $('<div></div>').addClass('modal-dialog');
+        var divInner2 = $('<div></div>').addClass('modal-content');
+
+        var divInner3 = $('<div></div>').addClass('modal-header');
+        var h1 = $('<h1></h1>').addClass('modal-title fs-5').attr({'id':'edit-modalLabel-' + review_id}).text('Edit Response');
+        var buttonID = 'closeBtn-' + review_id;
+        var button2 = $('<button></button>').addClass('btn-close').attr({'type':'button','data-bs-dismiss':'modal', 'aria-label':'Close', 'id':buttonID});
+
+        var divInner4 = $('<div></div>').addClass('modal-body');
+        var form = $('<form></form>').css('max-width', '600px');
+        var inDiv1 = $('<div></div>').addClass('form-floating border p-3 my-3 rounded');
+        var textArea = $('<textarea></textarea>').addClass('form-control border-0').attr({'id':'edit-floatingTextarea2-'+ review_id, 'required':''}).css({'height':'200px', 'text-justify':'inter-word', 'text-align':'justify'}).text(body_desc); //text-justify: inter-word
+        var label = $('<label></label>').attr('for', 'edit-floatingTextarea2-' + review_id).text('Respond to ' + username);
+
+        var input = $('<input>').addClass('submit-button btn btn-primary edit-response-submit').attr({'id':'edit-response-submit-' + review_id, 'type':'button', 'value':'Edit Response', 'data': review_id}).css({'width':'200px'});
+        var br1 = document.createElement("BR");
+        var br2 = document.createElement("BR");
+
+        //append
         span1.append(b1);
         span2.append(b2);
         span2.append(span3);
-        span2.append(br);
+        span2.append(br1);
         span2.append(span4);
         p.append(span1);
         p.append(span2);
         p.append(a1);
+        p.append(br2);
+
+        edit.append(i);
+        edit.append(' Edit Response');
+        del.append(i2);
+
+        inDiv1.append(textArea);
+        inDiv1.append(label);
+        form.append(inDiv1);
+        form.append(input);
+        divInner4.append(form);
+
+        divInner3.append(h1);
+        divInner3.append(button2);
+
+        divInner2.append(divInner3);
+        divInner2.append(divInner4);
+        divInner1.append(divInner2);
+        divOuter.append(divInner1);
+
+        p.append(edit);
+        p.append(del);
+        p.append(divOuter);
+
         eyy.append(p);
 
         userResponseText.text('');
-        $('#response-btn' + review_id).hide();
+        $('#response-btn' + review_id).remove();
         alert('Response submitted!');
         var closeBtn = `btn-close` + review_id;
         document.getElementById(closeBtn).click();
@@ -294,21 +345,61 @@ $(document).ready(function () {
     // Delete Response
     $(document).on('click', '.delete-response', function () {
         var review_id = $(this).attr("data");
+        var username = $('#getUsername').text();
         var reviewElement = $(this).closest('.user-response');
         $.get('/delete-response', { review_id: review_id },
             function (data, status) {
                 reviewElement.remove();
 
-                // To follow: Appends Write a Response Button after deleting
+                //To follow: Appends Write a Response Button after deleting
 
-                // var eyy = $('#response-reedit' + review_id);
-                // var div = $('<div></div>').addClass('col').attr('id', 'response-button' + review_id);
-                // var button = $('<button></button>').addClass('btn btn-danger fs-6 mx-5 btn-sm').attr({'data-bs-toggle': 'moddal','ata-bs-target': '#write-response-modal' + review_id});
-                // var i = $('<i></i>').css('font-size', '16px').addClass('bi bi-pencil-square me-1');
-                // button.append(i);
-                // button.text('Write a Response');
-                // div.append(button);
-                // eyy.append(div);
+                //button
+                var eyy = $('#response-reedit' + review_id);
+                var div = $('<div></div>').addClass('col').attr('id', 'response-btn' + review_id);
+                var button = $('<button></button>').addClass('btn btn-danger fs-6 mx-5 btn-sm').attr({'data-bs-toggle': 'modal','data-bs-target': '#write-response-modal' + review_id});
+                var i = $('<i></i>').css('font-size', '16px').addClass('bi bi-pencil-square me-1');
+
+                //modal
+                var divOuter = $('<div></div>').addClass('modal fade').attr({'id':'write-response-modal' + review_id, 'tabindex': '-1', 'aria-labelledby':'modalLabel', 'aria-hidden':'true'});
+                var divInner1 = $('<div></div>').addClass('modal-dialog');
+                var divInner2 = $('<div></div>').addClass('modal-content');
+
+                var divInner3 = $('<div></div>').addClass('modal-header');
+                var h1 = $('<h1></h1>').addClass('modal-title fs-5').attr({'id':'modalLabel' + review_id}).text('Respond to ' + username);
+                var buttonClass = 'btn-close' + review_id;
+                var button2 = $('<button></button>').addClass(buttonClass).attr({'type':'button','data-bs-dismiss':'modal', 'aria-label':'Close'});
+
+                var divInner4 = $('<div></div>').addClass('modal-body');
+                var form = $('<form></form>').css('max-width', '600px');
+                var inDiv1 = $('<div></div>').addClass('border p-3 my-3 rounded');
+                var inDiv2 = $('<div></div>').addClass('form-floating');
+                var textArea = $('<textarea></textarea>').addClass('form-control border-0').attr({'id':'floatingTextarea2'+ review_id, 'required':''}).css({'height':'200px'}); //needs required
+                var label = $('<label></label>').attr('for', 'floatingTextarea2').text('Response from the owner');
+
+                var input = $('<input>').addClass('submit-button btn btn-primary position-relative create-response').attr({'id':'submit-response' + review_id, 'type':'button', 'value':'Post Response', 'data-bs-dismiss': 'modal', 'data': review_id}).css({'width':'200px', 'left':'55%'});
+
+                //append
+                button.append(i);
+                button.append('Write a Response');
+
+                inDiv2.append(textArea);
+                inDiv2.append(label);
+                inDiv1.append(inDiv2);
+                form.append(inDiv1);
+                form.append(input);
+                divInner4.append(form);
+
+                divInner3.append(h1);
+                divInner3.append(button2);
+
+                divInner2.append(divInner3);
+                divInner2.append(divInner4);
+                divInner1.append(divInner2);
+                divOuter.append(divInner1);
+
+                div.append(button);
+                div.append(divOuter);
+                eyy.append(div);
             });
     });
 
