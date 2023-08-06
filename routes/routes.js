@@ -50,6 +50,7 @@ app.post(`/update-2db`, upload.fields([
     { name: 'avatar', maxCount: 1 },
     { name: 'banner', maxCount: 1 }
 ]), profileController.postUpdate);
+app.get(`/getUser`, profileController.checkUser);
 
 app.get('/upvote', votingController.getUpvote);
 app.get('/downvote', votingController.getDownvote);
