@@ -11,6 +11,11 @@ const Review = require('../models/ReviewModel.js');
 const Establishment = require('../models/EstablishmentModel.js');
 const { redirectRoot } = require('./controller.js');
 
+//password hashing
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
+
 const profileController = {
     getProfile: async function (req, res) {
 
@@ -120,7 +125,10 @@ const profileController = {
     },
 
     postUpdate: async function (req,res) {
-        const currentUser = req.session.user;
+        const currentUser = req.session.user; 
+        //var oldhash = bcrypt.hashSync(req.body.oldPassword, salt);
+        var newhash = bcrypt.hashSync(req.body.newPassword, salt);
+
         var userQuery = { username: currentUser };
         var userResult = await db.findOne(User, userQuery);
         var noDup = await db.findOne(User, {username: req.body.username}, {username: 1});
@@ -166,12 +174,12 @@ const profileController = {
             }
         }
 
+        var results = bcrypt.compareSync(req.body.oldPassword, userResult.password);
         if (noDup && !noDup.username == currentUser){
             console.log('Username Already Exists!');
         }
-        else if(userResult.password == req.body.oldPassword || req.body.oldPassword == ""){
-            var updatePassword = req.body.newPassword;
-            
+        else if(results || req.body.oldPassword == ""){
+            var updatePassword = newhash;
             if (req.body.newPassword == "" || req.body.oldPassword == ""){
                 updatePassword = userResult.password;
             }
