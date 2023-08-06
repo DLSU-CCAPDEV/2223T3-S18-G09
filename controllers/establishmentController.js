@@ -85,6 +85,15 @@ const establishmentController = {
         }
 
         var result = await db.findOne(Establishment, query);
+        
+        if (result == null) {
+            error = {
+                code: 404,
+                error: 'Establishment does not exist...'
+            }
+            res.render('error', error); 
+            return
+        }
 
         console.log(result.establishment_id);
 
