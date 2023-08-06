@@ -13,8 +13,6 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const validation = require('../helpers/validation.js');
 
-/* app.get('/profile/:username', controller.getProfile);  */ // use this later on 
-
 app.get('/', controller.getRoot);
 /* app.get('/*', controller.redirectRoot); */ // if not yet signed in always redirect to login page 
 
@@ -64,7 +62,7 @@ app.get(`/create-response`, reviewsController.getCreateResponse);
 app.get('/getCheckUsername', signupController.getCheckUsername)
 
 // for encrypting the passwords of existing users in the database before we have implemented the hashing function
-app.get('/encryptPassword', );
+app.get('/encryptPassword',);
 
 //Error
 app.get('/*', controller.getError);

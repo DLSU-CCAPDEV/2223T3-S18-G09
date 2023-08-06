@@ -12,9 +12,6 @@ const Establishment = require('../models/EstablishmentModel.js');
 const { redirectRoot } = require('./controller.js');
 
 const profileController = {
-    getProfile: async function (req, res) {
-
-    },
 
     // this is for rendering the profile page
     getUpdateProfile: async function (req, res) {
@@ -121,7 +118,7 @@ const profileController = {
     postUpdate: async function (req,res) {
         const currentUser = req.session.user;
         var userQuery = { username: currentUser };
-        var userResult = await db.findOne(User, userQuery);
+        var userResult = await db.findOne(User, userQuery); 
         var noDup = await db.findOne(User, {username: req.body.username}, {username: 1});
 
         var files =  req.files;
