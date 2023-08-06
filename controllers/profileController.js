@@ -41,7 +41,6 @@ const profileController = {
         res.render('update-profile', details);
     },
 
-    // there should be another for submitting the form and shit
     // postUpdateProfile: function (req, res) {}
 
     getUserProfileOverview: async function (req, res) {
@@ -198,6 +197,13 @@ const profileController = {
             console.log('Incorrect Password');
         }
         res.send(true);
+    },
+
+    checkUser: async function (req,res) {
+        const currentUser = req.query.username;
+        var userQuery = { username: currentUser };
+        var userResult = await db.findOne(User, userQuery, {username:1});
+        res.send(userResult);
     }
 };
 

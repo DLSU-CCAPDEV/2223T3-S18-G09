@@ -60,8 +60,9 @@
 							<label for="floatingInput">Last Name</label>
 						</div>
 						<div class="form-floating mb-2">
-							<input type="text" class="form-control" id="update-username" value="{{user}}" required>
+							<input type="text" class="form-control" id="update-username" value="{{user}}" data-user="{{user}}" required>
 							<label for="floatingInput">Username</label>
+							<span id="accerr" style="color: red; display: none; width: 100%; text-align: center">Username is already taken!</span>
 						</div>
 
 						<!--Password should be optional if user didn't write on the textfields-->
@@ -78,6 +79,7 @@
 							<div class="form-floating mb-2 ms-5">
 								<input type="password" class="form-control" id="verify-newpassword">
 								<label for="floatingInput">Retype New Password</label>
+								<span id="passerr" style="color: red; display: none; width: 100%; text-align: center">Passwords do not match!</span>
 							</div>
 							<div class="form-floating mb-2">
 								<textarea id="update-description" class="form-control" style="height:150px;">{{description}}</textarea>
@@ -89,12 +91,7 @@
 						<div class="form-floating mb-2 d-flex justify-content-end">
 							<button class="btn btn-outline-secondary me-2" type="button"
 								onclick="window.location.href = '/user-profile-overview/{{user}}'">Cancel</button>
-
-
-
-							<!--<a href="/user-profile-overview">-->
-								<input type="button" class="btn btn-danger" id="submit-update" name="submit" value="Submit">
-							<!--</a>-->
+							<input type="button" class="btn btn-danger" id="submit-update" name="submit" value="Submit">
 						</div>
 
 					</div>
