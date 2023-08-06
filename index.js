@@ -34,7 +34,11 @@ app.use(session({ // Set up session
     'resave': false,
     'saveUninitialized': false,
     store: MongoStore.create({ mongoUrl: `mongodb+srv://palatable:QdMeiq5AY79vZke0@cluster0.vgvqiwt.mongodb.net/` }),
-    collection: 'sessions'
+    collection: 'sessions',
+    cookie: {
+        // Set a default maxAge for the session (e.g., 1 hour)
+        maxAge: 60 * 60 * 1000, // 1 hour in milliseconds
+      },
 }));
 
 app.use('/', routes); // configure express to use routes.js
