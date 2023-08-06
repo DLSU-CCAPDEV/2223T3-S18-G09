@@ -9,8 +9,8 @@ const Review = require('./ReviewModel.js');
 const User = require('./UserModel.js');
 
 // ccapdev-mongoose is the name of the database
-const url = 'mongodb://127.0.0.1:27017/ccapdev'; // for the local database
-// const url = 'mongodb+srv://palatable:QdMeiq5AY79vZke0@cluster0.vgvqiwt.mongodb.net/'; // MongoDB Atlas
+// const url = 'mongodb://127.0.0.1:27017/ccapdev'; // for the local database
+const url = 'mongodb+srv://palatable:QdMeiq5AY79vZke0@cluster0.vgvqiwt.mongodb.net/'; // MongoDB Atlas
 
 // function for connecting to database
 
