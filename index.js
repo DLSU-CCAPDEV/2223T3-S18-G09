@@ -56,7 +56,7 @@ dotenv.config(); // configure dotenv
 port = process.env.PORT; // set the port based on the .env file
 hostname = process.env.HOSTNAME; // set the hostname based on the .env file
 
-app.listen(port, hostname, function () {
+app.listen(port, function () {
     console.log('Server running at: ' + port);
 });
 
