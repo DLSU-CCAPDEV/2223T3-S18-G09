@@ -166,7 +166,8 @@ const reviewsController = {
             owner_establishment_id: req.session.owner_establishment_id, 
             establishment_id: review.establishment_id,
             avatarImagePath: review.avatarImagePath,
-            photos: review.photos
+            photos: review.photos,
+            votes: review.votes
             },
            
             function (err, html) {
