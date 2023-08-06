@@ -61,8 +61,11 @@ const loginController = {
                 req.session.user = username;
                 req.session.owner_establishment_id = ownerEstablishmentId;
 
+                console.log(req.body.rememberMe);
+
                 // Set maxAge to three weeks if rememberMe is enabled
-                if (typeof req.body.rememberMe !== undefined) {
+                if (req.body.rememberMe !== undefined) {
+                    console.log("Remembered");
                     req.session.cookie.maxAge = 3 * 7 * 24 * 60 * 60 * 1000; // 3 weeks in milliseconds
                 }
 
