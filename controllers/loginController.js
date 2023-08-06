@@ -78,44 +78,9 @@ const loginController = {
                     error_message: 'Username and/or Password is incorrect.'
                 }
                 res.render('login', data);
-
-                /* checkUsername(user.username, username);
-                checkPassword(user.password, password); */
             }
         });
     },
 }
-
-/* const usernameInput = $('#username-input');
-const passwordInput = $('#password-input');
-
-// place the code here later
-function checkUsername(query_username, input_username) {
-    // implement function to validate username
-    // if the username is in the database, add is-valid class to the div
-    if (query_username == input_username) {
-        // add is-valid class to the div
-        usernameInput.addClass('is-valid');
-        usernameInput.removeClass('is-invalid');
-    } else {
-        // add is-invalid class to the div
-        usernameInput.addClass('is-invalid');
-        usernameInput.removeClass('is-valid');
-    }
-}
-
-function checkPassword(query_password, input_password) {
-    // implement function to validate password
-    if (query_password == input_password) {
-        // add is-valid class to the div
-        passwordInput.addClass('is-valid');
-        passwordInput.removeClass('is-invalid');
-    } else {
-        // add is-invalid class to the div
-        passwordInput.addClass('is-invalid');
-        passwordInput.removeClass('is-valid');
-    }   
-}
- */
 
 module.exports = loginController;

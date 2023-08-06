@@ -194,13 +194,9 @@ const profileController = {
                 bannerImagePath: pathName2
             }
 
-            // console.log(update);
-
             const updateData = await db.updateOne(User,{username: userResult.username},update);
             req.session.user = req.body.username;
             req.session.save();
-            //i have no clue how to redirect it back to user-profile
-            //res.render('user-profile-overview');
         }
         else {
             console.log('Incorrect Password');
