@@ -432,6 +432,7 @@ var review = {
         downvotes: []
     },
 };
+db.insertOne(Review, review);
 
 var resp = {
     review_id: 0,
