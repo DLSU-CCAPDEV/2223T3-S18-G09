@@ -67,13 +67,14 @@ const profileController = {
 
         var userResult = await db.findOne(User, userQuery, userProjection);
 
-        /* TODO: get the number of reviews from the user using findMany in the Review Collections */
-
-        /*
-        var reviewProjection = {
-            username: 1
+        if (userResult == null) {
+            error = {
+                code: 404,
+                error: 'User does not exist...'
+            }
+            res.render('error', error); 
+            return
         }
-        */
 
         var reviewResult = await db.findMany(Review, userQuery);
 
